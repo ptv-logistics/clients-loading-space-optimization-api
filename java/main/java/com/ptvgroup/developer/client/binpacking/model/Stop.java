@@ -38,7 +38,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
 @JsonPropertyOrder({
   Stop.JSON_PROPERTY_ITEMS_TO_UNLOAD
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-28T11:25:19.033913Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-29T13:38:38.009016Z[Etc/UTC]")
 public class Stop {
   public static final String JSON_PROPERTY_ITEMS_TO_UNLOAD = "itemsToUnload";
   private List<ItemsToUnload> itemsToUnload = new ArrayList<>();

@@ -40,7 +40,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   PackBinsResponse.JSON_PROPERTY_PACKED_BINS,
   PackBinsResponse.JSON_PROPERTY_ITEMS_NOT_PACKED
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-28T11:25:19.033913Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-29T13:38:38.009016Z[Etc/UTC]")
 public class PackBinsResponse {
   public static final String JSON_PROPERTY_PACKED_BINS = "packedBins";
   private List<PackedBin> packedBins = null;

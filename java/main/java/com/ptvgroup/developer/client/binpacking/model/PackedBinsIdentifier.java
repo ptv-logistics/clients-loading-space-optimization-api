@@ -35,7 +35,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
 @JsonPropertyOrder({
   PackedBinsIdentifier.JSON_PROPERTY_ID
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-28T11:25:19.033913Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-29T13:38:38.009016Z[Etc/UTC]")
 public class PackedBinsIdentifier {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;

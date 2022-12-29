@@ -40,7 +40,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   StackingRestrictions.JSON_PROPERTY_RESTRICTION_TYPE,
   StackingRestrictions.JSON_PROPERTY_ITEM_IDS
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-28T11:25:19.033913Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-29T13:38:38.009016Z[Etc/UTC]")
 public class StackingRestrictions {
   public static final String JSON_PROPERTY_ITEM_ID = "itemId";
   private String itemId;

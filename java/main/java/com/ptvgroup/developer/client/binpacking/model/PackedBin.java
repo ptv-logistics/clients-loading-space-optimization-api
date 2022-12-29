@@ -44,7 +44,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   PackedBin.JSON_PROPERTY_USED_VOLUME_CAPACITY,
   PackedBin.JSON_PROPERTY_LOADING_METERS
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-28T11:25:19.033913Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-29T13:38:38.009016Z[Etc/UTC]")
 public class PackedBin {
   public static final String JSON_PROPERTY_BIN_ID = "binId";
   private String binId;
