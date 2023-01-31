@@ -36,7 +36,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
 @JsonPropertyOrder({
   StatusResponse.JSON_PROPERTY_STATUS
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-29T13:38:38.009016Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-31T14:52:57.911967Z[Etc/UTC]")
 public class StatusResponse {
   public static final String JSON_PROPERTY_STATUS = "status";
   private CalculationStatus status;
