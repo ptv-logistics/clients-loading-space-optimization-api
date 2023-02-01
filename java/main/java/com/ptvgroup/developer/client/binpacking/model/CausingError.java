@@ -40,7 +40,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   CausingError.JSON_PROPERTY_PARAMETER,
   CausingError.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-31T14:52:57.911967Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-01T07:19:07.077191Z[Etc/UTC]")
 public class CausingError {
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;

@@ -40,7 +40,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   BinPackingOptions.JSON_PROPERTY_UNLOADING_SEQUENCE,
   BinPackingOptions.JSON_PROPERTY_STACKING_OPTIONS
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-31T14:52:57.911967Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-01T07:19:07.077191Z[Etc/UTC]")
 public class BinPackingOptions {
   public static final String JSON_PROPERTY_UNLOADING_SEQUENCE = "unloadingSequence";
   private List<Stop> unloadingSequence = null;
