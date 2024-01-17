@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { ItemsToUnload } from './ItemsToUnload';
 import {
-    ItemsToUnload,
     ItemsToUnloadFromJSON,
     ItemsToUnloadFromJSONTyped,
     ItemsToUnloadToJSON,
-} from './';
+} from './ItemsToUnload';
 
 /**
  * Defines the list of items to be unloaded at this point.
@@ -32,6 +32,16 @@ export interface Stop {
      * @memberof Stop
      */
     itemsToUnload: Array<ItemsToUnload>;
+}
+
+/**
+ * Check if a given object implements the Stop interface.
+ */
+export function instanceOfStop(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "itemsToUnload" in value;
+
+    return isInstance;
 }
 
 export function StopFromJSON(json: any): Stop {
@@ -60,5 +70,4 @@ export function StopToJSON(value?: Stop | null): any {
         'itemsToUnload': ((value.itemsToUnload as Array<any>).map(ItemsToUnloadToJSON)),
     };
 }
-
 

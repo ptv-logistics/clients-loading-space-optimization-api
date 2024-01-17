@@ -13,16 +13,18 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { StackingOptions } from './StackingOptions';
 import {
-    StackingOptions,
     StackingOptionsFromJSON,
     StackingOptionsFromJSONTyped,
     StackingOptionsToJSON,
-    Stop,
+} from './StackingOptions';
+import type { Stop } from './Stop';
+import {
     StopFromJSON,
     StopFromJSONTyped,
     StopToJSON,
-} from './';
+} from './Stop';
 
 /**
  * Allows customization of the bin packing operation.
@@ -42,6 +44,15 @@ export interface BinPackingOptions {
      * @memberof BinPackingOptions
      */
     stackingOptions?: StackingOptions;
+}
+
+/**
+ * Check if a given object implements the BinPackingOptions interface.
+ */
+export function instanceOfBinPackingOptions(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function BinPackingOptionsFromJSON(json: any): BinPackingOptions {
@@ -72,5 +83,4 @@ export function BinPackingOptionsToJSON(value?: BinPackingOptions | null): any {
         'stackingOptions': StackingOptionsToJSON(value.stackingOptions),
     };
 }
-
 

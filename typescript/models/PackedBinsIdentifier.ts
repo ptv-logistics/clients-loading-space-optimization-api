@@ -27,6 +27,16 @@ export interface PackedBinsIdentifier {
     id: string;
 }
 
+/**
+ * Check if a given object implements the PackedBinsIdentifier interface.
+ */
+export function instanceOfPackedBinsIdentifier(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "id" in value;
+
+    return isInstance;
+}
+
 export function PackedBinsIdentifierFromJSON(json: any): PackedBinsIdentifier {
     return PackedBinsIdentifierFromJSONTyped(json, false);
 }
@@ -53,5 +63,4 @@ export function PackedBinsIdentifierToJSON(value?: PackedBinsIdentifier | null):
         'id': value.id,
     };
 }
-
 

@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+
 /**
  * Describes the orientation that was used to place the item into the bin.
  * * `ORIGINAL` - Item was not re-oriented. Dimensions stay (x,y,z).
@@ -21,16 +22,17 @@
  * * `XZ` - Item was rotated around x- then z-axis (width- then heightwise) by +/-90 degrees compared to the original orientation. Dimensions are (z,x,y).
  * * `YZ` - Item was rotated around x- then z-axis (width- then heightwise) by +/-90 degrees compared to the original orientation. Dimensions are (z,x,y).
  * @export
- * @enum {string}
  */
-export enum ItemOrientation {
-    ORIGINAL = 'ORIGINAL',
-    X = 'X',
-    Y = 'Y',
-    Z = 'Z',
-    XZ = 'XZ',
-    YZ = 'YZ'
-}
+export const ItemOrientation = {
+    ORIGINAL: 'ORIGINAL',
+    X: 'X',
+    Y: 'Y',
+    Z: 'Z',
+    XZ: 'XZ',
+    YZ: 'YZ'
+} as const;
+export type ItemOrientation = typeof ItemOrientation[keyof typeof ItemOrientation];
+
 
 export function ItemOrientationFromJSON(json: any): ItemOrientation {
     return ItemOrientationFromJSONTyped(json, false);

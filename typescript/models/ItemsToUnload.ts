@@ -33,6 +33,16 @@ export interface ItemsToUnload {
     numberOfInstances?: number;
 }
 
+/**
+ * Check if a given object implements the ItemsToUnload interface.
+ */
+export function instanceOfItemsToUnload(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "itemId" in value;
+
+    return isInstance;
+}
+
 export function ItemsToUnloadFromJSON(json: any): ItemsToUnload {
     return ItemsToUnloadFromJSONTyped(json, false);
 }
@@ -61,5 +71,4 @@ export function ItemsToUnloadToJSON(value?: ItemsToUnload | null): any {
         'numberOfInstances': value.numberOfInstances,
     };
 }
-
 

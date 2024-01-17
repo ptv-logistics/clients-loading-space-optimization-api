@@ -33,6 +33,17 @@ export interface ItemNotPacked {
     numberOfInstances: number;
 }
 
+/**
+ * Check if a given object implements the ItemNotPacked interface.
+ */
+export function instanceOfItemNotPacked(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "numberOfInstances" in value;
+
+    return isInstance;
+}
+
 export function ItemNotPackedFromJSON(json: any): ItemNotPacked {
     return ItemNotPackedFromJSONTyped(json, false);
 }
@@ -61,5 +72,4 @@ export function ItemNotPackedToJSON(value?: ItemNotPacked | null): any {
         'numberOfInstances': value.numberOfInstances,
     };
 }
-
 

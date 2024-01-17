@@ -14,23 +14,25 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  BinPackingFocus,
+  ErrorResponse,
+  PackBinsRequest,
+  PackBinsResponse,
+  PackedBinsIdentifier,
+  StatusResponse,
+} from '../models';
 import {
-    BinPackingFocus,
     BinPackingFocusFromJSON,
     BinPackingFocusToJSON,
-    ErrorResponse,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
-    PackBinsRequest,
     PackBinsRequestFromJSON,
     PackBinsRequestToJSON,
-    PackBinsResponse,
     PackBinsResponseFromJSON,
     PackBinsResponseToJSON,
-    PackedBinsIdentifier,
     PackedBinsIdentifierFromJSON,
     PackedBinsIdentifierToJSON,
-    StatusResponse,
     StatusResponseFromJSON,
     StatusResponseToJSON,
 } from '../models';
@@ -63,9 +65,9 @@ export interface StartBinPackingRequest {
 export class BinsApi extends runtime.BaseAPI {
 
     /**
-     * Cancels a bin packing operation specified by its ID.
+     * Cancels a bin packing operation and deletes the results specified by its ID. Results already calculated cannot be requested by its ID, anymore.
      */
-    async cancelBinPackingRaw(requestParameters: CancelBinPackingRequest): Promise<runtime.ApiResponse<void>> {
+    async cancelBinPackingRaw(requestParameters: CancelBinPackingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling cancelBinPacking.');
         }
@@ -84,22 +86,22 @@ export class BinsApi extends runtime.BaseAPI {
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
-        });
+        }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
     }
 
     /**
-     * Cancels a bin packing operation specified by its ID.
+     * Cancels a bin packing operation and deletes the results specified by its ID. Results already calculated cannot be requested by its ID, anymore.
      */
-    async cancelBinPacking(requestParameters: CancelBinPackingRequest): Promise<void> {
-        await this.cancelBinPackingRaw(requestParameters);
+    async cancelBinPacking(requestParameters: CancelBinPackingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.cancelBinPackingRaw(requestParameters, initOverrides);
     }
 
     /**
      * Gets the results of a bin packing operation specified by its ID.
      */
-    async getPackedBinsRaw(requestParameters: GetPackedBinsRequest): Promise<runtime.ApiResponse<PackBinsResponse>> {
+    async getPackedBinsRaw(requestParameters: GetPackedBinsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PackBinsResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getPackedBins.');
         }
@@ -118,7 +120,7 @@ export class BinsApi extends runtime.BaseAPI {
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        });
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PackBinsResponseFromJSON(jsonValue));
     }
@@ -126,15 +128,15 @@ export class BinsApi extends runtime.BaseAPI {
     /**
      * Gets the results of a bin packing operation specified by its ID.
      */
-    async getPackedBins(requestParameters: GetPackedBinsRequest): Promise<PackBinsResponse> {
-        const response = await this.getPackedBinsRaw(requestParameters);
+    async getPackedBins(requestParameters: GetPackedBinsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PackBinsResponse> {
+        const response = await this.getPackedBinsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Returns the status of a bin packing operation.
      */
-    async getStatusRaw(requestParameters: GetStatusRequest): Promise<runtime.ApiResponse<StatusResponse>> {
+    async getStatusRaw(requestParameters: GetStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StatusResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getStatus.');
         }
@@ -153,7 +155,7 @@ export class BinsApi extends runtime.BaseAPI {
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        });
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => StatusResponseFromJSON(jsonValue));
     }
@@ -161,15 +163,15 @@ export class BinsApi extends runtime.BaseAPI {
     /**
      * Returns the status of a bin packing operation.
      */
-    async getStatus(requestParameters: GetStatusRequest): Promise<StatusResponse> {
-        const response = await this.getStatusRaw(requestParameters);
+    async getStatus(requestParameters: GetStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StatusResponse> {
+        const response = await this.getStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Performs a bin packing operation as described by the request and directly returns the packing result in the response. Therefore the request is restricted as described at the request body to limit the calculation time to a maximum of 10 seconds. In case the operation lasts longer, it will be aborted. The state up to then will be returned. So the result may differ to the asynchronous call.
      */
-    async packBinsRaw(requestParameters: PackBinsOperationRequest): Promise<runtime.ApiResponse<PackBinsResponse>> {
+    async packBinsRaw(requestParameters: PackBinsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PackBinsResponse>> {
         if (requestParameters.packBinsRequest === null || requestParameters.packBinsRequest === undefined) {
             throw new runtime.RequiredError('packBinsRequest','Required parameter requestParameters.packBinsRequest was null or undefined when calling packBins.');
         }
@@ -195,7 +197,7 @@ export class BinsApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
             body: PackBinsRequestToJSON(requestParameters.packBinsRequest),
-        });
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PackBinsResponseFromJSON(jsonValue));
     }
@@ -203,15 +205,15 @@ export class BinsApi extends runtime.BaseAPI {
     /**
      * Performs a bin packing operation as described by the request and directly returns the packing result in the response. Therefore the request is restricted as described at the request body to limit the calculation time to a maximum of 10 seconds. In case the operation lasts longer, it will be aborted. The state up to then will be returned. So the result may differ to the asynchronous call.
      */
-    async packBins(requestParameters: PackBinsOperationRequest): Promise<PackBinsResponse> {
-        const response = await this.packBinsRaw(requestParameters);
+    async packBins(requestParameters: PackBinsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PackBinsResponse> {
+        const response = await this.packBinsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Starts a bin packing operation as described by the request. The result informs if operation is accepted and in this case returns an operation ID. Further information and result should be requested by getStatus() and getPackedBins() via ID.
      */
-    async startBinPackingRaw(requestParameters: StartBinPackingRequest): Promise<runtime.ApiResponse<PackedBinsIdentifier>> {
+    async startBinPackingRaw(requestParameters: StartBinPackingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PackedBinsIdentifier>> {
         if (requestParameters.packBinsRequest === null || requestParameters.packBinsRequest === undefined) {
             throw new runtime.RequiredError('packBinsRequest','Required parameter requestParameters.packBinsRequest was null or undefined when calling startBinPacking.');
         }
@@ -237,7 +239,7 @@ export class BinsApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
             body: PackBinsRequestToJSON(requestParameters.packBinsRequest),
-        });
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PackedBinsIdentifierFromJSON(jsonValue));
     }
@@ -245,8 +247,8 @@ export class BinsApi extends runtime.BaseAPI {
     /**
      * Starts a bin packing operation as described by the request. The result informs if operation is accepted and in this case returns an operation ID. Further information and result should be requested by getStatus() and getPackedBins() via ID.
      */
-    async startBinPacking(requestParameters: StartBinPackingRequest): Promise<PackedBinsIdentifier> {
-        const response = await this.startBinPackingRaw(requestParameters);
+    async startBinPacking(requestParameters: StartBinPackingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PackedBinsIdentifier> {
+        const response = await this.startBinPackingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

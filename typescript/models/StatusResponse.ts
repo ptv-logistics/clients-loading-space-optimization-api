@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { CalculationStatus } from './CalculationStatus';
 import {
-    CalculationStatus,
     CalculationStatusFromJSON,
     CalculationStatusFromJSONTyped,
     CalculationStatusToJSON,
-} from './';
+} from './CalculationStatus';
 
 /**
  * Describes the status of a bin packing operation.
@@ -32,6 +32,15 @@ export interface StatusResponse {
      * @memberof StatusResponse
      */
     status?: CalculationStatus;
+}
+
+/**
+ * Check if a given object implements the StatusResponse interface.
+ */
+export function instanceOfStatusResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function StatusResponseFromJSON(json: any): StatusResponse {
@@ -60,5 +69,4 @@ export function StatusResponseToJSON(value?: StatusResponse | null): any {
         'status': CalculationStatusToJSON(value.status),
     };
 }
-
 

@@ -13,20 +13,24 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { BoxDimensions } from './BoxDimensions';
 import {
-    BoxDimensions,
     BoxDimensionsFromJSON,
     BoxDimensionsFromJSONTyped,
     BoxDimensionsToJSON,
-    ItemOrientation,
+} from './BoxDimensions';
+import type { ItemOrientation } from './ItemOrientation';
+import {
     ItemOrientationFromJSON,
     ItemOrientationFromJSONTyped,
     ItemOrientationToJSON,
-    ItemPosition,
+} from './ItemOrientation';
+import type { ItemPosition } from './ItemPosition';
+import {
     ItemPositionFromJSON,
     ItemPositionFromJSONTyped,
     ItemPositionToJSON,
-} from './';
+} from './ItemPosition';
 
 /**
  * Describes how an item is packed into the bin. If Item.numberOfInstances is greater than one, several of this item are packed into the bin.
@@ -58,6 +62,19 @@ export interface PackedItem {
      * @memberof PackedItem
      */
     orientation: ItemOrientation;
+}
+
+/**
+ * Check if a given object implements the PackedItem interface.
+ */
+export function instanceOfPackedItem(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "itemId" in value;
+    isInstance = isInstance && "position" in value;
+    isInstance = isInstance && "dimensions" in value;
+    isInstance = isInstance && "orientation" in value;
+
+    return isInstance;
 }
 
 export function PackedItemFromJSON(json: any): PackedItem {
@@ -92,5 +109,4 @@ export function PackedItemToJSON(value?: PackedItem | null): any {
         'orientation': ItemOrientationToJSON(value.orientation),
     };
 }
-
 

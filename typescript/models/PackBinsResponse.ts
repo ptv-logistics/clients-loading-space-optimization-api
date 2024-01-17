@@ -13,16 +13,18 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { ItemNotPacked } from './ItemNotPacked';
 import {
-    ItemNotPacked,
     ItemNotPackedFromJSON,
     ItemNotPackedFromJSONTyped,
     ItemNotPackedToJSON,
-    PackedBin,
+} from './ItemNotPacked';
+import type { PackedBin } from './PackedBin';
+import {
     PackedBinFromJSON,
     PackedBinFromJSONTyped,
     PackedBinToJSON,
-} from './';
+} from './PackedBin';
 
 /**
  * Describes a packing solution.
@@ -42,6 +44,15 @@ export interface PackBinsResponse {
      * @memberof PackBinsResponse
      */
     itemsNotPacked?: Array<ItemNotPacked>;
+}
+
+/**
+ * Check if a given object implements the PackBinsResponse interface.
+ */
+export function instanceOfPackBinsResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function PackBinsResponseFromJSON(json: any): PackBinsResponse {
@@ -72,5 +83,4 @@ export function PackBinsResponseToJSON(value?: PackBinsResponse | null): any {
         'itemsNotPacked': value.itemsNotPacked === undefined ? undefined : ((value.itemsNotPacked as Array<any>).map(ItemNotPackedToJSON)),
     };
 }
-
 

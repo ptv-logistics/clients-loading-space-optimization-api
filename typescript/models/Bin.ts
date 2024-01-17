@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { BoxDimensions } from './BoxDimensions';
 import {
-    BoxDimensions,
     BoxDimensionsFromJSON,
     BoxDimensionsFromJSONTyped,
     BoxDimensionsToJSON,
-} from './';
+} from './BoxDimensions';
 
 /**
  * 
@@ -58,6 +58,17 @@ export interface Bin {
     maximumWeightCapacity?: number;
 }
 
+/**
+ * Check if a given object implements the Bin interface.
+ */
+export function instanceOfBin(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "dimensions" in value;
+
+    return isInstance;
+}
+
 export function BinFromJSON(json: any): Bin {
     return BinFromJSONTyped(json, false);
 }
@@ -92,5 +103,4 @@ export function BinToJSON(value?: Bin | null): any {
         'maximumWeightCapacity': value.maximumWeightCapacity,
     };
 }
-
 

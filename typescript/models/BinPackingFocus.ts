@@ -12,17 +12,19 @@
  * Do not edit the class manually.
  */
 
+
 /**
  * Algorithmic focus for the bin packing operation:
  * * `BUILD_LAYERS` - Focus on building horizontal layers of similar items. This will freely use available floor space with no special regard to loading meters.
  * * `REDUCE_LOADING_METERS` - Focus on reducing loading meters. This might result in less efficient use of overall volume.
  * @export
- * @enum {string}
  */
-export enum BinPackingFocus {
-    BUILD_LAYERS = 'BUILD_LAYERS',
-    REDUCE_LOADING_METERS = 'REDUCE_LOADING_METERS'
-}
+export const BinPackingFocus = {
+    BUILD_LAYERS: 'BUILD_LAYERS',
+    REDUCE_LOADING_METERS: 'REDUCE_LOADING_METERS'
+} as const;
+export type BinPackingFocus = typeof BinPackingFocus[keyof typeof BinPackingFocus];
+
 
 export function BinPackingFocusFromJSON(json: any): BinPackingFocus {
     return BinPackingFocusFromJSONTyped(json, false);

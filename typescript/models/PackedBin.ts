@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { PackedItem } from './PackedItem';
 import {
-    PackedItem,
     PackedItemFromJSON,
     PackedItemFromJSONTyped,
     PackedItemToJSON,
-} from './';
+} from './PackedItem';
 
 /**
  * Describes a bin packed with items. If Bin.numberOfInstances is greater than one, multiple packed bins with the same PackedBin.binId might be part of a response.
@@ -70,6 +70,21 @@ export interface PackedBin {
     loadingMeters: number;
 }
 
+/**
+ * Check if a given object implements the PackedBin interface.
+ */
+export function instanceOfPackedBin(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "binId" in value;
+    isInstance = isInstance && "packedItems" in value;
+    isInstance = isInstance && "totalItemsVolume" in value;
+    isInstance = isInstance && "totalItemsWeight" in value;
+    isInstance = isInstance && "usedVolumeCapacity" in value;
+    isInstance = isInstance && "loadingMeters" in value;
+
+    return isInstance;
+}
+
 export function PackedBinFromJSON(json: any): PackedBin {
     return PackedBinFromJSONTyped(json, false);
 }
@@ -108,5 +123,4 @@ export function PackedBinToJSON(value?: PackedBin | null): any {
         'loadingMeters': value.loadingMeters,
     };
 }
-
 

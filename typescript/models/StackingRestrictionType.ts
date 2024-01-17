@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+
 /**
  * Defines the stacking restrictions:
  * * `ALL_ALLOWED` - All items can be stacked on top of this item.
@@ -19,14 +20,15 @@
  * * `ALLOWED` - Every listed items can be stacked on top of this item.
  * * `PROHIBITED` - None of the listed items may be stacked on top of this item.
  * @export
- * @enum {string}
  */
-export enum StackingRestrictionType {
-    ALL_ALLOWED = 'ALL_ALLOWED',
-    ALL_PROHIBITED = 'ALL_PROHIBITED',
-    ALLOWED = 'ALLOWED',
-    PROHIBITED = 'PROHIBITED'
-}
+export const StackingRestrictionType = {
+    ALL_ALLOWED: 'ALL_ALLOWED',
+    ALL_PROHIBITED: 'ALL_PROHIBITED',
+    ALLOWED: 'ALLOWED',
+    PROHIBITED: 'PROHIBITED'
+} as const;
+export type StackingRestrictionType = typeof StackingRestrictionType[keyof typeof StackingRestrictionType];
+
 
 export function StackingRestrictionTypeFromJSON(json: any): StackingRestrictionType {
     return StackingRestrictionTypeFromJSONTyped(json, false);

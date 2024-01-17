@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { StackingRestrictionType } from './StackingRestrictionType';
 import {
-    StackingRestrictionType,
     StackingRestrictionTypeFromJSON,
     StackingRestrictionTypeFromJSONTyped,
     StackingRestrictionTypeToJSON,
-} from './';
+} from './StackingRestrictionType';
 
 /**
  * Define the stacking restriction for one item. Specifies which items are allowed or prohibited to be stacked on this item.
@@ -44,6 +44,16 @@ export interface StackingRestrictions {
      * @memberof StackingRestrictions
      */
     itemIds?: Array<string>;
+}
+
+/**
+ * Check if a given object implements the StackingRestrictions interface.
+ */
+export function instanceOfStackingRestrictions(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "itemId" in value;
+
+    return isInstance;
 }
 
 export function StackingRestrictionsFromJSON(json: any): StackingRestrictions {
@@ -76,5 +86,4 @@ export function StackingRestrictionsToJSON(value?: StackingRestrictions | null):
         'itemIds': value.itemIds,
     };
 }
-
 

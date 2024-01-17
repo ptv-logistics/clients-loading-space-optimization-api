@@ -39,6 +39,18 @@ export interface BoxDimensions {
     z: number;
 }
 
+/**
+ * Check if a given object implements the BoxDimensions interface.
+ */
+export function instanceOfBoxDimensions(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "x" in value;
+    isInstance = isInstance && "y" in value;
+    isInstance = isInstance && "z" in value;
+
+    return isInstance;
+}
+
 export function BoxDimensionsFromJSON(json: any): BoxDimensions {
     return BoxDimensionsFromJSONTyped(json, false);
 }
@@ -69,5 +81,4 @@ export function BoxDimensionsToJSON(value?: BoxDimensions | null): any {
         'z': value.z,
     };
 }
-
 

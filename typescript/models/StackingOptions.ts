@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { StackingRestrictions } from './StackingRestrictions';
 import {
-    StackingRestrictions,
     StackingRestrictionsFromJSON,
     StackingRestrictionsFromJSONTyped,
     StackingRestrictionsToJSON,
-} from './';
+} from './StackingRestrictions';
 
 /**
  * Defines all stacking options to be considered during the packing algorithm.
@@ -38,6 +38,15 @@ export interface StackingOptions {
      * @memberof StackingOptions
      */
     stackOnTopOfNextStops?: boolean;
+}
+
+/**
+ * Check if a given object implements the StackingOptions interface.
+ */
+export function instanceOfStackingOptions(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function StackingOptionsFromJSON(json: any): StackingOptions {
@@ -68,5 +77,4 @@ export function StackingOptionsToJSON(value?: StackingOptions | null): any {
         'stackOnTopOfNextStops': value.stackOnTopOfNextStops,
     };
 }
-
 

@@ -41,6 +41,18 @@ export interface ItemPosition {
     z: number;
 }
 
+/**
+ * Check if a given object implements the ItemPosition interface.
+ */
+export function instanceOfItemPosition(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "x" in value;
+    isInstance = isInstance && "y" in value;
+    isInstance = isInstance && "z" in value;
+
+    return isInstance;
+}
+
 export function ItemPositionFromJSON(json: any): ItemPosition {
     return ItemPositionFromJSONTyped(json, false);
 }
@@ -71,5 +83,4 @@ export function ItemPositionToJSON(value?: ItemPosition | null): any {
         'z': value.z,
     };
 }
-
 

@@ -40,6 +40,15 @@ export interface ItemSurfaceLoads {
     z?: number;
 }
 
+/**
+ * Check if a given object implements the ItemSurfaceLoads interface.
+ */
+export function instanceOfItemSurfaceLoads(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function ItemSurfaceLoadsFromJSON(json: any): ItemSurfaceLoads {
     return ItemSurfaceLoadsFromJSONTyped(json, false);
 }
@@ -70,5 +79,4 @@ export function ItemSurfaceLoadsToJSON(value?: ItemSurfaceLoads | null): any {
         'z': value.z,
     };
 }
-
 

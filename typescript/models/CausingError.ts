@@ -67,10 +67,21 @@ export interface CausingError {
     parameter?: string;
     /**
      * Additional properties specific to this error class.
-     * @type {{ [key: string]: object; }}
+     * @type {{ [key: string]: any; }}
      * @memberof CausingError
      */
-    details?: { [key: string]: object; };
+    details?: { [key: string]: any; };
+}
+
+/**
+ * Check if a given object implements the CausingError interface.
+ */
+export function instanceOfCausingError(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "description" in value;
+    isInstance = isInstance && "errorCode" in value;
+
+    return isInstance;
 }
 
 export function CausingErrorFromJSON(json: any): CausingError {
@@ -105,5 +116,4 @@ export function CausingErrorToJSON(value?: CausingError | null): any {
         'details': value.details,
     };
 }
-
 

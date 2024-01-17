@@ -13,20 +13,24 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { Bin } from './Bin';
 import {
-    Bin,
     BinFromJSON,
     BinFromJSONTyped,
     BinToJSON,
-    BinPackingOptions,
+} from './Bin';
+import type { BinPackingOptions } from './BinPackingOptions';
+import {
     BinPackingOptionsFromJSON,
     BinPackingOptionsFromJSONTyped,
     BinPackingOptionsToJSON,
-    Item,
+} from './BinPackingOptions';
+import type { Item } from './Item';
+import {
     ItemFromJSON,
     ItemFromJSONTyped,
     ItemToJSON,
-} from './';
+} from './Item';
 
 /**
  * 
@@ -56,6 +60,17 @@ export interface PackBinsRequest {
      * @memberof PackBinsRequest
      */
     options?: BinPackingOptions;
+}
+
+/**
+ * Check if a given object implements the PackBinsRequest interface.
+ */
+export function instanceOfPackBinsRequest(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "items" in value;
+    isInstance = isInstance && "bins" in value;
+
+    return isInstance;
 }
 
 export function PackBinsRequestFromJSON(json: any): PackBinsRequest {
@@ -88,5 +103,4 @@ export function PackBinsRequestToJSON(value?: PackBinsRequest | null): any {
         'options': BinPackingOptionsToJSON(value.options),
     };
 }
-
 

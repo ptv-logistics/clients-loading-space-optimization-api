@@ -13,20 +13,24 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { AllowedOrientation } from './AllowedOrientation';
 import {
-    AllowedOrientation,
     AllowedOrientationFromJSON,
     AllowedOrientationFromJSONTyped,
     AllowedOrientationToJSON,
-    BoxDimensions,
+} from './AllowedOrientation';
+import type { BoxDimensions } from './BoxDimensions';
+import {
     BoxDimensionsFromJSON,
     BoxDimensionsFromJSONTyped,
     BoxDimensionsToJSON,
-    ItemSurfaceLoads,
+} from './BoxDimensions';
+import type { ItemSurfaceLoads } from './ItemSurfaceLoads';
+import {
     ItemSurfaceLoadsFromJSON,
     ItemSurfaceLoadsFromJSONTyped,
     ItemSurfaceLoadsToJSON,
-} from './';
+} from './ItemSurfaceLoads';
 
 /**
  * 
@@ -78,6 +82,18 @@ export interface Item {
     numberOfInstances?: number;
 }
 
+/**
+ * Check if a given object implements the Item interface.
+ */
+export function instanceOfItem(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "dimensions" in value;
+    isInstance = isInstance && "weight" in value;
+
+    return isInstance;
+}
+
 export function ItemFromJSON(json: any): Item {
     return ItemFromJSONTyped(json, false);
 }
@@ -114,5 +130,4 @@ export function ItemToJSON(value?: Item | null): any {
         'numberOfInstances': value.numberOfInstances,
     };
 }
-
 

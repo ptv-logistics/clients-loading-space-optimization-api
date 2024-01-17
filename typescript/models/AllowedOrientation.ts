@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
+
 /**
  * 
  * @export
- * @enum {string}
  */
-export enum AllowedOrientation {
-    ORIGINAL = 'ORIGINAL',
-    X = 'X',
-    Y = 'Y',
-    Z = 'Z',
-    XZ = 'XZ',
-    YZ = 'YZ'
-}
+export const AllowedOrientation = {
+    ORIGINAL: 'ORIGINAL',
+    X: 'X',
+    Y: 'Y',
+    Z: 'Z',
+    XZ: 'XZ',
+    YZ: 'YZ'
+} as const;
+export type AllowedOrientation = typeof AllowedOrientation[keyof typeof AllowedOrientation];
+
 
 export function AllowedOrientationFromJSON(json: any): AllowedOrientation {
     return AllowedOrientationFromJSONTyped(json, false);
