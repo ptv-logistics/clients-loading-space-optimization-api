@@ -26,7 +26,6 @@ import com.ptvgroup.developer.client.binpacking.model.BoxDimensions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -39,7 +38,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   Bin.JSON_PROPERTY_MAXIMUM_VOLUME_CAPACITY,
   Bin.JSON_PROPERTY_MAXIMUM_WEIGHT_CAPACITY
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class Bin {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -56,6 +55,8 @@ public class Bin {
   public static final String JSON_PROPERTY_MAXIMUM_WEIGHT_CAPACITY = "maximumWeightCapacity";
   private Integer maximumWeightCapacity;
 
+  public Bin() { 
+  }
 
   public Bin id(String id) {
     this.id = id;
@@ -66,6 +67,7 @@ public class Bin {
    * User provided ID for this bin. Must be unique.
    * @return id
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "User provided ID for this bin. Must be unique.")
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -75,6 +77,8 @@ public class Bin {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(String id) {
     this.id = id;
   }
@@ -101,6 +105,8 @@ public class Bin {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_NUMBER_OF_INSTANCES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNumberOfInstances(Integer numberOfInstances) {
     this.numberOfInstances = numberOfInstances;
   }
@@ -115,6 +121,7 @@ public class Bin {
    * Get dimensions
    * @return dimensions
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_DIMENSIONS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -124,6 +131,8 @@ public class Bin {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_DIMENSIONS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDimensions(BoxDimensions dimensions) {
     this.dimensions = dimensions;
   }
@@ -149,6 +158,8 @@ public class Bin {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_MAXIMUM_VOLUME_CAPACITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMaximumVolumeCapacity(Integer maximumVolumeCapacity) {
     this.maximumVolumeCapacity = maximumVolumeCapacity;
   }
@@ -175,6 +186,8 @@ public class Bin {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_MAXIMUM_WEIGHT_CAPACITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMaximumWeightCapacity(Integer maximumWeightCapacity) {
     this.maximumWeightCapacity = maximumWeightCapacity;
   }

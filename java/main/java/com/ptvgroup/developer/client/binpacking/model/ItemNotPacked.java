@@ -25,7 +25,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -36,7 +35,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   ItemNotPacked.JSON_PROPERTY_ID,
   ItemNotPacked.JSON_PROPERTY_NUMBER_OF_INSTANCES
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class ItemNotPacked {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -44,6 +43,8 @@ public class ItemNotPacked {
   public static final String JSON_PROPERTY_NUMBER_OF_INSTANCES = "numberOfInstances";
   private Integer numberOfInstances;
 
+  public ItemNotPacked() { 
+  }
 
   public ItemNotPacked id(String id) {
     this.id = id;
@@ -54,6 +55,7 @@ public class ItemNotPacked {
    * The ID of the item.
    * @return id
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "The ID of the item.")
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -63,6 +65,8 @@ public class ItemNotPacked {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(String id) {
     this.id = id;
   }
@@ -79,6 +83,7 @@ public class ItemNotPacked {
    * maximum: 10000
    * @return numberOfInstances
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Number of instances of the item that have not been packed.")
   @JsonProperty(JSON_PROPERTY_NUMBER_OF_INSTANCES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -88,6 +93,8 @@ public class ItemNotPacked {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_NUMBER_OF_INSTANCES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setNumberOfInstances(Integer numberOfInstances) {
     this.numberOfInstances = numberOfInstances;
   }

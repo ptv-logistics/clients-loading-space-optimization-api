@@ -29,7 +29,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -40,7 +39,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   PackBinsResponse.JSON_PROPERTY_PACKED_BINS,
   PackBinsResponse.JSON_PROPERTY_ITEMS_NOT_PACKED
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class PackBinsResponse {
   public static final String JSON_PROPERTY_PACKED_BINS = "packedBins";
   private List<PackedBin> packedBins = null;
@@ -48,6 +47,8 @@ public class PackBinsResponse {
   public static final String JSON_PROPERTY_ITEMS_NOT_PACKED = "itemsNotPacked";
   private List<ItemNotPacked> itemsNotPacked = null;
 
+  public PackBinsResponse() { 
+  }
 
   public PackBinsResponse packedBins(List<PackedBin> packedBins) {
     this.packedBins = packedBins;
@@ -76,6 +77,8 @@ public class PackBinsResponse {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_PACKED_BINS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPackedBins(List<PackedBin> packedBins) {
     this.packedBins = packedBins;
   }
@@ -108,6 +111,8 @@ public class PackBinsResponse {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ITEMS_NOT_PACKED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setItemsNotPacked(List<ItemNotPacked> itemsNotPacked) {
     this.itemsNotPacked = itemsNotPacked;
   }

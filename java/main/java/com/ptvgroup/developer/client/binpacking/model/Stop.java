@@ -28,7 +28,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -38,11 +37,13 @@ import com.ptvgroup.developer.client.binpacking.JSON;
 @JsonPropertyOrder({
   Stop.JSON_PROPERTY_ITEMS_TO_UNLOAD
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class Stop {
   public static final String JSON_PROPERTY_ITEMS_TO_UNLOAD = "itemsToUnload";
   private List<ItemsToUnload> itemsToUnload = new ArrayList<>();
 
+  public Stop() { 
+  }
 
   public Stop itemsToUnload(List<ItemsToUnload> itemsToUnload) {
     this.itemsToUnload = itemsToUnload;
@@ -58,6 +59,7 @@ public class Stop {
    * Defines the list of items to unload.
    * @return itemsToUnload
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Defines the list of items to unload.")
   @JsonProperty(JSON_PROPERTY_ITEMS_TO_UNLOAD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -67,6 +69,8 @@ public class Stop {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ITEMS_TO_UNLOAD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setItemsToUnload(List<ItemsToUnload> itemsToUnload) {
     this.itemsToUnload = itemsToUnload;
   }

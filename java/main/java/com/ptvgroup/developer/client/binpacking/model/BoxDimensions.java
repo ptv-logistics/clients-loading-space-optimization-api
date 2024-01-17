@@ -25,7 +25,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -37,7 +36,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   BoxDimensions.JSON_PROPERTY_Y,
   BoxDimensions.JSON_PROPERTY_Z
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class BoxDimensions {
   public static final String JSON_PROPERTY_X = "x";
   private Integer x;
@@ -48,6 +47,8 @@ public class BoxDimensions {
   public static final String JSON_PROPERTY_Z = "z";
   private Integer z;
 
+  public BoxDimensions() { 
+  }
 
   public BoxDimensions x(Integer x) {
     this.x = x;
@@ -59,6 +60,7 @@ public class BoxDimensions {
    * minimum: 1
    * @return x
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Extent along x-axis (width) in [cm].")
   @JsonProperty(JSON_PROPERTY_X)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -68,6 +70,8 @@ public class BoxDimensions {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_X)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setX(Integer x) {
     this.x = x;
   }
@@ -83,6 +87,7 @@ public class BoxDimensions {
    * minimum: 1
    * @return y
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Extent along y-axis (height) in [cm].")
   @JsonProperty(JSON_PROPERTY_Y)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -92,6 +97,8 @@ public class BoxDimensions {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_Y)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setY(Integer y) {
     this.y = y;
   }
@@ -107,6 +114,7 @@ public class BoxDimensions {
    * minimum: 1
    * @return z
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Extent along z-axis (length) in [cm].")
   @JsonProperty(JSON_PROPERTY_Z)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -116,6 +124,8 @@ public class BoxDimensions {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_Z)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setZ(Integer z) {
     this.z = z;
   }

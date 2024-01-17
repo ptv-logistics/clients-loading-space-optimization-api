@@ -25,7 +25,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -37,7 +36,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   ItemSurfaceLoads.JSON_PROPERTY_Y,
   ItemSurfaceLoads.JSON_PROPERTY_Z
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class ItemSurfaceLoads {
   public static final String JSON_PROPERTY_X = "x";
   private Double x;
@@ -48,6 +47,8 @@ public class ItemSurfaceLoads {
   public static final String JSON_PROPERTY_Z = "z";
   private Double z;
 
+  public ItemSurfaceLoads() { 
+  }
 
   public ItemSurfaceLoads x(Double x) {
     this.x = x;
@@ -70,6 +71,8 @@ public class ItemSurfaceLoads {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_X)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setX(Double x) {
     this.x = x;
   }
@@ -96,6 +99,8 @@ public class ItemSurfaceLoads {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_Y)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setY(Double y) {
     this.y = y;
   }
@@ -122,6 +127,8 @@ public class ItemSurfaceLoads {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_Z)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setZ(Double z) {
     this.z = z;
   }

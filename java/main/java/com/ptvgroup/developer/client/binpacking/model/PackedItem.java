@@ -28,7 +28,6 @@ import com.ptvgroup.developer.client.binpacking.model.ItemPosition;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -41,7 +40,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   PackedItem.JSON_PROPERTY_DIMENSIONS,
   PackedItem.JSON_PROPERTY_ORIENTATION
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class PackedItem {
   public static final String JSON_PROPERTY_ITEM_ID = "itemId";
   private String itemId;
@@ -55,6 +54,8 @@ public class PackedItem {
   public static final String JSON_PROPERTY_ORIENTATION = "orientation";
   private ItemOrientation orientation;
 
+  public PackedItem() { 
+  }
 
   public PackedItem itemId(String itemId) {
     this.itemId = itemId;
@@ -65,6 +66,7 @@ public class PackedItem {
    * ID of the item.
    * @return itemId
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "ID of the item.")
   @JsonProperty(JSON_PROPERTY_ITEM_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -74,6 +76,8 @@ public class PackedItem {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ITEM_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setItemId(String itemId) {
     this.itemId = itemId;
   }
@@ -88,6 +92,7 @@ public class PackedItem {
    * Get position
    * @return position
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_POSITION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -97,6 +102,8 @@ public class PackedItem {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_POSITION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPosition(ItemPosition position) {
     this.position = position;
   }
@@ -111,6 +118,7 @@ public class PackedItem {
    * Get dimensions
    * @return dimensions
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_DIMENSIONS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -120,6 +128,8 @@ public class PackedItem {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_DIMENSIONS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDimensions(BoxDimensions dimensions) {
     this.dimensions = dimensions;
   }
@@ -134,6 +144,7 @@ public class PackedItem {
    * Get orientation
    * @return orientation
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_ORIENTATION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -143,6 +154,8 @@ public class PackedItem {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ORIENTATION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setOrientation(ItemOrientation orientation) {
     this.orientation = orientation;
   }

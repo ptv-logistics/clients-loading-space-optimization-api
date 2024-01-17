@@ -30,7 +30,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -41,7 +40,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   PackBinsRequest.JSON_PROPERTY_BINS,
   PackBinsRequest.JSON_PROPERTY_OPTIONS
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class PackBinsRequest {
   public static final String JSON_PROPERTY_ITEMS = "items";
   private List<Item> items = new ArrayList<>();
@@ -52,6 +51,8 @@ public class PackBinsRequest {
   public static final String JSON_PROPERTY_OPTIONS = "options";
   private BinPackingOptions options;
 
+  public PackBinsRequest() { 
+  }
 
   public PackBinsRequest items(List<Item> items) {
     this.items = items;
@@ -67,6 +68,7 @@ public class PackBinsRequest {
    * Describes a list of cuboid items that have to be packed into a bin. If there are many identical items that do not have to be differentiated by individual Item.id you should use the Item.numberOfInstances field. This provides better performance and packing than specifying each item on its own when this is not needed. Please note that along each axis the dimension should not exceed 5,000 cm and the sum of each dimension (i.e. x+y+z) should be greater than 50 cm. 
    * @return items
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Describes a list of cuboid items that have to be packed into a bin. If there are many identical items that do not have to be differentiated by individual Item.id you should use the Item.numberOfInstances field. This provides better performance and packing than specifying each item on its own when this is not needed. Please note that along each axis the dimension should not exceed 5,000 cm and the sum of each dimension (i.e. x+y+z) should be greater than 50 cm. ")
   @JsonProperty(JSON_PROPERTY_ITEMS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -76,6 +78,8 @@ public class PackBinsRequest {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ITEMS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setItems(List<Item> items) {
     this.items = items;
   }
@@ -95,6 +99,7 @@ public class PackBinsRequest {
    * Describes a list of cuboid bins into which items can be packed. Please note that along each axis the dimension should not exceed 5,750 cm and the maximum volume of a bin is 425,385,000 cm³. 
    * @return bins
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Describes a list of cuboid bins into which items can be packed. Please note that along each axis the dimension should not exceed 5,750 cm and the maximum volume of a bin is 425,385,000 cm³. ")
   @JsonProperty(JSON_PROPERTY_BINS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -104,6 +109,8 @@ public class PackBinsRequest {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_BINS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setBins(List<Bin> bins) {
     this.bins = bins;
   }
@@ -128,6 +135,8 @@ public class PackBinsRequest {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_OPTIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setOptions(BinPackingOptions options) {
     this.options = options;
   }

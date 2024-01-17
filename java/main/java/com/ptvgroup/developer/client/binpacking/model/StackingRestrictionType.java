@@ -19,7 +19,6 @@ import java.util.Map;
 import java.util.HashMap;
 import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 import com.fasterxml.jackson.annotation.JsonCreator;

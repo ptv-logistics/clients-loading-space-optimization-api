@@ -28,7 +28,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -44,7 +43,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   PackedBin.JSON_PROPERTY_USED_VOLUME_CAPACITY,
   PackedBin.JSON_PROPERTY_LOADING_METERS
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class PackedBin {
   public static final String JSON_PROPERTY_BIN_ID = "binId";
   private String binId;
@@ -67,6 +66,8 @@ public class PackedBin {
   public static final String JSON_PROPERTY_LOADING_METERS = "loadingMeters";
   private Double loadingMeters;
 
+  public PackedBin() { 
+  }
 
   public PackedBin binId(String binId) {
     this.binId = binId;
@@ -77,6 +78,7 @@ public class PackedBin {
    * ID of the bin.
    * @return binId
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "ID of the bin.")
   @JsonProperty(JSON_PROPERTY_BIN_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -86,6 +88,8 @@ public class PackedBin {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_BIN_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setBinId(String binId) {
     this.binId = binId;
   }
@@ -105,6 +109,7 @@ public class PackedBin {
    * List of items that were packed into this bin.
    * @return packedItems
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "List of items that were packed into this bin.")
   @JsonProperty(JSON_PROPERTY_PACKED_ITEMS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -114,6 +119,8 @@ public class PackedBin {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_PACKED_ITEMS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPackedItems(List<PackedItem> packedItems) {
     this.packedItems = packedItems;
   }
@@ -129,6 +136,7 @@ public class PackedBin {
    * minimum: 0
    * @return totalItemsVolume
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Accumulated volume of the items packed into the bin in [cm³]. This is the raw sum and does not try to capture wasted volume (e.g. gaps).")
   @JsonProperty(JSON_PROPERTY_TOTAL_ITEMS_VOLUME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -138,6 +146,8 @@ public class PackedBin {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TOTAL_ITEMS_VOLUME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTotalItemsVolume(Integer totalItemsVolume) {
     this.totalItemsVolume = totalItemsVolume;
   }
@@ -153,6 +163,7 @@ public class PackedBin {
    * minimum: 0
    * @return totalItemsWeight
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Accumulated weight of items packed into this bin in [g].")
   @JsonProperty(JSON_PROPERTY_TOTAL_ITEMS_WEIGHT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -162,6 +173,8 @@ public class PackedBin {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TOTAL_ITEMS_WEIGHT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTotalItemsWeight(Integer totalItemsWeight) {
     this.totalItemsWeight = totalItemsWeight;
   }
@@ -188,6 +201,8 @@ public class PackedBin {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_USED_WEIGHT_CAPACITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUsedWeightCapacity(Double usedWeightCapacity) {
     this.usedWeightCapacity = usedWeightCapacity;
   }
@@ -204,6 +219,7 @@ public class PackedBin {
    * maximum: 100
    * @return usedVolumeCapacity
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Percent of maximumVolumeCapacity and the accumulated volume of the items packed into this bin (totalItemsVolume). ")
   @JsonProperty(JSON_PROPERTY_USED_VOLUME_CAPACITY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -213,6 +229,8 @@ public class PackedBin {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_USED_VOLUME_CAPACITY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUsedVolumeCapacity(Double usedVolumeCapacity) {
     this.usedVolumeCapacity = usedVolumeCapacity;
   }
@@ -228,6 +246,7 @@ public class PackedBin {
    * minimum: 0
    * @return loadingMeters
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Item extent along the z-axis (length) from the back wall of the bin in [m]. ")
   @JsonProperty(JSON_PROPERTY_LOADING_METERS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -237,6 +256,8 @@ public class PackedBin {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LOADING_METERS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLoadingMeters(Double loadingMeters) {
     this.loadingMeters = loadingMeters;
   }

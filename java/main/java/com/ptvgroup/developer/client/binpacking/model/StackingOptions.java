@@ -28,7 +28,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -39,7 +38,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   StackingOptions.JSON_PROPERTY_STACKING_RESTRICTIONS,
   StackingOptions.JSON_PROPERTY_STACK_ON_TOP_OF_NEXT_STOPS
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class StackingOptions {
   public static final String JSON_PROPERTY_STACKING_RESTRICTIONS = "stackingRestrictions";
   private List<StackingRestrictions> stackingRestrictions = null;
@@ -47,6 +46,8 @@ public class StackingOptions {
   public static final String JSON_PROPERTY_STACK_ON_TOP_OF_NEXT_STOPS = "stackOnTopOfNextStops";
   private Boolean stackOnTopOfNextStops = false;
 
+  public StackingOptions() { 
+  }
 
   public StackingOptions stackingRestrictions(List<StackingRestrictions> stackingRestrictions) {
     this.stackingRestrictions = stackingRestrictions;
@@ -75,6 +76,8 @@ public class StackingOptions {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_STACKING_RESTRICTIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStackingRestrictions(List<StackingRestrictions> stackingRestrictions) {
     this.stackingRestrictions = stackingRestrictions;
   }
@@ -99,6 +102,8 @@ public class StackingOptions {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_STACK_ON_TOP_OF_NEXT_STOPS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStackOnTopOfNextStops(Boolean stackOnTopOfNextStops) {
     this.stackOnTopOfNextStops = stackOnTopOfNextStops;
   }

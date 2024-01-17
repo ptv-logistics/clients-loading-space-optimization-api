@@ -26,7 +26,6 @@ import com.ptvgroup.developer.client.binpacking.model.CalculationStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -36,11 +35,13 @@ import com.ptvgroup.developer.client.binpacking.JSON;
 @JsonPropertyOrder({
   StatusResponse.JSON_PROPERTY_STATUS
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class StatusResponse {
   public static final String JSON_PROPERTY_STATUS = "status";
   private CalculationStatus status;
 
+  public StatusResponse() { 
+  }
 
   public StatusResponse status(CalculationStatus status) {
     this.status = status;
@@ -61,6 +62,8 @@ public class StatusResponse {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStatus(CalculationStatus status) {
     this.status = status;
   }

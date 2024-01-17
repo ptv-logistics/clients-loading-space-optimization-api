@@ -29,7 +29,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -40,7 +39,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   BinPackingOptions.JSON_PROPERTY_UNLOADING_SEQUENCE,
   BinPackingOptions.JSON_PROPERTY_STACKING_OPTIONS
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class BinPackingOptions {
   public static final String JSON_PROPERTY_UNLOADING_SEQUENCE = "unloadingSequence";
   private List<Stop> unloadingSequence = null;
@@ -48,6 +47,8 @@ public class BinPackingOptions {
   public static final String JSON_PROPERTY_STACKING_OPTIONS = "stackingOptions";
   private StackingOptions stackingOptions;
 
+  public BinPackingOptions() { 
+  }
 
   public BinPackingOptions unloadingSequence(List<Stop> unloadingSequence) {
     this.unloadingSequence = unloadingSequence;
@@ -76,6 +77,8 @@ public class BinPackingOptions {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_UNLOADING_SEQUENCE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUnloadingSequence(List<Stop> unloadingSequence) {
     this.unloadingSequence = unloadingSequence;
   }
@@ -100,6 +103,8 @@ public class BinPackingOptions {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_STACKING_OPTIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStackingOptions(StackingOptions stackingOptions) {
     this.stackingOptions = stackingOptions;
   }

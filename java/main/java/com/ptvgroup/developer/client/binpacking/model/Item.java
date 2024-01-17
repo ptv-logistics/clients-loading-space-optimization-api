@@ -30,7 +30,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -44,7 +43,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   Item.JSON_PROPERTY_ALLOWED_ORIENTATIONS,
   Item.JSON_PROPERTY_NUMBER_OF_INSTANCES
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class Item {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -64,6 +63,8 @@ public class Item {
   public static final String JSON_PROPERTY_NUMBER_OF_INSTANCES = "numberOfInstances";
   private Integer numberOfInstances = 1;
 
+  public Item() { 
+  }
 
   public Item id(String id) {
     this.id = id;
@@ -74,6 +75,7 @@ public class Item {
    * User provided ID for this item. Must be unique.
    * @return id
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "User provided ID for this item. Must be unique.")
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -83,6 +85,8 @@ public class Item {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(String id) {
     this.id = id;
   }
@@ -97,6 +101,7 @@ public class Item {
    * Get dimensions
    * @return dimensions
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_DIMENSIONS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -106,6 +111,8 @@ public class Item {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_DIMENSIONS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDimensions(BoxDimensions dimensions) {
     this.dimensions = dimensions;
   }
@@ -122,6 +129,7 @@ public class Item {
    * maximum: 80000000
    * @return weight
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Weight of this item in [g].")
   @JsonProperty(JSON_PROPERTY_WEIGHT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -131,6 +139,8 @@ public class Item {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_WEIGHT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setWeight(Integer weight) {
     this.weight = weight;
   }
@@ -155,6 +165,8 @@ public class Item {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_MAXIMUM_SURFACE_LOADS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMaximumSurfaceLoads(ItemSurfaceLoads maximumSurfaceLoads) {
     this.maximumSurfaceLoads = maximumSurfaceLoads;
   }
@@ -187,6 +199,8 @@ public class Item {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ALLOWED_ORIENTATIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAllowedOrientations(List<AllowedOrientation> allowedOrientations) {
     this.allowedOrientations = allowedOrientations;
   }
@@ -213,6 +227,8 @@ public class Item {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_NUMBER_OF_INSTANCES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNumberOfInstances(Integer numberOfInstances) {
     this.numberOfInstances = numberOfInstances;
   }

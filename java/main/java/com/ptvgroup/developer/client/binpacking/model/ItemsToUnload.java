@@ -25,7 +25,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -36,7 +35,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   ItemsToUnload.JSON_PROPERTY_ITEM_ID,
   ItemsToUnload.JSON_PROPERTY_NUMBER_OF_INSTANCES
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class ItemsToUnload {
   public static final String JSON_PROPERTY_ITEM_ID = "itemId";
   private String itemId;
@@ -44,6 +43,8 @@ public class ItemsToUnload {
   public static final String JSON_PROPERTY_NUMBER_OF_INSTANCES = "numberOfInstances";
   private Integer numberOfInstances = 1;
 
+  public ItemsToUnload() { 
+  }
 
   public ItemsToUnload itemId(String itemId) {
     this.itemId = itemId;
@@ -54,6 +55,7 @@ public class ItemsToUnload {
    * ID of the item.
    * @return itemId
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "ID of the item.")
   @JsonProperty(JSON_PROPERTY_ITEM_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -63,6 +65,8 @@ public class ItemsToUnload {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ITEM_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setItemId(String itemId) {
     this.itemId = itemId;
   }
@@ -88,6 +92,8 @@ public class ItemsToUnload {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_NUMBER_OF_INSTANCES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNumberOfInstances(Integer numberOfInstances) {
     this.numberOfInstances = numberOfInstances;
   }

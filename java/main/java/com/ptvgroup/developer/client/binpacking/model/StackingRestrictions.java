@@ -28,7 +28,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -40,7 +39,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   StackingRestrictions.JSON_PROPERTY_RESTRICTION_TYPE,
   StackingRestrictions.JSON_PROPERTY_ITEM_IDS
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class StackingRestrictions {
   public static final String JSON_PROPERTY_ITEM_ID = "itemId";
   private String itemId;
@@ -51,6 +50,8 @@ public class StackingRestrictions {
   public static final String JSON_PROPERTY_ITEM_IDS = "itemIds";
   private List<String> itemIds = null;
 
+  public StackingRestrictions() { 
+  }
 
   public StackingRestrictions itemId(String itemId) {
     this.itemId = itemId;
@@ -61,6 +62,7 @@ public class StackingRestrictions {
    * ID of the item.
    * @return itemId
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "ID of the item.")
   @JsonProperty(JSON_PROPERTY_ITEM_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -70,6 +72,8 @@ public class StackingRestrictions {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ITEM_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setItemId(String itemId) {
     this.itemId = itemId;
   }
@@ -94,6 +98,8 @@ public class StackingRestrictions {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_RESTRICTION_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRestrictionType(StackingRestrictionType restrictionType) {
     this.restrictionType = restrictionType;
   }
@@ -126,6 +132,8 @@ public class StackingRestrictions {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ITEM_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setItemIds(List<String> itemIds) {
     this.itemIds = itemIds;
   }

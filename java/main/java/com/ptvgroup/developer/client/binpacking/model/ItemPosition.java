@@ -25,7 +25,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -37,7 +36,7 @@ import com.ptvgroup.developer.client.binpacking.JSON;
   ItemPosition.JSON_PROPERTY_Y,
   ItemPosition.JSON_PROPERTY_Z
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class ItemPosition {
   public static final String JSON_PROPERTY_X = "x";
   private Integer x;
@@ -48,6 +47,8 @@ public class ItemPosition {
   public static final String JSON_PROPERTY_Z = "z";
   private Integer z;
 
+  public ItemPosition() { 
+  }
 
   public ItemPosition x(Integer x) {
     this.x = x;
@@ -58,6 +59,7 @@ public class ItemPosition {
    * Offset along x-axis in [cm]. Equal to the shift along the width of the bin from left to right.
    * @return x
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Offset along x-axis in [cm]. Equal to the shift along the width of the bin from left to right.")
   @JsonProperty(JSON_PROPERTY_X)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -67,6 +69,8 @@ public class ItemPosition {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_X)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setX(Integer x) {
     this.x = x;
   }
@@ -81,6 +85,7 @@ public class ItemPosition {
    * Offset along y-axis in [cm]. Equal to the height from the floor of the bin.
    * @return y
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Offset along y-axis in [cm]. Equal to the height from the floor of the bin.")
   @JsonProperty(JSON_PROPERTY_Y)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -90,6 +95,8 @@ public class ItemPosition {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_Y)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setY(Integer y) {
     this.y = y;
   }
@@ -104,6 +111,7 @@ public class ItemPosition {
    * Offset along z-axis in [cm]. Equal to the shift along the length of the bin from back to front.
    * @return z
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Offset along z-axis in [cm]. Equal to the shift along the length of the bin from back to front.")
   @JsonProperty(JSON_PROPERTY_Z)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -113,6 +121,8 @@ public class ItemPosition {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_Z)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setZ(Integer z) {
     this.z = z;
   }

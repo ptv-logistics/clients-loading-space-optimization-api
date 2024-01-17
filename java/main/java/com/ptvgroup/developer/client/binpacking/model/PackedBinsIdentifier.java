@@ -26,7 +26,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ptvgroup.developer.client.binpacking.JSON;
 
 
 /**
@@ -35,11 +34,13 @@ import com.ptvgroup.developer.client.binpacking.JSON;
 @JsonPropertyOrder({
   PackedBinsIdentifier.JSON_PROPERTY_ID
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-19T08:35:39.425821Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T10:21:27.576807Z[Etc/UTC]")
 public class PackedBinsIdentifier {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;
 
+  public PackedBinsIdentifier() { 
+  }
 
   public PackedBinsIdentifier id(UUID id) {
     this.id = id;
@@ -50,6 +51,7 @@ public class PackedBinsIdentifier {
    * The ID of the packed bins.
    * @return id
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "The ID of the packed bins.")
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -59,6 +61,8 @@ public class PackedBinsIdentifier {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(UUID id) {
     this.id = id;
   }
