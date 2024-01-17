@@ -46,9 +46,17 @@ namespace PTV.Developer.Clients.binpacking.Model
         public CausingError(string description = default(string), string errorCode = default(string), string _parameter = default(string), Dictionary<string, Object> details = default(Dictionary<string, Object>))
         {
             // to ensure "description" is required (not null)
-            this.Description = description ?? throw new ArgumentNullException("description is a required property for CausingError and cannot be null");
+            if (description == null)
+            {
+                throw new ArgumentNullException("description is a required property for CausingError and cannot be null");
+            }
+            this.Description = description;
             // to ensure "errorCode" is required (not null)
-            this.ErrorCode = errorCode ?? throw new ArgumentNullException("errorCode is a required property for CausingError and cannot be null");
+            if (errorCode == null)
+            {
+                throw new ArgumentNullException("errorCode is a required property for CausingError and cannot be null");
+            }
+            this.ErrorCode = errorCode;
             this.Parameter = _parameter;
             this.Details = details;
         }
@@ -57,14 +65,14 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// A human readable message that describes the error.
         /// </summary>
         /// <value>A human readable message that describes the error.</value>
-        [DataMember(Name = "description", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "description", IsRequired = true, EmitDefaultValue = true)]
         public string Description { get; set; }
 
         /// <summary>
         /// A constant string that can be used to identify this error class programmatically. An errorCode can have **details** to provide information in additional properties which are described with the code they apply to. They are of type string unless otherwise specified. Note that additional errorCodes as well as the **details** of existing errorCodes may be added at any time. Furthermore, the **description** may change at any time.    **Error codes for** &#x60;GENERAL_VALIDATION_ERROR&#x60;  * &#x60;GENERAL_INVALID_VALUE&#x60; - A parameter is set to an invalid value.   * &#x60;value&#x60; - The invalid value. * &#x60;GENERAL_UNRECOGNIZED_PARAMETER&#x60; - A parameter is unknown. * &#x60;GENERAL_MISSING_PARAMETER&#x60; - A required parameter is missing. * &#x60;GENERAL_MINIMUM_LENGTH_VIOLATED&#x60; - The minimum length is violated.   * &#x60;minimumLength&#x60; - The minimum length (integer). * &#x60;GENERAL_MAXIMUM_LENGTH_VIOLATED&#x60; - The maximum length is violated.   * &#x60;maximumLength&#x60; - The maximum length (integer). * &#x60;GENERAL_MINIMUM_VALUE_VIOLATED&#x60; - The minimum value restriction is violated.   * &#x60;minimumValue&#x60; - The minimum value (integer or double). * &#x60;GENERAL_MAXIMUM_VALUE_VIOLATED&#x60; - The maximum value restriction is violated.   * &#x60;maximumValue&#x60; - The maximum value (integer or double). * &#x60;GENERAL_DUPLICATE_PARAMETER&#x60; - A parameter is duplicated. * &#x60;GENERAL_INVALID_LIST&#x60; - A list has an invalid format such as duplicate commas.   * &#x60;value&#x60; - The invalid list. * &#x60;BINPACKING_BIN_ID_CONFLICT&#x60; - Two bins have the same id.   * &#x60;binId&#x60; - The bin id.   * &#x60;conflictingIndex&#x60; - The index of the conflicting bin.   * &#x60;originalIndex&#x60; - The index of the original bin. * &#x60;BINPACKING_ITEM_ID_CONFLICT&#x60; - Two items have the same id.   * &#x60;itemId&#x60; - The item id.   * &#x60;conflictingIndex&#x60; - The index of the conflicting item.   * &#x60;originalIndex&#x60; - The index of the original item.
         /// </summary>
         /// <value>A constant string that can be used to identify this error class programmatically. An errorCode can have **details** to provide information in additional properties which are described with the code they apply to. They are of type string unless otherwise specified. Note that additional errorCodes as well as the **details** of existing errorCodes may be added at any time. Furthermore, the **description** may change at any time.    **Error codes for** &#x60;GENERAL_VALIDATION_ERROR&#x60;  * &#x60;GENERAL_INVALID_VALUE&#x60; - A parameter is set to an invalid value.   * &#x60;value&#x60; - The invalid value. * &#x60;GENERAL_UNRECOGNIZED_PARAMETER&#x60; - A parameter is unknown. * &#x60;GENERAL_MISSING_PARAMETER&#x60; - A required parameter is missing. * &#x60;GENERAL_MINIMUM_LENGTH_VIOLATED&#x60; - The minimum length is violated.   * &#x60;minimumLength&#x60; - The minimum length (integer). * &#x60;GENERAL_MAXIMUM_LENGTH_VIOLATED&#x60; - The maximum length is violated.   * &#x60;maximumLength&#x60; - The maximum length (integer). * &#x60;GENERAL_MINIMUM_VALUE_VIOLATED&#x60; - The minimum value restriction is violated.   * &#x60;minimumValue&#x60; - The minimum value (integer or double). * &#x60;GENERAL_MAXIMUM_VALUE_VIOLATED&#x60; - The maximum value restriction is violated.   * &#x60;maximumValue&#x60; - The maximum value (integer or double). * &#x60;GENERAL_DUPLICATE_PARAMETER&#x60; - A parameter is duplicated. * &#x60;GENERAL_INVALID_LIST&#x60; - A list has an invalid format such as duplicate commas.   * &#x60;value&#x60; - The invalid list. * &#x60;BINPACKING_BIN_ID_CONFLICT&#x60; - Two bins have the same id.   * &#x60;binId&#x60; - The bin id.   * &#x60;conflictingIndex&#x60; - The index of the conflicting bin.   * &#x60;originalIndex&#x60; - The index of the original bin. * &#x60;BINPACKING_ITEM_ID_CONFLICT&#x60; - Two items have the same id.   * &#x60;itemId&#x60; - The item id.   * &#x60;conflictingIndex&#x60; - The index of the conflicting item.   * &#x60;originalIndex&#x60; - The index of the original item.</value>
-        [DataMember(Name = "errorCode", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "errorCode", IsRequired = true, EmitDefaultValue = true)]
         public string ErrorCode { get; set; }
 
         /// <summary>
@@ -87,7 +95,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CausingError {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ErrorCode: ").Append(ErrorCode).Append("\n");
@@ -124,8 +132,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(CausingError input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Description == input.Description ||
@@ -160,13 +169,21 @@ namespace PTV.Developer.Clients.binpacking.Model
             {
                 int hashCode = 41;
                 if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
                 if (this.ErrorCode != null)
-                    hashCode = hashCode * 59 + this.ErrorCode.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ErrorCode.GetHashCode();
+                }
                 if (this.Parameter != null)
-                    hashCode = hashCode * 59 + this.Parameter.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Parameter.GetHashCode();
+                }
                 if (this.Details != null)
-                    hashCode = hashCode * 59 + this.Details.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Details.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -176,7 +193,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

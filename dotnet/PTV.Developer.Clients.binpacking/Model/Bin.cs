@@ -47,9 +47,17 @@ namespace PTV.Developer.Clients.binpacking.Model
         public Bin(string id = default(string), int numberOfInstances = 1, BoxDimensions dimensions = default(BoxDimensions), int maximumVolumeCapacity = default(int), int maximumWeightCapacity = default(int))
         {
             // to ensure "id" is required (not null)
-            this.Id = id ?? throw new ArgumentNullException("id is a required property for Bin and cannot be null");
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for Bin and cannot be null");
+            }
+            this.Id = id;
             // to ensure "dimensions" is required (not null)
-            this.Dimensions = dimensions ?? throw new ArgumentNullException("dimensions is a required property for Bin and cannot be null");
+            if (dimensions == null)
+            {
+                throw new ArgumentNullException("dimensions is a required property for Bin and cannot be null");
+            }
+            this.Dimensions = dimensions;
             this.NumberOfInstances = numberOfInstances;
             this.MaximumVolumeCapacity = maximumVolumeCapacity;
             this.MaximumWeightCapacity = maximumWeightCapacity;
@@ -59,7 +67,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// User provided ID for this bin. Must be unique.
         /// </summary>
         /// <value>User provided ID for this bin. Must be unique.</value>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
@@ -72,7 +80,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <summary>
         /// Gets or Sets Dimensions
         /// </summary>
-        [DataMember(Name = "dimensions", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "dimensions", IsRequired = true, EmitDefaultValue = true)]
         public BoxDimensions Dimensions { get; set; }
 
         /// <summary>
@@ -95,7 +103,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Bin {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  NumberOfInstances: ").Append(NumberOfInstances).Append("\n");
@@ -133,8 +141,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(Bin input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Id == input.Id ||
@@ -170,12 +179,16 @@ namespace PTV.Developer.Clients.binpacking.Model
             {
                 int hashCode = 41;
                 if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                hashCode = hashCode * 59 + this.NumberOfInstances.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.NumberOfInstances.GetHashCode();
                 if (this.Dimensions != null)
-                    hashCode = hashCode * 59 + this.Dimensions.GetHashCode();
-                hashCode = hashCode * 59 + this.MaximumVolumeCapacity.GetHashCode();
-                hashCode = hashCode * 59 + this.MaximumWeightCapacity.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Dimensions.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.MaximumVolumeCapacity.GetHashCode();
+                hashCode = (hashCode * 59) + this.MaximumWeightCapacity.GetHashCode();
                 return hashCode;
             }
         }
@@ -185,34 +198,34 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             // NumberOfInstances (int) maximum
-            if(this.NumberOfInstances > (int)1000)
+            if (this.NumberOfInstances > (int)1000)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for NumberOfInstances, must be a value less than or equal to 1000.", new [] { "NumberOfInstances" });
             }
 
             // NumberOfInstances (int) minimum
-            if(this.NumberOfInstances < (int)1)
+            if (this.NumberOfInstances < (int)1)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for NumberOfInstances, must be a value greater than or equal to 1.", new [] { "NumberOfInstances" });
             }
 
             // MaximumVolumeCapacity (int) minimum
-            if(this.MaximumVolumeCapacity < (int)0)
+            if (this.MaximumVolumeCapacity < (int)0)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for MaximumVolumeCapacity, must be a value greater than or equal to 0.", new [] { "MaximumVolumeCapacity" });
             }
 
             // MaximumWeightCapacity (int) maximum
-            if(this.MaximumWeightCapacity > (int)80000000)
+            if (this.MaximumWeightCapacity > (int)80000000)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for MaximumWeightCapacity, must be a value less than or equal to 80000000.", new [] { "MaximumWeightCapacity" });
             }
 
             // MaximumWeightCapacity (int) minimum
-            if(this.MaximumWeightCapacity < (int)0)
+            if (this.MaximumWeightCapacity < (int)0)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for MaximumWeightCapacity, must be a value greater than or equal to 0.", new [] { "MaximumWeightCapacity" });
             }

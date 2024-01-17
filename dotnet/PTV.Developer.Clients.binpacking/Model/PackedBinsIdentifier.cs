@@ -49,7 +49,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// The ID of the packed bins.
         /// </summary>
         /// <value>The ID of the packed bins.</value>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
         public Guid Id { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class PackedBinsIdentifier {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
@@ -92,8 +92,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(PackedBinsIdentifier input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Id == input.Id ||
@@ -112,7 +113,9 @@ namespace PTV.Developer.Clients.binpacking.Model
             {
                 int hashCode = 41;
                 if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -122,7 +125,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

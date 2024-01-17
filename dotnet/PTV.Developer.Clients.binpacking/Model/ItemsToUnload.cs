@@ -44,7 +44,11 @@ namespace PTV.Developer.Clients.binpacking.Model
         public ItemsToUnload(string itemId = default(string), int numberOfInstances = 1)
         {
             // to ensure "itemId" is required (not null)
-            this.ItemId = itemId ?? throw new ArgumentNullException("itemId is a required property for ItemsToUnload and cannot be null");
+            if (itemId == null)
+            {
+                throw new ArgumentNullException("itemId is a required property for ItemsToUnload and cannot be null");
+            }
+            this.ItemId = itemId;
             this.NumberOfInstances = numberOfInstances;
         }
 
@@ -52,7 +56,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// ID of the item.
         /// </summary>
         /// <value>ID of the item.</value>
-        [DataMember(Name = "itemId", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "itemId", IsRequired = true, EmitDefaultValue = true)]
         public string ItemId { get; set; }
 
         /// <summary>
@@ -68,7 +72,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ItemsToUnload {\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  NumberOfInstances: ").Append(NumberOfInstances).Append("\n");
@@ -103,8 +107,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(ItemsToUnload input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ItemId == input.ItemId ||
@@ -127,8 +132,10 @@ namespace PTV.Developer.Clients.binpacking.Model
             {
                 int hashCode = 41;
                 if (this.ItemId != null)
-                    hashCode = hashCode * 59 + this.ItemId.GetHashCode();
-                hashCode = hashCode * 59 + this.NumberOfInstances.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.NumberOfInstances.GetHashCode();
                 return hashCode;
             }
         }
@@ -138,10 +145,10 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             // NumberOfInstances (int) minimum
-            if(this.NumberOfInstances < (int)1)
+            if (this.NumberOfInstances < (int)1)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for NumberOfInstances, must be a value greater than or equal to 1.", new [] { "NumberOfInstances" });
             }

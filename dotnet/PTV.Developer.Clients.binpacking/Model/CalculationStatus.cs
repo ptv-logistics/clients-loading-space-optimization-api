@@ -29,9 +29,7 @@ namespace PTV.Developer.Clients.binpacking.Model
     /// The current status of the calculation.  * &#x60;RUNNING&#x60; - The calculation is still running.  * &#x60;SUCCEEDED&#x60; - The calculation has completed successfully. Now the response can be requested calling getPackedBins.  * &#x60;FAILED&#x60; - The calculation has completed with a failure. More details can be requested calling getPackedBins.
     /// </summary>
     /// <value>The current status of the calculation.  * &#x60;RUNNING&#x60; - The calculation is still running.  * &#x60;SUCCEEDED&#x60; - The calculation has completed successfully. Now the response can be requested calling getPackedBins.  * &#x60;FAILED&#x60; - The calculation has completed with a failure. More details can be requested calling getPackedBins.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum CalculationStatus
     {
         /// <summary>

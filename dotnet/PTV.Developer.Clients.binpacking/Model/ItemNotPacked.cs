@@ -44,7 +44,11 @@ namespace PTV.Developer.Clients.binpacking.Model
         public ItemNotPacked(string id = default(string), int numberOfInstances = default(int))
         {
             // to ensure "id" is required (not null)
-            this.Id = id ?? throw new ArgumentNullException("id is a required property for ItemNotPacked and cannot be null");
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for ItemNotPacked and cannot be null");
+            }
+            this.Id = id;
             this.NumberOfInstances = numberOfInstances;
         }
 
@@ -52,14 +56,14 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// The ID of the item.
         /// </summary>
         /// <value>The ID of the item.</value>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
         /// Number of instances of the item that have not been packed.
         /// </summary>
         /// <value>Number of instances of the item that have not been packed.</value>
-        [DataMember(Name = "numberOfInstances", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "numberOfInstances", IsRequired = true, EmitDefaultValue = true)]
         public int NumberOfInstances { get; set; }
 
         /// <summary>
@@ -68,7 +72,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ItemNotPacked {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  NumberOfInstances: ").Append(NumberOfInstances).Append("\n");
@@ -103,8 +107,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(ItemNotPacked input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Id == input.Id ||
@@ -127,8 +132,10 @@ namespace PTV.Developer.Clients.binpacking.Model
             {
                 int hashCode = 41;
                 if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                hashCode = hashCode * 59 + this.NumberOfInstances.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.NumberOfInstances.GetHashCode();
                 return hashCode;
             }
         }
@@ -138,16 +145,16 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             // NumberOfInstances (int) maximum
-            if(this.NumberOfInstances > (int)10000)
+            if (this.NumberOfInstances > (int)10000)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for NumberOfInstances, must be a value less than or equal to 10000.", new [] { "NumberOfInstances" });
             }
 
             // NumberOfInstances (int) minimum
-            if(this.NumberOfInstances < (int)1)
+            if (this.NumberOfInstances < (int)1)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for NumberOfInstances, must be a value greater than or equal to 1.", new [] { "NumberOfInstances" });
             }

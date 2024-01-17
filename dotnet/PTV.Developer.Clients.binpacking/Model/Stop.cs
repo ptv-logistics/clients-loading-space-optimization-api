@@ -43,14 +43,18 @@ namespace PTV.Developer.Clients.binpacking.Model
         public Stop(List<ItemsToUnload> itemsToUnload = default(List<ItemsToUnload>))
         {
             // to ensure "itemsToUnload" is required (not null)
-            this.ItemsToUnload = itemsToUnload ?? throw new ArgumentNullException("itemsToUnload is a required property for Stop and cannot be null");
+            if (itemsToUnload == null)
+            {
+                throw new ArgumentNullException("itemsToUnload is a required property for Stop and cannot be null");
+            }
+            this.ItemsToUnload = itemsToUnload;
         }
 
         /// <summary>
         /// Defines the list of items to unload.
         /// </summary>
         /// <value>Defines the list of items to unload.</value>
-        [DataMember(Name = "itemsToUnload", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "itemsToUnload", IsRequired = true, EmitDefaultValue = true)]
         public List<ItemsToUnload> ItemsToUnload { get; set; }
 
         /// <summary>
@@ -59,7 +63,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Stop {\n");
             sb.Append("  ItemsToUnload: ").Append(ItemsToUnload).Append("\n");
             sb.Append("}\n");
@@ -93,8 +97,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(Stop input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ItemsToUnload == input.ItemsToUnload ||
@@ -114,7 +119,9 @@ namespace PTV.Developer.Clients.binpacking.Model
             {
                 int hashCode = 41;
                 if (this.ItemsToUnload != null)
-                    hashCode = hashCode * 59 + this.ItemsToUnload.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemsToUnload.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -124,7 +131,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

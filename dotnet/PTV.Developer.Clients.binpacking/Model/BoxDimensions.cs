@@ -53,21 +53,21 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// Extent along x-axis (width) in [cm].
         /// </summary>
         /// <value>Extent along x-axis (width) in [cm].</value>
-        [DataMember(Name = "x", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "x", IsRequired = true, EmitDefaultValue = true)]
         public int X { get; set; }
 
         /// <summary>
         /// Extent along y-axis (height) in [cm].
         /// </summary>
         /// <value>Extent along y-axis (height) in [cm].</value>
-        [DataMember(Name = "y", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "y", IsRequired = true, EmitDefaultValue = true)]
         public int Y { get; set; }
 
         /// <summary>
         /// Extent along z-axis (length) in [cm].
         /// </summary>
         /// <value>Extent along z-axis (length) in [cm].</value>
-        [DataMember(Name = "z", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "z", IsRequired = true, EmitDefaultValue = true)]
         public int Z { get; set; }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class BoxDimensions {\n");
             sb.Append("  X: ").Append(X).Append("\n");
             sb.Append("  Y: ").Append(Y).Append("\n");
@@ -112,8 +112,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(BoxDimensions input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.X == input.X ||
@@ -138,9 +139,9 @@ namespace PTV.Developer.Clients.binpacking.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.X.GetHashCode();
-                hashCode = hashCode * 59 + this.Y.GetHashCode();
-                hashCode = hashCode * 59 + this.Z.GetHashCode();
+                hashCode = (hashCode * 59) + this.X.GetHashCode();
+                hashCode = (hashCode * 59) + this.Y.GetHashCode();
+                hashCode = (hashCode * 59) + this.Z.GetHashCode();
                 return hashCode;
             }
         }
@@ -150,22 +151,22 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             // X (int) minimum
-            if(this.X < (int)1)
+            if (this.X < (int)1)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for X, must be a value greater than or equal to 1.", new [] { "X" });
             }
 
             // Y (int) minimum
-            if(this.Y < (int)1)
+            if (this.Y < (int)1)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Y, must be a value greater than or equal to 1.", new [] { "Y" });
             }
 
             // Z (int) minimum
-            if(this.Z < (int)1)
+            if (this.Z < (int)1)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Z, must be a value greater than or equal to 1.", new [] { "Z" });
             }

@@ -28,9 +28,7 @@ namespace PTV.Developer.Clients.binpacking.Model
     /// <summary>
     /// Defines AllowedOrientation
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum AllowedOrientation
     {
         /// <summary>

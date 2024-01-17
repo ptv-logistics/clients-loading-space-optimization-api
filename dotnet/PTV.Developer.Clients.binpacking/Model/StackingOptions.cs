@@ -53,7 +53,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// Specifies if it is allowed to stack items of a stop above items of the next stops. Only relevant if unloadingSequence is used.
         /// </summary>
         /// <value>Specifies if it is allowed to stack items of a stop above items of the next stops. Only relevant if unloadingSequence is used.</value>
-        [DataMember(Name = "stackOnTopOfNextStops", EmitDefaultValue = false)]
+        [DataMember(Name = "stackOnTopOfNextStops", EmitDefaultValue = true)]
         public bool StackOnTopOfNextStops { get; set; }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class StackingOptions {\n");
             sb.Append("  StackingRestrictions: ").Append(StackingRestrictions).Append("\n");
             sb.Append("  StackOnTopOfNextStops: ").Append(StackOnTopOfNextStops).Append("\n");
@@ -97,8 +97,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(StackingOptions input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.StackingRestrictions == input.StackingRestrictions ||
@@ -122,8 +123,10 @@ namespace PTV.Developer.Clients.binpacking.Model
             {
                 int hashCode = 41;
                 if (this.StackingRestrictions != null)
-                    hashCode = hashCode * 59 + this.StackingRestrictions.GetHashCode();
-                hashCode = hashCode * 59 + this.StackOnTopOfNextStops.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.StackingRestrictions.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.StackOnTopOfNextStops.GetHashCode();
                 return hashCode;
             }
         }
@@ -133,7 +136,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

@@ -30,23 +30,25 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Cancels a bin packing operation specified by its ID.
+        /// Cancels a bin packing operation and deletes the results specified by its ID. Results already calculated cannot be requested by its ID, anymore.
         /// </remarks>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        void CancelBinPacking(Guid id);
+        void CancelBinPacking(Guid id, int operationIndex = 0);
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Cancels a bin packing operation specified by its ID.
+        /// Cancels a bin packing operation and deletes the results specified by its ID. Results already calculated cannot be requested by its ID, anymore.
         /// </remarks>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> CancelBinPackingWithHttpInfo(Guid id);
+        ApiResponse<Object> CancelBinPackingWithHttpInfo(Guid id, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -55,8 +57,9 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </remarks>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PackBinsResponse</returns>
-        PackBinsResponse GetPackedBins(Guid id);
+        PackBinsResponse GetPackedBins(Guid id, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -66,8 +69,9 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </remarks>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PackBinsResponse</returns>
-        ApiResponse<PackBinsResponse> GetPackedBinsWithHttpInfo(Guid id);
+        ApiResponse<PackBinsResponse> GetPackedBinsWithHttpInfo(Guid id, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -76,8 +80,9 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </remarks>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>StatusResponse</returns>
-        StatusResponse GetStatus(Guid id);
+        StatusResponse GetStatus(Guid id, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -87,8 +92,9 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </remarks>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of StatusResponse</returns>
-        ApiResponse<StatusResponse> GetStatusWithHttpInfo(Guid id);
+        ApiResponse<StatusResponse> GetStatusWithHttpInfo(Guid id, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -98,8 +104,9 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of up to 100 items of various types that get packed into up to 2 bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PackBinsResponse</returns>
-        PackBinsResponse PackBins(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?));
+        PackBinsResponse PackBins(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -110,8 +117,9 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of up to 100 items of various types that get packed into up to 2 bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PackBinsResponse</returns>
-        ApiResponse<PackBinsResponse> PackBinsWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?));
+        ApiResponse<PackBinsResponse> PackBinsWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -121,8 +129,9 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of items of various types that get packed into a number of bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PackedBinsIdentifier</returns>
-        PackedBinsIdentifier StartBinPacking(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?));
+        PackedBinsIdentifier StartBinPacking(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -133,8 +142,9 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of items of various types that get packed into a number of bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PackedBinsIdentifier</returns>
-        ApiResponse<PackedBinsIdentifier> StartBinPackingWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?));
+        ApiResponse<PackedBinsIdentifier> StartBinPackingWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -148,25 +158,27 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Cancels a bin packing operation specified by its ID.
+        /// Cancels a bin packing operation and deletes the results specified by its ID. Results already calculated cannot be requested by its ID, anymore.
         /// </remarks>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task CancelBinPackingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task CancelBinPackingAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Cancels a bin packing operation specified by its ID.
+        /// Cancels a bin packing operation and deletes the results specified by its ID. Results already calculated cannot be requested by its ID, anymore.
         /// </remarks>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CancelBinPackingWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> CancelBinPackingWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -175,9 +187,10 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </remarks>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PackBinsResponse</returns>
-        System.Threading.Tasks.Task<PackBinsResponse> GetPackedBinsAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PackBinsResponse> GetPackedBinsAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -187,9 +200,10 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </remarks>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PackBinsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PackBinsResponse>> GetPackedBinsWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PackBinsResponse>> GetPackedBinsWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -198,9 +212,10 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </remarks>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StatusResponse</returns>
-        System.Threading.Tasks.Task<StatusResponse> GetStatusAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StatusResponse> GetStatusAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -210,9 +225,10 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </remarks>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StatusResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StatusResponse>> GetStatusWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StatusResponse>> GetStatusWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -222,9 +238,10 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of up to 100 items of various types that get packed into up to 2 bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PackBinsResponse</returns>
-        System.Threading.Tasks.Task<PackBinsResponse> PackBinsAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PackBinsResponse> PackBinsAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -235,9 +252,10 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of up to 100 items of various types that get packed into up to 2 bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PackBinsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PackBinsResponse>> PackBinsWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PackBinsResponse>> PackBinsWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -247,9 +265,10 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of items of various types that get packed into a number of bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PackedBinsIdentifier</returns>
-        System.Threading.Tasks.Task<PackedBinsIdentifier> StartBinPackingAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PackedBinsIdentifier> StartBinPackingAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -260,9 +279,10 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of items of various types that get packed into a number of bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PackedBinsIdentifier)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PackedBinsIdentifier>> StartBinPackingWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PackedBinsIdentifier>> StartBinPackingWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -293,7 +313,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// Initializes a new instance of the <see cref="BinsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public BinsApi(String basePath)
+        public BinsApi(string basePath)
         {
             this.Configuration = PTV.Developer.Clients.binpacking.Client.Configuration.MergeConfigurations(
                 PTV.Developer.Clients.binpacking.Client.GlobalConfiguration.Instance,
@@ -356,7 +376,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// Gets the base path of the API client.
         /// </summary>
         /// <value>The base path</value>
-        public String GetBasePath()
+        public string GetBasePath()
         {
             return this.Configuration.BasePath;
         }
@@ -384,115 +404,140 @@ namespace PTV.Developer.Clients.binpacking.Api
         }
 
         /// <summary>
-        ///  Cancels a bin packing operation specified by its ID.
+        ///  Cancels a bin packing operation and deletes the results specified by its ID. Results already calculated cannot be requested by its ID, anymore.
         /// </summary>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        public void CancelBinPacking(Guid id)
+        public void CancelBinPacking(Guid id, int operationIndex = 0)
         {
             CancelBinPackingWithHttpInfo(id);
         }
 
         /// <summary>
-        ///  Cancels a bin packing operation specified by its ID.
+        ///  Cancels a bin packing operation and deletes the results specified by its ID. Results already calculated cannot be requested by its ID, anymore.
         /// </summary>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public PTV.Developer.Clients.binpacking.Client.ApiResponse<Object> CancelBinPackingWithHttpInfo(Guid id)
+        public PTV.Developer.Clients.binpacking.Client.ApiResponse<Object> CancelBinPackingWithHttpInfo(Guid id, int operationIndex = 0)
         {
             PTV.Developer.Clients.binpacking.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.binpacking.Client.RequestOptions();
 
-            String[] _contentTypes = new String[] {
+            string[] _contentTypes = new string[] {
             };
 
             // to determine the Accept header
-            String[] _accepts = new String[] {
+            string[] _accepts = new string[] {
                 "application/json"
             };
 
             var localVarContentType = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
 
             var localVarAccept = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
 
             localVarRequestOptions.PathParameters.Add("id", PTV.Developer.Clients.binpacking.Client.ClientUtils.ParameterToString(id)); // path parameter
 
+            localVarRequestOptions.Operation = "BinsApi.CancelBinPacking";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
             // authentication (apiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
             {
                 localVarRequestOptions.HeaderParameters.Add("apiKey", this.Configuration.GetApiKeyWithPrefix("apiKey"));
             }
 
             // make the HTTP request
             var localVarResponse = this.Client.Delete<Object>("/bins/{id}", localVarRequestOptions, this.Configuration);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CancelBinPacking", localVarResponse);
-                if (_exception != null) throw _exception;
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
             }
 
             return localVarResponse;
         }
 
         /// <summary>
-        ///  Cancels a bin packing operation specified by its ID.
+        ///  Cancels a bin packing operation and deletes the results specified by its ID. Results already calculated cannot be requested by its ID, anymore.
         /// </summary>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task CancelBinPackingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task CancelBinPackingAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            await CancelBinPackingWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            await CancelBinPackingWithHttpInfoAsync(id, operationIndex, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        ///  Cancels a bin packing operation specified by its ID.
+        ///  Cancels a bin packing operation and deletes the results specified by its ID. Results already calculated cannot be requested by its ID, anymore.
         /// </summary>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<Object>> CancelBinPackingWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<Object>> CancelBinPackingWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             PTV.Developer.Clients.binpacking.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.binpacking.Client.RequestOptions();
 
-            String[] _contentTypes = new String[] {
+            string[] _contentTypes = new string[] {
             };
 
             // to determine the Accept header
-            String[] _accepts = new String[] {
+            string[] _accepts = new string[] {
                 "application/json"
             };
 
-
             var localVarContentType = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
 
             var localVarAccept = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
 
             localVarRequestOptions.PathParameters.Add("id", PTV.Developer.Clients.binpacking.Client.ClientUtils.ParameterToString(id)); // path parameter
 
+            localVarRequestOptions.Operation = "BinsApi.CancelBinPacking";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
             // authentication (apiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
             {
                 localVarRequestOptions.HeaderParameters.Add("apiKey", this.Configuration.GetApiKeyWithPrefix("apiKey"));
             }
 
             // make the HTTP request
-
             var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/bins/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CancelBinPacking", localVarResponse);
-                if (_exception != null) throw _exception;
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
             }
 
             return localVarResponse;
@@ -503,8 +548,9 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </summary>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PackBinsResponse</returns>
-        public PackBinsResponse GetPackedBins(Guid id)
+        public PackBinsResponse GetPackedBins(Guid id, int operationIndex = 0)
         {
             PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse> localVarResponse = GetPackedBinsWithHttpInfo(id);
             return localVarResponse.Data;
@@ -515,40 +561,52 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </summary>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PackBinsResponse</returns>
-        public PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse> GetPackedBinsWithHttpInfo(Guid id)
+        public PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse> GetPackedBinsWithHttpInfo(Guid id, int operationIndex = 0)
         {
             PTV.Developer.Clients.binpacking.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.binpacking.Client.RequestOptions();
 
-            String[] _contentTypes = new String[] {
+            string[] _contentTypes = new string[] {
             };
 
             // to determine the Accept header
-            String[] _accepts = new String[] {
+            string[] _accepts = new string[] {
                 "application/json"
             };
 
             var localVarContentType = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
 
             var localVarAccept = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
 
             localVarRequestOptions.PathParameters.Add("id", PTV.Developer.Clients.binpacking.Client.ClientUtils.ParameterToString(id)); // path parameter
 
+            localVarRequestOptions.Operation = "BinsApi.GetPackedBins";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
             // authentication (apiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
             {
                 localVarRequestOptions.HeaderParameters.Add("apiKey", this.Configuration.GetApiKeyWithPrefix("apiKey"));
             }
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<PackBinsResponse>("/bins/{id}", localVarRequestOptions, this.Configuration);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetPackedBins", localVarResponse);
-                if (_exception != null) throw _exception;
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
             }
 
             return localVarResponse;
@@ -559,11 +617,12 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </summary>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PackBinsResponse</returns>
-        public async System.Threading.Tasks.Task<PackBinsResponse> GetPackedBinsAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PackBinsResponse> GetPackedBinsAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse> localVarResponse = await GetPackedBinsWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse> localVarResponse = await GetPackedBinsWithHttpInfoAsync(id, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -572,44 +631,55 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </summary>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PackBinsResponse)</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse>> GetPackedBinsWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse>> GetPackedBinsWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             PTV.Developer.Clients.binpacking.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.binpacking.Client.RequestOptions();
 
-            String[] _contentTypes = new String[] {
+            string[] _contentTypes = new string[] {
             };
 
             // to determine the Accept header
-            String[] _accepts = new String[] {
+            string[] _accepts = new string[] {
                 "application/json"
             };
 
-
             var localVarContentType = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
 
             var localVarAccept = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
 
             localVarRequestOptions.PathParameters.Add("id", PTV.Developer.Clients.binpacking.Client.ClientUtils.ParameterToString(id)); // path parameter
 
+            localVarRequestOptions.Operation = "BinsApi.GetPackedBins";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
             // authentication (apiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
             {
                 localVarRequestOptions.HeaderParameters.Add("apiKey", this.Configuration.GetApiKeyWithPrefix("apiKey"));
             }
 
             // make the HTTP request
-
             var localVarResponse = await this.AsynchronousClient.GetAsync<PackBinsResponse>("/bins/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetPackedBins", localVarResponse);
-                if (_exception != null) throw _exception;
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
             }
 
             return localVarResponse;
@@ -620,8 +690,9 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </summary>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>StatusResponse</returns>
-        public StatusResponse GetStatus(Guid id)
+        public StatusResponse GetStatus(Guid id, int operationIndex = 0)
         {
             PTV.Developer.Clients.binpacking.Client.ApiResponse<StatusResponse> localVarResponse = GetStatusWithHttpInfo(id);
             return localVarResponse.Data;
@@ -632,40 +703,52 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </summary>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of StatusResponse</returns>
-        public PTV.Developer.Clients.binpacking.Client.ApiResponse<StatusResponse> GetStatusWithHttpInfo(Guid id)
+        public PTV.Developer.Clients.binpacking.Client.ApiResponse<StatusResponse> GetStatusWithHttpInfo(Guid id, int operationIndex = 0)
         {
             PTV.Developer.Clients.binpacking.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.binpacking.Client.RequestOptions();
 
-            String[] _contentTypes = new String[] {
+            string[] _contentTypes = new string[] {
             };
 
             // to determine the Accept header
-            String[] _accepts = new String[] {
+            string[] _accepts = new string[] {
                 "application/json"
             };
 
             var localVarContentType = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
 
             var localVarAccept = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
 
             localVarRequestOptions.PathParameters.Add("id", PTV.Developer.Clients.binpacking.Client.ClientUtils.ParameterToString(id)); // path parameter
 
+            localVarRequestOptions.Operation = "BinsApi.GetStatus";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
             // authentication (apiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
             {
                 localVarRequestOptions.HeaderParameters.Add("apiKey", this.Configuration.GetApiKeyWithPrefix("apiKey"));
             }
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<StatusResponse>("/bins/status/{id}", localVarRequestOptions, this.Configuration);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetStatus", localVarResponse);
-                if (_exception != null) throw _exception;
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
             }
 
             return localVarResponse;
@@ -676,11 +759,12 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </summary>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StatusResponse</returns>
-        public async System.Threading.Tasks.Task<StatusResponse> GetStatusAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StatusResponse> GetStatusAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            PTV.Developer.Clients.binpacking.Client.ApiResponse<StatusResponse> localVarResponse = await GetStatusWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            PTV.Developer.Clients.binpacking.Client.ApiResponse<StatusResponse> localVarResponse = await GetStatusWithHttpInfoAsync(id, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -689,44 +773,55 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// </summary>
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of a bin packing operation.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StatusResponse)</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<StatusResponse>> GetStatusWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<StatusResponse>> GetStatusWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             PTV.Developer.Clients.binpacking.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.binpacking.Client.RequestOptions();
 
-            String[] _contentTypes = new String[] {
+            string[] _contentTypes = new string[] {
             };
 
             // to determine the Accept header
-            String[] _accepts = new String[] {
+            string[] _accepts = new string[] {
                 "application/json"
             };
 
-
             var localVarContentType = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
 
             var localVarAccept = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
 
             localVarRequestOptions.PathParameters.Add("id", PTV.Developer.Clients.binpacking.Client.ClientUtils.ParameterToString(id)); // path parameter
 
+            localVarRequestOptions.Operation = "BinsApi.GetStatus";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
             // authentication (apiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
             {
                 localVarRequestOptions.HeaderParameters.Add("apiKey", this.Configuration.GetApiKeyWithPrefix("apiKey"));
             }
 
             // make the HTTP request
-
             var localVarResponse = await this.AsynchronousClient.GetAsync<StatusResponse>("/bins/status/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetStatus", localVarResponse);
-                if (_exception != null) throw _exception;
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
             }
 
             return localVarResponse;
@@ -738,8 +833,9 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of up to 100 items of various types that get packed into up to 2 bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PackBinsResponse</returns>
-        public PackBinsResponse PackBins(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?))
+        public PackBinsResponse PackBins(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0)
         {
             PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse> localVarResponse = PackBinsWithHttpInfo(packBinsRequest, focus);
             return localVarResponse.Data;
@@ -751,29 +847,38 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of up to 100 items of various types that get packed into up to 2 bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PackBinsResponse</returns>
-        public PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse> PackBinsWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?))
+        public PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse> PackBinsWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0)
         {
             // verify the required parameter 'packBinsRequest' is set
             if (packBinsRequest == null)
+            {
                 throw new PTV.Developer.Clients.binpacking.Client.ApiException(400, "Missing required parameter 'packBinsRequest' when calling BinsApi->PackBins");
+            }
 
             PTV.Developer.Clients.binpacking.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.binpacking.Client.RequestOptions();
 
-            String[] _contentTypes = new String[] {
+            string[] _contentTypes = new string[] {
                 "application/json"
             };
 
             // to determine the Accept header
-            String[] _accepts = new String[] {
+            string[] _accepts = new string[] {
                 "application/json"
             };
 
             var localVarContentType = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
 
             var localVarAccept = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
 
             if (focus != null)
             {
@@ -781,19 +886,24 @@ namespace PTV.Developer.Clients.binpacking.Api
             }
             localVarRequestOptions.Data = packBinsRequest;
 
+            localVarRequestOptions.Operation = "BinsApi.PackBins";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
             // authentication (apiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
             {
                 localVarRequestOptions.HeaderParameters.Add("apiKey", this.Configuration.GetApiKeyWithPrefix("apiKey"));
             }
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<PackBinsResponse>("/bins", localVarRequestOptions, this.Configuration);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("PackBins", localVarResponse);
-                if (_exception != null) throw _exception;
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
             }
 
             return localVarResponse;
@@ -805,11 +915,12 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of up to 100 items of various types that get packed into up to 2 bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PackBinsResponse</returns>
-        public async System.Threading.Tasks.Task<PackBinsResponse> PackBinsAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PackBinsResponse> PackBinsAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse> localVarResponse = await PackBinsWithHttpInfoAsync(packBinsRequest, focus, cancellationToken).ConfigureAwait(false);
+            PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse> localVarResponse = await PackBinsWithHttpInfoAsync(packBinsRequest, focus, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -819,32 +930,40 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of up to 100 items of various types that get packed into up to 2 bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PackBinsResponse)</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse>> PackBinsWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse>> PackBinsWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'packBinsRequest' is set
             if (packBinsRequest == null)
+            {
                 throw new PTV.Developer.Clients.binpacking.Client.ApiException(400, "Missing required parameter 'packBinsRequest' when calling BinsApi->PackBins");
+            }
 
 
             PTV.Developer.Clients.binpacking.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.binpacking.Client.RequestOptions();
 
-            String[] _contentTypes = new String[] {
+            string[] _contentTypes = new string[] {
                 "application/json"
             };
 
             // to determine the Accept header
-            String[] _accepts = new String[] {
+            string[] _accepts = new string[] {
                 "application/json"
             };
 
-
             var localVarContentType = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
 
             var localVarAccept = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
 
             if (focus != null)
             {
@@ -852,20 +971,25 @@ namespace PTV.Developer.Clients.binpacking.Api
             }
             localVarRequestOptions.Data = packBinsRequest;
 
+            localVarRequestOptions.Operation = "BinsApi.PackBins";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
             // authentication (apiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
             {
                 localVarRequestOptions.HeaderParameters.Add("apiKey", this.Configuration.GetApiKeyWithPrefix("apiKey"));
             }
 
             // make the HTTP request
-
             var localVarResponse = await this.AsynchronousClient.PostAsync<PackBinsResponse>("/bins", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("PackBins", localVarResponse);
-                if (_exception != null) throw _exception;
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
             }
 
             return localVarResponse;
@@ -877,8 +1001,9 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of items of various types that get packed into a number of bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PackedBinsIdentifier</returns>
-        public PackedBinsIdentifier StartBinPacking(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?))
+        public PackedBinsIdentifier StartBinPacking(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0)
         {
             PTV.Developer.Clients.binpacking.Client.ApiResponse<PackedBinsIdentifier> localVarResponse = StartBinPackingWithHttpInfo(packBinsRequest, focus);
             return localVarResponse.Data;
@@ -890,29 +1015,38 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of items of various types that get packed into a number of bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PackedBinsIdentifier</returns>
-        public PTV.Developer.Clients.binpacking.Client.ApiResponse<PackedBinsIdentifier> StartBinPackingWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?))
+        public PTV.Developer.Clients.binpacking.Client.ApiResponse<PackedBinsIdentifier> StartBinPackingWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0)
         {
             // verify the required parameter 'packBinsRequest' is set
             if (packBinsRequest == null)
+            {
                 throw new PTV.Developer.Clients.binpacking.Client.ApiException(400, "Missing required parameter 'packBinsRequest' when calling BinsApi->StartBinPacking");
+            }
 
             PTV.Developer.Clients.binpacking.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.binpacking.Client.RequestOptions();
 
-            String[] _contentTypes = new String[] {
+            string[] _contentTypes = new string[] {
                 "application/json"
             };
 
             // to determine the Accept header
-            String[] _accepts = new String[] {
+            string[] _accepts = new string[] {
                 "application/json"
             };
 
             var localVarContentType = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
 
             var localVarAccept = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
 
             if (focus != null)
             {
@@ -920,19 +1054,24 @@ namespace PTV.Developer.Clients.binpacking.Api
             }
             localVarRequestOptions.Data = packBinsRequest;
 
+            localVarRequestOptions.Operation = "BinsApi.StartBinPacking";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
             // authentication (apiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
             {
                 localVarRequestOptions.HeaderParameters.Add("apiKey", this.Configuration.GetApiKeyWithPrefix("apiKey"));
             }
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<PackedBinsIdentifier>("/bins/async", localVarRequestOptions, this.Configuration);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("StartBinPacking", localVarResponse);
-                if (_exception != null) throw _exception;
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
             }
 
             return localVarResponse;
@@ -944,11 +1083,12 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of items of various types that get packed into a number of bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PackedBinsIdentifier</returns>
-        public async System.Threading.Tasks.Task<PackedBinsIdentifier> StartBinPackingAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PackedBinsIdentifier> StartBinPackingAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            PTV.Developer.Clients.binpacking.Client.ApiResponse<PackedBinsIdentifier> localVarResponse = await StartBinPackingWithHttpInfoAsync(packBinsRequest, focus, cancellationToken).ConfigureAwait(false);
+            PTV.Developer.Clients.binpacking.Client.ApiResponse<PackedBinsIdentifier> localVarResponse = await StartBinPackingWithHttpInfoAsync(packBinsRequest, focus, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -958,32 +1098,40 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <exception cref="PTV.Developer.Clients.binpacking.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packBinsRequest">Specifies a packing problem consisting of a number of items of various types that get packed into a number of bins of various types. Items as well as bins are always of cuboid shape. </param>
         /// <param name="focus"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PackedBinsIdentifier)</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<PackedBinsIdentifier>> StartBinPackingWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<PackedBinsIdentifier>> StartBinPackingWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'packBinsRequest' is set
             if (packBinsRequest == null)
+            {
                 throw new PTV.Developer.Clients.binpacking.Client.ApiException(400, "Missing required parameter 'packBinsRequest' when calling BinsApi->StartBinPacking");
+            }
 
 
             PTV.Developer.Clients.binpacking.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.binpacking.Client.RequestOptions();
 
-            String[] _contentTypes = new String[] {
+            string[] _contentTypes = new string[] {
                 "application/json"
             };
 
             // to determine the Accept header
-            String[] _accepts = new String[] {
+            string[] _accepts = new string[] {
                 "application/json"
             };
 
-
             var localVarContentType = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
 
             var localVarAccept = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
 
             if (focus != null)
             {
@@ -991,20 +1139,25 @@ namespace PTV.Developer.Clients.binpacking.Api
             }
             localVarRequestOptions.Data = packBinsRequest;
 
+            localVarRequestOptions.Operation = "BinsApi.StartBinPacking";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
             // authentication (apiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("apiKey")))
             {
                 localVarRequestOptions.HeaderParameters.Add("apiKey", this.Configuration.GetApiKeyWithPrefix("apiKey"));
             }
 
             // make the HTTP request
-
             var localVarResponse = await this.AsynchronousClient.PostAsync<PackedBinsIdentifier>("/bins/async", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("StartBinPacking", localVarResponse);
-                if (_exception != null) throw _exception;
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
             }
 
             return localVarResponse;

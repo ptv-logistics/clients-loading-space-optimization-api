@@ -29,9 +29,7 @@ namespace PTV.Developer.Clients.binpacking.Model
     /// Defines the stacking restrictions: * &#x60;ALL_ALLOWED&#x60; - All items can be stacked on top of this item. * &#x60;ALL_PROHIBITED&#x60; - No further item may be stacked on top of this item. * &#x60;ALLOWED&#x60; - Every listed items can be stacked on top of this item. * &#x60;PROHIBITED&#x60; - None of the listed items may be stacked on top of this item.
     /// </summary>
     /// <value>Defines the stacking restrictions: * &#x60;ALL_ALLOWED&#x60; - All items can be stacked on top of this item. * &#x60;ALL_PROHIBITED&#x60; - No further item may be stacked on top of this item. * &#x60;ALLOWED&#x60; - Every listed items can be stacked on top of this item. * &#x60;PROHIBITED&#x60; - None of the listed items may be stacked on top of this item.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum StackingRestrictionType
     {
         /// <summary>

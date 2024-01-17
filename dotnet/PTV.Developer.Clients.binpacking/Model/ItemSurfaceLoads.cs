@@ -71,7 +71,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ItemSurfaceLoads {\n");
             sb.Append("  X: ").Append(X).Append("\n");
             sb.Append("  Y: ").Append(Y).Append("\n");
@@ -107,8 +107,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(ItemSurfaceLoads input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.X == input.X ||
@@ -133,9 +134,9 @@ namespace PTV.Developer.Clients.binpacking.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.X.GetHashCode();
-                hashCode = hashCode * 59 + this.Y.GetHashCode();
-                hashCode = hashCode * 59 + this.Z.GetHashCode();
+                hashCode = (hashCode * 59) + this.X.GetHashCode();
+                hashCode = (hashCode * 59) + this.Y.GetHashCode();
+                hashCode = (hashCode * 59) + this.Z.GetHashCode();
                 return hashCode;
             }
         }
@@ -145,40 +146,40 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             // X (double) maximum
-            if(this.X > (double)80000000)
+            if (this.X > (double)80000000)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for X, must be a value less than or equal to 80000000.", new [] { "X" });
             }
 
             // X (double) minimum
-            if(this.X < (double)0)
+            if (this.X < (double)0)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for X, must be a value greater than or equal to 0.", new [] { "X" });
             }
 
             // Y (double) maximum
-            if(this.Y > (double)80000000)
+            if (this.Y > (double)80000000)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Y, must be a value less than or equal to 80000000.", new [] { "Y" });
             }
 
             // Y (double) minimum
-            if(this.Y < (double)0)
+            if (this.Y < (double)0)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Y, must be a value greater than or equal to 0.", new [] { "Y" });
             }
 
             // Z (double) maximum
-            if(this.Z > (double)80000000)
+            if (this.Z > (double)80000000)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Z, must be a value less than or equal to 80000000.", new [] { "Z" });
             }
 
             // Z (double) minimum
-            if(this.Z < (double)0)
+            if (this.Z < (double)0)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Z, must be a value greater than or equal to 0.", new [] { "Z" });
             }

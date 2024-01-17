@@ -62,7 +62,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class PackBinsResponse {\n");
             sb.Append("  PackedBins: ").Append(PackedBins).Append("\n");
             sb.Append("  ItemsNotPacked: ").Append(ItemsNotPacked).Append("\n");
@@ -97,8 +97,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(PackBinsResponse input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.PackedBins == input.PackedBins ||
@@ -124,9 +125,13 @@ namespace PTV.Developer.Clients.binpacking.Model
             {
                 int hashCode = 41;
                 if (this.PackedBins != null)
-                    hashCode = hashCode * 59 + this.PackedBins.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PackedBins.GetHashCode();
+                }
                 if (this.ItemsNotPacked != null)
-                    hashCode = hashCode * 59 + this.ItemsNotPacked.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemsNotPacked.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -136,7 +141,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

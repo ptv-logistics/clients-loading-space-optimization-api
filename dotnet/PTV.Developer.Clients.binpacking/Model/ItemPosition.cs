@@ -53,21 +53,21 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// Offset along x-axis in [cm]. Equal to the shift along the width of the bin from left to right.
         /// </summary>
         /// <value>Offset along x-axis in [cm]. Equal to the shift along the width of the bin from left to right.</value>
-        [DataMember(Name = "x", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "x", IsRequired = true, EmitDefaultValue = true)]
         public int X { get; set; }
 
         /// <summary>
         /// Offset along y-axis in [cm]. Equal to the height from the floor of the bin.
         /// </summary>
         /// <value>Offset along y-axis in [cm]. Equal to the height from the floor of the bin.</value>
-        [DataMember(Name = "y", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "y", IsRequired = true, EmitDefaultValue = true)]
         public int Y { get; set; }
 
         /// <summary>
         /// Offset along z-axis in [cm]. Equal to the shift along the length of the bin from back to front.
         /// </summary>
         /// <value>Offset along z-axis in [cm]. Equal to the shift along the length of the bin from back to front.</value>
-        [DataMember(Name = "z", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "z", IsRequired = true, EmitDefaultValue = true)]
         public int Z { get; set; }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ItemPosition {\n");
             sb.Append("  X: ").Append(X).Append("\n");
             sb.Append("  Y: ").Append(Y).Append("\n");
@@ -112,8 +112,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(ItemPosition input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.X == input.X ||
@@ -138,9 +139,9 @@ namespace PTV.Developer.Clients.binpacking.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.X.GetHashCode();
-                hashCode = hashCode * 59 + this.Y.GetHashCode();
-                hashCode = hashCode * 59 + this.Z.GetHashCode();
+                hashCode = (hashCode * 59) + this.X.GetHashCode();
+                hashCode = (hashCode * 59) + this.Y.GetHashCode();
+                hashCode = (hashCode * 59) + this.Z.GetHashCode();
                 return hashCode;
             }
         }
@@ -150,7 +151,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

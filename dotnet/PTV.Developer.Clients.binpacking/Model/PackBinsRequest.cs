@@ -45,9 +45,17 @@ namespace PTV.Developer.Clients.binpacking.Model
         public PackBinsRequest(List<Item> items = default(List<Item>), List<Bin> bins = default(List<Bin>), BinPackingOptions options = default(BinPackingOptions))
         {
             // to ensure "items" is required (not null)
-            this.Items = items ?? throw new ArgumentNullException("items is a required property for PackBinsRequest and cannot be null");
+            if (items == null)
+            {
+                throw new ArgumentNullException("items is a required property for PackBinsRequest and cannot be null");
+            }
+            this.Items = items;
             // to ensure "bins" is required (not null)
-            this.Bins = bins ?? throw new ArgumentNullException("bins is a required property for PackBinsRequest and cannot be null");
+            if (bins == null)
+            {
+                throw new ArgumentNullException("bins is a required property for PackBinsRequest and cannot be null");
+            }
+            this.Bins = bins;
             this.Options = options;
         }
 
@@ -55,14 +63,14 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// Describes a list of cuboid items that have to be packed into a bin. If there are many identical items that do not have to be differentiated by individual Item.id you should use the Item.numberOfInstances field. This provides better performance and packing than specifying each item on its own when this is not needed. Please note that along each axis the dimension should not exceed 5,000 cm and the sum of each dimension (i.e. x+y+z) should be greater than 50 cm. 
         /// </summary>
         /// <value>Describes a list of cuboid items that have to be packed into a bin. If there are many identical items that do not have to be differentiated by individual Item.id you should use the Item.numberOfInstances field. This provides better performance and packing than specifying each item on its own when this is not needed. Please note that along each axis the dimension should not exceed 5,000 cm and the sum of each dimension (i.e. x+y+z) should be greater than 50 cm. </value>
-        [DataMember(Name = "items", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "items", IsRequired = true, EmitDefaultValue = true)]
         public List<Item> Items { get; set; }
 
         /// <summary>
         /// Describes a list of cuboid bins into which items can be packed. Please note that along each axis the dimension should not exceed 5,750 cm and the maximum volume of a bin is 425,385,000 cm³. 
         /// </summary>
         /// <value>Describes a list of cuboid bins into which items can be packed. Please note that along each axis the dimension should not exceed 5,750 cm and the maximum volume of a bin is 425,385,000 cm³. </value>
-        [DataMember(Name = "bins", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "bins", IsRequired = true, EmitDefaultValue = true)]
         public List<Bin> Bins { get; set; }
 
         /// <summary>
@@ -77,7 +85,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class PackBinsRequest {\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("  Bins: ").Append(Bins).Append("\n");
@@ -113,8 +121,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(PackBinsRequest input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Items == input.Items ||
@@ -145,11 +154,17 @@ namespace PTV.Developer.Clients.binpacking.Model
             {
                 int hashCode = 41;
                 if (this.Items != null)
-                    hashCode = hashCode * 59 + this.Items.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Items.GetHashCode();
+                }
                 if (this.Bins != null)
-                    hashCode = hashCode * 59 + this.Bins.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Bins.GetHashCode();
+                }
                 if (this.Options != null)
-                    hashCode = hashCode * 59 + this.Options.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Options.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -159,7 +174,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

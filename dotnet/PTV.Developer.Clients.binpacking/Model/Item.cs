@@ -48,9 +48,17 @@ namespace PTV.Developer.Clients.binpacking.Model
         public Item(string id = default(string), BoxDimensions dimensions = default(BoxDimensions), int weight = default(int), ItemSurfaceLoads maximumSurfaceLoads = default(ItemSurfaceLoads), List<AllowedOrientation> allowedOrientations = default(List<AllowedOrientation>), int numberOfInstances = 1)
         {
             // to ensure "id" is required (not null)
-            this.Id = id ?? throw new ArgumentNullException("id is a required property for Item and cannot be null");
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for Item and cannot be null");
+            }
+            this.Id = id;
             // to ensure "dimensions" is required (not null)
-            this.Dimensions = dimensions ?? throw new ArgumentNullException("dimensions is a required property for Item and cannot be null");
+            if (dimensions == null)
+            {
+                throw new ArgumentNullException("dimensions is a required property for Item and cannot be null");
+            }
+            this.Dimensions = dimensions;
             this.Weight = weight;
             this.MaximumSurfaceLoads = maximumSurfaceLoads;
             this.AllowedOrientations = allowedOrientations;
@@ -61,20 +69,20 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// User provided ID for this item. Must be unique.
         /// </summary>
         /// <value>User provided ID for this item. Must be unique.</value>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Dimensions
         /// </summary>
-        [DataMember(Name = "dimensions", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "dimensions", IsRequired = true, EmitDefaultValue = true)]
         public BoxDimensions Dimensions { get; set; }
 
         /// <summary>
         /// Weight of this item in [g].
         /// </summary>
         /// <value>Weight of this item in [g].</value>
-        [DataMember(Name = "weight", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "weight", IsRequired = true, EmitDefaultValue = true)]
         public int Weight { get; set; }
 
         /// <summary>
@@ -103,7 +111,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Item {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Dimensions: ").Append(Dimensions).Append("\n");
@@ -142,8 +150,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(Item input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Id == input.Id ||
@@ -186,15 +195,23 @@ namespace PTV.Developer.Clients.binpacking.Model
             {
                 int hashCode = 41;
                 if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Dimensions != null)
-                    hashCode = hashCode * 59 + this.Dimensions.GetHashCode();
-                hashCode = hashCode * 59 + this.Weight.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Dimensions.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Weight.GetHashCode();
                 if (this.MaximumSurfaceLoads != null)
-                    hashCode = hashCode * 59 + this.MaximumSurfaceLoads.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MaximumSurfaceLoads.GetHashCode();
+                }
                 if (this.AllowedOrientations != null)
-                    hashCode = hashCode * 59 + this.AllowedOrientations.GetHashCode();
-                hashCode = hashCode * 59 + this.NumberOfInstances.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedOrientations.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.NumberOfInstances.GetHashCode();
                 return hashCode;
             }
         }
@@ -204,28 +221,28 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             // Weight (int) maximum
-            if(this.Weight > (int)80000000)
+            if (this.Weight > (int)80000000)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Weight, must be a value less than or equal to 80000000.", new [] { "Weight" });
             }
 
             // Weight (int) minimum
-            if(this.Weight < (int)0)
+            if (this.Weight < (int)0)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Weight, must be a value greater than or equal to 0.", new [] { "Weight" });
             }
 
             // NumberOfInstances (int) maximum
-            if(this.NumberOfInstances > (int)10000)
+            if (this.NumberOfInstances > (int)10000)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for NumberOfInstances, must be a value less than or equal to 10000.", new [] { "NumberOfInstances" });
             }
 
             // NumberOfInstances (int) minimum
-            if(this.NumberOfInstances < (int)1)
+            if (this.NumberOfInstances < (int)1)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for NumberOfInstances, must be a value greater than or equal to 1.", new [] { "NumberOfInstances" });
             }

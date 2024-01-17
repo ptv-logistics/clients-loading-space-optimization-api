@@ -29,9 +29,7 @@ namespace PTV.Developer.Clients.binpacking.Model
     /// Algorithmic focus for the bin packing operation: * &#x60;BUILD_LAYERS&#x60; - Focus on building horizontal layers of similar items. This will freely use available floor space with no special regard to loading meters. * &#x60;REDUCE_LOADING_METERS&#x60; - Focus on reducing loading meters. This might result in less efficient use of overall volume.
     /// </summary>
     /// <value>Algorithmic focus for the bin packing operation: * &#x60;BUILD_LAYERS&#x60; - Focus on building horizontal layers of similar items. This will freely use available floor space with no special regard to loading meters. * &#x60;REDUCE_LOADING_METERS&#x60; - Focus on reducing loading meters. This might result in less efficient use of overall volume.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum BinPackingFocus
     {
         /// <summary>

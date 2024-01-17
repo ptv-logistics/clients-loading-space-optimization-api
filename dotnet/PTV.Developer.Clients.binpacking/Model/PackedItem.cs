@@ -31,10 +31,11 @@ namespace PTV.Developer.Clients.binpacking.Model
     [DataContract(Name = "PackedItem")]
     public partial class PackedItem : IEquatable<PackedItem>, IValidatableObject
     {
+
         /// <summary>
         /// Gets or Sets Orientation
         /// </summary>
-        [DataMember(Name = "orientation", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "orientation", IsRequired = true, EmitDefaultValue = true)]
         public ItemOrientation Orientation { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PackedItem" /> class.
@@ -51,11 +52,23 @@ namespace PTV.Developer.Clients.binpacking.Model
         public PackedItem(string itemId = default(string), ItemPosition position = default(ItemPosition), BoxDimensions dimensions = default(BoxDimensions), ItemOrientation orientation = default(ItemOrientation))
         {
             // to ensure "itemId" is required (not null)
-            this.ItemId = itemId ?? throw new ArgumentNullException("itemId is a required property for PackedItem and cannot be null");
+            if (itemId == null)
+            {
+                throw new ArgumentNullException("itemId is a required property for PackedItem and cannot be null");
+            }
+            this.ItemId = itemId;
             // to ensure "position" is required (not null)
-            this.Position = position ?? throw new ArgumentNullException("position is a required property for PackedItem and cannot be null");
+            if (position == null)
+            {
+                throw new ArgumentNullException("position is a required property for PackedItem and cannot be null");
+            }
+            this.Position = position;
             // to ensure "dimensions" is required (not null)
-            this.Dimensions = dimensions ?? throw new ArgumentNullException("dimensions is a required property for PackedItem and cannot be null");
+            if (dimensions == null)
+            {
+                throw new ArgumentNullException("dimensions is a required property for PackedItem and cannot be null");
+            }
+            this.Dimensions = dimensions;
             this.Orientation = orientation;
         }
 
@@ -63,19 +76,19 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// ID of the item.
         /// </summary>
         /// <value>ID of the item.</value>
-        [DataMember(Name = "itemId", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "itemId", IsRequired = true, EmitDefaultValue = true)]
         public string ItemId { get; set; }
 
         /// <summary>
         /// Gets or Sets Position
         /// </summary>
-        [DataMember(Name = "position", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "position", IsRequired = true, EmitDefaultValue = true)]
         public ItemPosition Position { get; set; }
 
         /// <summary>
         /// Gets or Sets Dimensions
         /// </summary>
-        [DataMember(Name = "dimensions", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "dimensions", IsRequired = true, EmitDefaultValue = true)]
         public BoxDimensions Dimensions { get; set; }
 
         /// <summary>
@@ -84,7 +97,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class PackedItem {\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  Position: ").Append(Position).Append("\n");
@@ -121,8 +134,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(PackedItem input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ItemId == input.ItemId ||
@@ -155,12 +169,18 @@ namespace PTV.Developer.Clients.binpacking.Model
             {
                 int hashCode = 41;
                 if (this.ItemId != null)
-                    hashCode = hashCode * 59 + this.ItemId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemId.GetHashCode();
+                }
                 if (this.Position != null)
-                    hashCode = hashCode * 59 + this.Position.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Position.GetHashCode();
+                }
                 if (this.Dimensions != null)
-                    hashCode = hashCode * 59 + this.Dimensions.GetHashCode();
-                hashCode = hashCode * 59 + this.Orientation.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Dimensions.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Orientation.GetHashCode();
                 return hashCode;
             }
         }
@@ -170,7 +190,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

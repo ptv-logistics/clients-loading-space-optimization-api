@@ -31,6 +31,7 @@ namespace PTV.Developer.Clients.binpacking.Model
     [DataContract(Name = "StackingRestrictions")]
     public partial class StackingRestrictions : IEquatable<StackingRestrictions>, IValidatableObject
     {
+
         /// <summary>
         /// Gets or Sets RestrictionType
         /// </summary>
@@ -50,7 +51,11 @@ namespace PTV.Developer.Clients.binpacking.Model
         public StackingRestrictions(string itemId = default(string), StackingRestrictionType? restrictionType = default(StackingRestrictionType?), List<string> itemIds = default(List<string>))
         {
             // to ensure "itemId" is required (not null)
-            this.ItemId = itemId ?? throw new ArgumentNullException("itemId is a required property for StackingRestrictions and cannot be null");
+            if (itemId == null)
+            {
+                throw new ArgumentNullException("itemId is a required property for StackingRestrictions and cannot be null");
+            }
+            this.ItemId = itemId;
             this.RestrictionType = restrictionType;
             this.ItemIds = itemIds;
         }
@@ -59,7 +64,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// ID of the item.
         /// </summary>
         /// <value>ID of the item.</value>
-        [DataMember(Name = "itemId", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "itemId", IsRequired = true, EmitDefaultValue = true)]
         public string ItemId { get; set; }
 
         /// <summary>
@@ -75,7 +80,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class StackingRestrictions {\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  RestrictionType: ").Append(RestrictionType).Append("\n");
@@ -111,8 +116,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(StackingRestrictions input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ItemId == input.ItemId ||
@@ -141,10 +147,14 @@ namespace PTV.Developer.Clients.binpacking.Model
             {
                 int hashCode = 41;
                 if (this.ItemId != null)
-                    hashCode = hashCode * 59 + this.ItemId.GetHashCode();
-                hashCode = hashCode * 59 + this.RestrictionType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.RestrictionType.GetHashCode();
                 if (this.ItemIds != null)
-                    hashCode = hashCode * 59 + this.ItemIds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemIds.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -154,7 +164,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

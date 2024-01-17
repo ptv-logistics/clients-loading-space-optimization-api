@@ -49,9 +49,17 @@ namespace PTV.Developer.Clients.binpacking.Model
         public PackedBin(string binId = default(string), List<PackedItem> packedItems = default(List<PackedItem>), int totalItemsVolume = default(int), int totalItemsWeight = default(int), double usedWeightCapacity = default(double), double usedVolumeCapacity = default(double), double loadingMeters = default(double))
         {
             // to ensure "binId" is required (not null)
-            this.BinId = binId ?? throw new ArgumentNullException("binId is a required property for PackedBin and cannot be null");
+            if (binId == null)
+            {
+                throw new ArgumentNullException("binId is a required property for PackedBin and cannot be null");
+            }
+            this.BinId = binId;
             // to ensure "packedItems" is required (not null)
-            this.PackedItems = packedItems ?? throw new ArgumentNullException("packedItems is a required property for PackedBin and cannot be null");
+            if (packedItems == null)
+            {
+                throw new ArgumentNullException("packedItems is a required property for PackedBin and cannot be null");
+            }
+            this.PackedItems = packedItems;
             this.TotalItemsVolume = totalItemsVolume;
             this.TotalItemsWeight = totalItemsWeight;
             this.UsedVolumeCapacity = usedVolumeCapacity;
@@ -63,28 +71,28 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// ID of the bin.
         /// </summary>
         /// <value>ID of the bin.</value>
-        [DataMember(Name = "binId", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "binId", IsRequired = true, EmitDefaultValue = true)]
         public string BinId { get; set; }
 
         /// <summary>
         /// List of items that were packed into this bin.
         /// </summary>
         /// <value>List of items that were packed into this bin.</value>
-        [DataMember(Name = "packedItems", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "packedItems", IsRequired = true, EmitDefaultValue = true)]
         public List<PackedItem> PackedItems { get; set; }
 
         /// <summary>
         /// Accumulated volume of the items packed into the bin in [cm³]. This is the raw sum and does not try to capture wasted volume (e.g. gaps).
         /// </summary>
         /// <value>Accumulated volume of the items packed into the bin in [cm³]. This is the raw sum and does not try to capture wasted volume (e.g. gaps).</value>
-        [DataMember(Name = "totalItemsVolume", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "totalItemsVolume", IsRequired = true, EmitDefaultValue = true)]
         public int TotalItemsVolume { get; set; }
 
         /// <summary>
         /// Accumulated weight of items packed into this bin in [g].
         /// </summary>
         /// <value>Accumulated weight of items packed into this bin in [g].</value>
-        [DataMember(Name = "totalItemsWeight", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "totalItemsWeight", IsRequired = true, EmitDefaultValue = true)]
         public int TotalItemsWeight { get; set; }
 
         /// <summary>
@@ -98,14 +106,14 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// Percent of maximumVolumeCapacity and the accumulated volume of the items packed into this bin (totalItemsVolume). 
         /// </summary>
         /// <value>Percent of maximumVolumeCapacity and the accumulated volume of the items packed into this bin (totalItemsVolume). </value>
-        [DataMember(Name = "usedVolumeCapacity", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "usedVolumeCapacity", IsRequired = true, EmitDefaultValue = true)]
         public double UsedVolumeCapacity { get; set; }
 
         /// <summary>
         /// Item extent along the z-axis (length) from the back wall of the bin in [m]. 
         /// </summary>
         /// <value>Item extent along the z-axis (length) from the back wall of the bin in [m]. </value>
-        [DataMember(Name = "loadingMeters", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "loadingMeters", IsRequired = true, EmitDefaultValue = true)]
         public double LoadingMeters { get; set; }
 
         /// <summary>
@@ -114,7 +122,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class PackedBin {\n");
             sb.Append("  BinId: ").Append(BinId).Append("\n");
             sb.Append("  PackedItems: ").Append(PackedItems).Append("\n");
@@ -154,8 +162,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         public bool Equals(PackedBin input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.BinId == input.BinId ||
@@ -200,14 +209,18 @@ namespace PTV.Developer.Clients.binpacking.Model
             {
                 int hashCode = 41;
                 if (this.BinId != null)
-                    hashCode = hashCode * 59 + this.BinId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BinId.GetHashCode();
+                }
                 if (this.PackedItems != null)
-                    hashCode = hashCode * 59 + this.PackedItems.GetHashCode();
-                hashCode = hashCode * 59 + this.TotalItemsVolume.GetHashCode();
-                hashCode = hashCode * 59 + this.TotalItemsWeight.GetHashCode();
-                hashCode = hashCode * 59 + this.UsedWeightCapacity.GetHashCode();
-                hashCode = hashCode * 59 + this.UsedVolumeCapacity.GetHashCode();
-                hashCode = hashCode * 59 + this.LoadingMeters.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PackedItems.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.TotalItemsVolume.GetHashCode();
+                hashCode = (hashCode * 59) + this.TotalItemsWeight.GetHashCode();
+                hashCode = (hashCode * 59) + this.UsedWeightCapacity.GetHashCode();
+                hashCode = (hashCode * 59) + this.UsedVolumeCapacity.GetHashCode();
+                hashCode = (hashCode * 59) + this.LoadingMeters.GetHashCode();
                 return hashCode;
             }
         }
@@ -217,46 +230,46 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             // TotalItemsVolume (int) minimum
-            if(this.TotalItemsVolume < (int)0)
+            if (this.TotalItemsVolume < (int)0)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TotalItemsVolume, must be a value greater than or equal to 0.", new [] { "TotalItemsVolume" });
             }
 
             // TotalItemsWeight (int) minimum
-            if(this.TotalItemsWeight < (int)0)
+            if (this.TotalItemsWeight < (int)0)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TotalItemsWeight, must be a value greater than or equal to 0.", new [] { "TotalItemsWeight" });
             }
 
             // UsedWeightCapacity (double) maximum
-            if(this.UsedWeightCapacity > (double)100)
+            if (this.UsedWeightCapacity > (double)100)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for UsedWeightCapacity, must be a value less than or equal to 100.", new [] { "UsedWeightCapacity" });
             }
 
             // UsedWeightCapacity (double) minimum
-            if(this.UsedWeightCapacity < (double)0)
+            if (this.UsedWeightCapacity < (double)0)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for UsedWeightCapacity, must be a value greater than or equal to 0.", new [] { "UsedWeightCapacity" });
             }
 
             // UsedVolumeCapacity (double) maximum
-            if(this.UsedVolumeCapacity > (double)100)
+            if (this.UsedVolumeCapacity > (double)100)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for UsedVolumeCapacity, must be a value less than or equal to 100.", new [] { "UsedVolumeCapacity" });
             }
 
             // UsedVolumeCapacity (double) minimum
-            if(this.UsedVolumeCapacity < (double)0)
+            if (this.UsedVolumeCapacity < (double)0)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for UsedVolumeCapacity, must be a value greater than or equal to 0.", new [] { "UsedVolumeCapacity" });
             }
 
             // LoadingMeters (double) minimum
-            if(this.LoadingMeters < (double)0)
+            if (this.LoadingMeters < (double)0)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LoadingMeters, must be a value greater than or equal to 0.", new [] { "LoadingMeters" });
             }
