@@ -40,7 +40,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// Initializes a new instance of the <see cref="Stop" /> class.
         /// </summary>
         /// <param name="itemsToUnload">Defines the list of items to unload. (required).</param>
-        public Stop(List<ItemsToUnload> itemsToUnload = default(List<ItemsToUnload>))
+        public Stop(List<ItemsToUnload> itemsToUnload = default)
         {
             // to ensure "itemsToUnload" is required (not null)
             if (itemsToUnload == null)

@@ -42,7 +42,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <param name="x">Extent along x-axis (width) in [cm]. (required).</param>
         /// <param name="y">Extent along y-axis (height) in [cm]. (required).</param>
         /// <param name="z">Extent along z-axis (length) in [cm]. (required).</param>
-        public BoxDimensions(int? x = default(int?), int? y = default(int?), int? z = default(int?))
+        public BoxDimensions(int? x = default, int? y = default, int? z = default)
         {
             // to ensure "x" is required (not null)
             if (x == null)

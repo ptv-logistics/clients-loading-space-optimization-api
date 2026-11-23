@@ -40,7 +40,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// Initializes a new instance of the <see cref="PackedBinsIdentifier" /> class.
         /// </summary>
         /// <param name="id">The ID of the packed bins. (required).</param>
-        public PackedBinsIdentifier(Guid? id = default(Guid?))
+        public PackedBinsIdentifier(Guid? id = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)

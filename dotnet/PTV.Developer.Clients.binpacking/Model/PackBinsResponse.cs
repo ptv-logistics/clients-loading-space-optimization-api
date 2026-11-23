@@ -36,7 +36,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="packedBins">List with one entry for each bin that was used for packing items in this solution..</param>
         /// <param name="itemsNotPacked">List of items and its quantities, that could not be processed in this request. .</param>
-        public PackBinsResponse(List<PackedBin> packedBins = default(List<PackedBin>), List<ItemNotPacked> itemsNotPacked = default(List<ItemNotPacked>))
+        public PackBinsResponse(List<PackedBin> packedBins = default, List<ItemNotPacked> itemsNotPacked = default)
         {
             this.PackedBins = packedBins;
             this.ItemsNotPacked = itemsNotPacked;

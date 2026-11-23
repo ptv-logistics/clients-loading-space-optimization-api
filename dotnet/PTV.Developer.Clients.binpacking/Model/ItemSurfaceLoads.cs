@@ -37,7 +37,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <param name="x">Surface load acting on the x-axis (width) of the item in [g/cm²]..</param>
         /// <param name="y">Surface load acting on the y-axis (height) of the item in [g/cm²]..</param>
         /// <param name="z">Surface load acting on the z-axis (length) of the item in [g/cm²]..</param>
-        public ItemSurfaceLoads(double? x = default(double?), double? y = default(double?), double? z = default(double?))
+        public ItemSurfaceLoads(double? x = default, double? y = default, double? z = default)
         {
             this.X = x;
             this.Y = y;

@@ -44,7 +44,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <param name="dimensions">dimensions (required).</param>
         /// <param name="maximumVolumeCapacity">Maximum accumulated volume of items that can be packed into a single bin irrespective of bin dimensions in [cm³]. This value must never exceed the natural inner volume specified by dimensions. If not given, defaults to the natural inner volume specified by dimensions..</param>
         /// <param name="maximumWeightCapacity">Maximum accumulated weight of items that can be packed into a single bin in [g]. If not given the weight capacity is assumed to be the maximum value..</param>
-        public Bin(string id = default(string), int? numberOfInstances = 1, BoxDimensions dimensions = default(BoxDimensions), int? maximumVolumeCapacity = default(int?), int? maximumWeightCapacity = default(int?))
+        public Bin(string id = default, int? numberOfInstances = 1, BoxDimensions dimensions = default, int? maximumVolumeCapacity = default, int? maximumWeightCapacity = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)

@@ -41,7 +41,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="id">The ID of the item. (required).</param>
         /// <param name="numberOfInstances">Number of instances of the item that have not been packed. (required).</param>
-        public ItemNotPacked(string id = default(string), int? numberOfInstances = default(int?))
+        public ItemNotPacked(string id = default, int? numberOfInstances = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)

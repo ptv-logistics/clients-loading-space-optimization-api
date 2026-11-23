@@ -42,7 +42,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <param name="items">Describes a list of cuboid items that have to be packed into a bin. If there are many identical items that do not have to be differentiated by individual Item.id you should use the Item.numberOfInstances field. This provides better performance and packing than specifying each item on its own when this is not needed. Please note that along each axis the dimension should not exceed 5,000 cm and the sum of each dimension (i.e. x+y+z) should be greater than 50 cm.  (required).</param>
         /// <param name="bins">Describes a list of cuboid bins into which items can be packed. Please note that along each axis the dimension should not exceed 5,750 cm and the maximum volume of a bin is 425,385,000 cm³.  (required).</param>
         /// <param name="options">options.</param>
-        public PackBinsRequest(List<Item> items = default(List<Item>), List<Bin> bins = default(List<Bin>), BinPackingOptions options = default(BinPackingOptions))
+        public PackBinsRequest(List<Item> items = default, List<Bin> bins = default, BinPackingOptions options = default)
         {
             // to ensure "items" is required (not null)
             if (items == null)

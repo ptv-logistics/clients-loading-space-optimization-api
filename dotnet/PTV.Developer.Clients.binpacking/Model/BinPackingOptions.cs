@@ -36,7 +36,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="unloadingSequence">Specifies the sequence of items or group of items to be unloaded. The first element of this sequence will be unloaded first (and loaded last). By default items of a stop will not be stacked on top of items of the subsequent stop. This may be useful when unloading all items of a stop with a hand truck. To change this behavior specify &#39;stackOnTopOfNextStops&#39;. Please note that this option can only be used the case a single bin is defined..</param>
         /// <param name="stackingOptions">stackingOptions.</param>
-        public BinPackingOptions(List<Stop> unloadingSequence = default(List<Stop>), StackingOptions stackingOptions = default(StackingOptions))
+        public BinPackingOptions(List<Stop> unloadingSequence = default, StackingOptions stackingOptions = default)
         {
             this.UnloadingSequence = unloadingSequence;
             this.StackingOptions = stackingOptions;

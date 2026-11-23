@@ -46,7 +46,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <param name="usedWeightCapacity">Percent of maximumWeightCapacity and the accumulated weight of the items packed into this bin (totalItemsWeight). Not returned if maximumWeightCapacity was not specified. .</param>
         /// <param name="usedVolumeCapacity">Percent of maximumVolumeCapacity and the accumulated volume of the items packed into this bin (totalItemsVolume).  (required).</param>
         /// <param name="loadingMeters">Item extent along the z-axis (length) from the back wall of the bin in [m].  (required).</param>
-        public PackedBin(string binId = default(string), List<PackedItem> packedItems = default(List<PackedItem>), int? totalItemsVolume = default(int?), int? totalItemsWeight = default(int?), double? usedWeightCapacity = default(double?), double? usedVolumeCapacity = default(double?), double? loadingMeters = default(double?))
+        public PackedBin(string binId = default, List<PackedItem> packedItems = default, int? totalItemsVolume = default, int? totalItemsWeight = default, double? usedWeightCapacity = default, double? usedVolumeCapacity = default, double? loadingMeters = default)
         {
             // to ensure "binId" is required (not null)
             if (binId == null)

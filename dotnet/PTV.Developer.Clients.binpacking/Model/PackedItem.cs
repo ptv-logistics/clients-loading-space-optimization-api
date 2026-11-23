@@ -49,7 +49,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <param name="position">position (required).</param>
         /// <param name="dimensions">dimensions (required).</param>
         /// <param name="orientation">orientation (required).</param>
-        public PackedItem(string itemId = default(string), ItemPosition position = default(ItemPosition), BoxDimensions dimensions = default(BoxDimensions), ItemOrientation orientation = default(ItemOrientation))
+        public PackedItem(string itemId = default, ItemPosition position = default, BoxDimensions dimensions = default, ItemOrientation orientation = default)
         {
             // to ensure "itemId" is required (not null)
             if (itemId == null)

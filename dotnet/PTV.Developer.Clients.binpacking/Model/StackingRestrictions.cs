@@ -48,7 +48,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <param name="itemId">ID of the item. (required).</param>
         /// <param name="restrictionType">restrictionType.</param>
         /// <param name="itemIds">Specifies the list of Item.id to which the restrictionType applies..</param>
-        public StackingRestrictions(string itemId = default(string), StackingRestrictionType? restrictionType = default(StackingRestrictionType?), List<string> itemIds = default(List<string>))
+        public StackingRestrictions(string itemId = default, StackingRestrictionType? restrictionType = default, List<string> itemIds = default)
         {
             // to ensure "itemId" is required (not null)
             if (itemId == null)

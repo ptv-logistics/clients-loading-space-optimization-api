@@ -37,7 +37,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <param name="stackingRestrictions">Defines all the stacking restrictions between items..</param>
         /// <param name="stackOnTopOfNextStops">Specifies if it is allowed to stack items of a stop above items of the next stops. Only relevant if unloadingSequence is used. (default to false).</param>
         /// <param name="stackOnTopOfMultipleStacks">Specifies whether larger items can be placed across multiple adjacent stacks of the same height, even if those stacks contain different items. By default (when false), items can only be stacked on top of adjacent stacks containing the same items.  (default to false).</param>
-        public StackingOptions(List<StackingRestrictions> stackingRestrictions = default(List<StackingRestrictions>), bool? stackOnTopOfNextStops = false, bool? stackOnTopOfMultipleStacks = false)
+        public StackingOptions(List<StackingRestrictions> stackingRestrictions = default, bool? stackOnTopOfNextStops = false, bool? stackOnTopOfMultipleStacks = false)
         {
             this.StackingRestrictions = stackingRestrictions;
             // use default value if no "stackOnTopOfNextStops" provided
@@ -57,7 +57,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// Specifies if it is allowed to stack items of a stop above items of the next stops. Only relevant if unloadingSequence is used.
         /// </summary>
         /// <value>Specifies if it is allowed to stack items of a stop above items of the next stops. Only relevant if unloadingSequence is used.</value>
-        /// <example>false</example>
+        /*
+        <example>false</example>
+        */
         [DataMember(Name = "stackOnTopOfNextStops", EmitDefaultValue = true)]
         public bool? StackOnTopOfNextStops { get; set; }
 
@@ -65,7 +67,9 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// Specifies whether larger items can be placed across multiple adjacent stacks of the same height, even if those stacks contain different items. By default (when false), items can only be stacked on top of adjacent stacks containing the same items. 
         /// </summary>
         /// <value>Specifies whether larger items can be placed across multiple adjacent stacks of the same height, even if those stacks contain different items. By default (when false), items can only be stacked on top of adjacent stacks containing the same items. </value>
-        /// <example>false</example>
+        /*
+        <example>false</example>
+        */
         [DataMember(Name = "stackOnTopOfMultipleStacks", EmitDefaultValue = true)]
         public bool? StackOnTopOfMultipleStacks { get; set; }
 

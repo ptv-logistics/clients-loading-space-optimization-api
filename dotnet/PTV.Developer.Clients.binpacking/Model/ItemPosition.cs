@@ -42,7 +42,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// <param name="x">Offset along x-axis in [cm]. Equal to the shift along the width of the bin from left to right. (required).</param>
         /// <param name="y">Offset along y-axis in [cm]. Equal to the height from the floor of the bin. (required).</param>
         /// <param name="z">Offset along z-axis in [cm]. Equal to the shift along the length of the bin from back to front. (required).</param>
-        public ItemPosition(int? x = default(int?), int? y = default(int?), int? z = default(int?))
+        public ItemPosition(int? x = default, int? y = default, int? z = default)
         {
             // to ensure "x" is required (not null)
             if (x == null)

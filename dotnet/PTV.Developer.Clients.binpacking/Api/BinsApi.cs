@@ -83,7 +83,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="maximumPollingPeriod">If the calculation is still running, this operation will be blocked and will not return before this period [ms] expires. If the calculation is completed, it will return immediately.  The default of 0 ms will cause the operation to return immediately in any case. Use a value &gt; 0 to implement long polling to reduce the number of requests. See the [tutorial](https://developer.myptv.com/en/resources/tutorials/general/how-use-asynchronous-requests-ptv-developer-apis) on asynchronous requests for details.  (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>StatusResponse</returns>
-        StatusResponse GetStatus(Guid? id, int? maximumPollingPeriod = default(int?), int operationIndex = 0);
+        StatusResponse GetStatus(Guid? id, int? maximumPollingPeriod = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -96,7 +96,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="maximumPollingPeriod">If the calculation is still running, this operation will be blocked and will not return before this period [ms] expires. If the calculation is completed, it will return immediately.  The default of 0 ms will cause the operation to return immediately in any case. Use a value &gt; 0 to implement long polling to reduce the number of requests. See the [tutorial](https://developer.myptv.com/en/resources/tutorials/general/how-use-asynchronous-requests-ptv-developer-apis) on asynchronous requests for details.  (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of StatusResponse</returns>
-        ApiResponse<StatusResponse> GetStatusWithHttpInfo(Guid? id, int? maximumPollingPeriod = default(int?), int operationIndex = 0);
+        ApiResponse<StatusResponse> GetStatusWithHttpInfo(Guid? id, int? maximumPollingPeriod = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -108,7 +108,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="focus"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PackBinsResponse</returns>
-        PackBinsResponse PackBins(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0);
+        PackBinsResponse PackBins(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -121,7 +121,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="focus"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PackBinsResponse</returns>
-        ApiResponse<PackBinsResponse> PackBinsWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0);
+        ApiResponse<PackBinsResponse> PackBinsWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -133,7 +133,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="focus"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PackedBinsIdentifier</returns>
-        PackedBinsIdentifier StartBinPacking(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0);
+        PackedBinsIdentifier StartBinPacking(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -146,7 +146,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="focus"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PackedBinsIdentifier</returns>
-        ApiResponse<PackedBinsIdentifier> StartBinPackingWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0);
+        ApiResponse<PackedBinsIdentifier> StartBinPackingWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -167,7 +167,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task CancelBinPackingAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task CancelBinPackingAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -180,7 +180,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CancelBinPackingWithHttpInfoAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> CancelBinPackingWithHttpInfoAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -192,7 +192,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PackBinsResponse</returns>
-        System.Threading.Tasks.Task<PackBinsResponse> GetPackedBinsAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PackBinsResponse> GetPackedBinsAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -205,7 +205,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PackBinsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PackBinsResponse>> GetPackedBinsWithHttpInfoAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PackBinsResponse>> GetPackedBinsWithHttpInfoAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -218,7 +218,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StatusResponse</returns>
-        System.Threading.Tasks.Task<StatusResponse> GetStatusAsync(Guid? id, int? maximumPollingPeriod = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StatusResponse> GetStatusAsync(Guid? id, int? maximumPollingPeriod = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -232,7 +232,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StatusResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StatusResponse>> GetStatusWithHttpInfoAsync(Guid? id, int? maximumPollingPeriod = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StatusResponse>> GetStatusWithHttpInfoAsync(Guid? id, int? maximumPollingPeriod = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -245,7 +245,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PackBinsResponse</returns>
-        System.Threading.Tasks.Task<PackBinsResponse> PackBinsAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PackBinsResponse> PackBinsAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -259,7 +259,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PackBinsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PackBinsResponse>> PackBinsWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PackBinsResponse>> PackBinsWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -272,7 +272,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PackedBinsIdentifier</returns>
-        System.Threading.Tasks.Task<PackedBinsIdentifier> StartBinPackingAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PackedBinsIdentifier> StartBinPackingAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -286,7 +286,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PackedBinsIdentifier)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PackedBinsIdentifier>> StartBinPackingWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PackedBinsIdentifier>> StartBinPackingWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -445,6 +445,7 @@ namespace PTV.Developer.Clients.binpacking.Api
             };
 
             var localVarContentType = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -489,7 +490,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task CancelBinPackingAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task CancelBinPackingAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             await CancelBinPackingWithHttpInfoAsync(id, operationIndex, cancellationToken).ConfigureAwait(false);
         }
@@ -502,7 +503,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<Object>> CancelBinPackingWithHttpInfoAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<Object>> CancelBinPackingWithHttpInfoAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -598,6 +599,7 @@ namespace PTV.Developer.Clients.binpacking.Api
             };
 
             var localVarContentType = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -642,7 +644,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PackBinsResponse</returns>
-        public async System.Threading.Tasks.Task<PackBinsResponse> GetPackedBinsAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PackBinsResponse> GetPackedBinsAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse> localVarResponse = await GetPackedBinsWithHttpInfoAsync(id, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -656,7 +658,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PackBinsResponse)</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse>> GetPackedBinsWithHttpInfoAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse>> GetPackedBinsWithHttpInfoAsync(Guid? id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -721,7 +723,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="maximumPollingPeriod">If the calculation is still running, this operation will be blocked and will not return before this period [ms] expires. If the calculation is completed, it will return immediately.  The default of 0 ms will cause the operation to return immediately in any case. Use a value &gt; 0 to implement long polling to reduce the number of requests. See the [tutorial](https://developer.myptv.com/en/resources/tutorials/general/how-use-asynchronous-requests-ptv-developer-apis) on asynchronous requests for details.  (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>StatusResponse</returns>
-        public StatusResponse GetStatus(Guid? id, int? maximumPollingPeriod = default(int?), int operationIndex = 0)
+        public StatusResponse GetStatus(Guid? id, int? maximumPollingPeriod = default, int operationIndex = 0)
         {
             PTV.Developer.Clients.binpacking.Client.ApiResponse<StatusResponse> localVarResponse = GetStatusWithHttpInfo(id, maximumPollingPeriod);
             return localVarResponse.Data;
@@ -735,7 +737,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="maximumPollingPeriod">If the calculation is still running, this operation will be blocked and will not return before this period [ms] expires. If the calculation is completed, it will return immediately.  The default of 0 ms will cause the operation to return immediately in any case. Use a value &gt; 0 to implement long polling to reduce the number of requests. See the [tutorial](https://developer.myptv.com/en/resources/tutorials/general/how-use-asynchronous-requests-ptv-developer-apis) on asynchronous requests for details.  (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of StatusResponse</returns>
-        public PTV.Developer.Clients.binpacking.Client.ApiResponse<StatusResponse> GetStatusWithHttpInfo(Guid? id, int? maximumPollingPeriod = default(int?), int operationIndex = 0)
+        public PTV.Developer.Clients.binpacking.Client.ApiResponse<StatusResponse> GetStatusWithHttpInfo(Guid? id, int? maximumPollingPeriod = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -754,6 +756,7 @@ namespace PTV.Developer.Clients.binpacking.Api
             };
 
             var localVarContentType = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -803,7 +806,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StatusResponse</returns>
-        public async System.Threading.Tasks.Task<StatusResponse> GetStatusAsync(Guid? id, int? maximumPollingPeriod = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StatusResponse> GetStatusAsync(Guid? id, int? maximumPollingPeriod = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             PTV.Developer.Clients.binpacking.Client.ApiResponse<StatusResponse> localVarResponse = await GetStatusWithHttpInfoAsync(id, maximumPollingPeriod, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -818,7 +821,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StatusResponse)</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<StatusResponse>> GetStatusWithHttpInfoAsync(Guid? id, int? maximumPollingPeriod = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<StatusResponse>> GetStatusWithHttpInfoAsync(Guid? id, int? maximumPollingPeriod = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -887,7 +890,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="focus"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PackBinsResponse</returns>
-        public PackBinsResponse PackBins(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0)
+        public PackBinsResponse PackBins(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0)
         {
             PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse> localVarResponse = PackBinsWithHttpInfo(packBinsRequest, focus);
             return localVarResponse.Data;
@@ -901,7 +904,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="focus"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PackBinsResponse</returns>
-        public PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse> PackBinsWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0)
+        public PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse> PackBinsWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0)
         {
             // verify the required parameter 'packBinsRequest' is set
             if (packBinsRequest == null)
@@ -921,6 +924,7 @@ namespace PTV.Developer.Clients.binpacking.Api
             };
 
             var localVarContentType = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -970,7 +974,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PackBinsResponse</returns>
-        public async System.Threading.Tasks.Task<PackBinsResponse> PackBinsAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PackBinsResponse> PackBinsAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse> localVarResponse = await PackBinsWithHttpInfoAsync(packBinsRequest, focus, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -985,7 +989,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PackBinsResponse)</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse>> PackBinsWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<PackBinsResponse>> PackBinsWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'packBinsRequest' is set
             if (packBinsRequest == null)
@@ -1055,7 +1059,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="focus"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PackedBinsIdentifier</returns>
-        public PackedBinsIdentifier StartBinPacking(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0)
+        public PackedBinsIdentifier StartBinPacking(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0)
         {
             PTV.Developer.Clients.binpacking.Client.ApiResponse<PackedBinsIdentifier> localVarResponse = StartBinPackingWithHttpInfo(packBinsRequest, focus);
             return localVarResponse.Data;
@@ -1069,7 +1073,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="focus"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PackedBinsIdentifier</returns>
-        public PTV.Developer.Clients.binpacking.Client.ApiResponse<PackedBinsIdentifier> StartBinPackingWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0)
+        public PTV.Developer.Clients.binpacking.Client.ApiResponse<PackedBinsIdentifier> StartBinPackingWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0)
         {
             // verify the required parameter 'packBinsRequest' is set
             if (packBinsRequest == null)
@@ -1089,6 +1093,7 @@ namespace PTV.Developer.Clients.binpacking.Api
             };
 
             var localVarContentType = PTV.Developer.Clients.binpacking.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1138,7 +1143,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PackedBinsIdentifier</returns>
-        public async System.Threading.Tasks.Task<PackedBinsIdentifier> StartBinPackingAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PackedBinsIdentifier> StartBinPackingAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             PTV.Developer.Clients.binpacking.Client.ApiResponse<PackedBinsIdentifier> localVarResponse = await StartBinPackingWithHttpInfoAsync(packBinsRequest, focus, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1153,7 +1158,7 @@ namespace PTV.Developer.Clients.binpacking.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PackedBinsIdentifier)</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<PackedBinsIdentifier>> StartBinPackingWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default(BinPackingFocus?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.binpacking.Client.ApiResponse<PackedBinsIdentifier>> StartBinPackingWithHttpInfoAsync(PackBinsRequest packBinsRequest, BinPackingFocus? focus = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'packBinsRequest' is set
             if (packBinsRequest == null)

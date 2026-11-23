@@ -41,7 +41,7 @@ namespace PTV.Developer.Clients.binpacking.Model
         /// </summary>
         /// <param name="itemId">ID of the item. (required).</param>
         /// <param name="numberOfInstances">The amount of instances of the item to unload. (default to 1).</param>
-        public ItemsToUnload(string itemId = default(string), int? numberOfInstances = 1)
+        public ItemsToUnload(string itemId = default, int? numberOfInstances = 1)
         {
             // to ensure "itemId" is required (not null)
             if (itemId == null)
