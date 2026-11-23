@@ -44,33 +44,40 @@ import com.ptvgroup.developer.client.binpacking.ApiClient;
   PackedBin.JSON_PROPERTY_USED_VOLUME_CAPACITY,
   PackedBin.JSON_PROPERTY_LOADING_METERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-28T13:28:30.257776203Z[Etc/UTC]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:20:38.001126947Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class PackedBin {
   public static final String JSON_PROPERTY_BIN_ID = "binId";
+  @javax.annotation.Nonnull
   private String binId;
 
   public static final String JSON_PROPERTY_PACKED_ITEMS = "packedItems";
-  private List<PackedItem> packedItems = new ArrayList<>();
+  @javax.annotation.Nonnull
+  private List<PackedItem> packedItems;
 
   public static final String JSON_PROPERTY_TOTAL_ITEMS_VOLUME = "totalItemsVolume";
+  @javax.annotation.Nonnull
   private Integer totalItemsVolume;
 
   public static final String JSON_PROPERTY_TOTAL_ITEMS_WEIGHT = "totalItemsWeight";
+  @javax.annotation.Nonnull
   private Integer totalItemsWeight;
 
   public static final String JSON_PROPERTY_USED_WEIGHT_CAPACITY = "usedWeightCapacity";
+  @javax.annotation.Nullable
   private Double usedWeightCapacity;
 
   public static final String JSON_PROPERTY_USED_VOLUME_CAPACITY = "usedVolumeCapacity";
+  @javax.annotation.Nonnull
   private Double usedVolumeCapacity;
 
   public static final String JSON_PROPERTY_LOADING_METERS = "loadingMeters";
+  @javax.annotation.Nonnull
   private Double loadingMeters;
 
   public PackedBin() { 
   }
 
-  public PackedBin binId(String binId) {
+  public PackedBin binId(@javax.annotation.Nonnull String binId) {
     this.binId = binId;
     return this;
   }
@@ -80,21 +87,21 @@ public class PackedBin {
    * @return binId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_BIN_ID)
+  @JsonProperty(value = JSON_PROPERTY_BIN_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getBinId() {
     return binId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_BIN_ID)
+  @JsonProperty(value = JSON_PROPERTY_BIN_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setBinId(String binId) {
+  public void setBinId(@javax.annotation.Nonnull String binId) {
     this.binId = binId;
   }
 
 
-  public PackedBin packedItems(List<PackedItem> packedItems) {
+  public PackedBin packedItems(@javax.annotation.Nonnull List<PackedItem> packedItems) {
     this.packedItems = packedItems;
     return this;
   }
@@ -112,21 +119,21 @@ public class PackedBin {
    * @return packedItems
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PACKED_ITEMS)
+  @JsonProperty(value = JSON_PROPERTY_PACKED_ITEMS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<PackedItem> getPackedItems() {
     return packedItems;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PACKED_ITEMS)
+  @JsonProperty(value = JSON_PROPERTY_PACKED_ITEMS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPackedItems(List<PackedItem> packedItems) {
+  public void setPackedItems(@javax.annotation.Nonnull List<PackedItem> packedItems) {
     this.packedItems = packedItems;
   }
 
 
-  public PackedBin totalItemsVolume(Integer totalItemsVolume) {
+  public PackedBin totalItemsVolume(@javax.annotation.Nonnull Integer totalItemsVolume) {
     this.totalItemsVolume = totalItemsVolume;
     return this;
   }
@@ -137,21 +144,21 @@ public class PackedBin {
    * @return totalItemsVolume
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TOTAL_ITEMS_VOLUME)
+  @JsonProperty(value = JSON_PROPERTY_TOTAL_ITEMS_VOLUME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getTotalItemsVolume() {
     return totalItemsVolume;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOTAL_ITEMS_VOLUME)
+  @JsonProperty(value = JSON_PROPERTY_TOTAL_ITEMS_VOLUME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTotalItemsVolume(Integer totalItemsVolume) {
+  public void setTotalItemsVolume(@javax.annotation.Nonnull Integer totalItemsVolume) {
     this.totalItemsVolume = totalItemsVolume;
   }
 
 
-  public PackedBin totalItemsWeight(Integer totalItemsWeight) {
+  public PackedBin totalItemsWeight(@javax.annotation.Nonnull Integer totalItemsWeight) {
     this.totalItemsWeight = totalItemsWeight;
     return this;
   }
@@ -162,21 +169,21 @@ public class PackedBin {
    * @return totalItemsWeight
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TOTAL_ITEMS_WEIGHT)
+  @JsonProperty(value = JSON_PROPERTY_TOTAL_ITEMS_WEIGHT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getTotalItemsWeight() {
     return totalItemsWeight;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOTAL_ITEMS_WEIGHT)
+  @JsonProperty(value = JSON_PROPERTY_TOTAL_ITEMS_WEIGHT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTotalItemsWeight(Integer totalItemsWeight) {
+  public void setTotalItemsWeight(@javax.annotation.Nonnull Integer totalItemsWeight) {
     this.totalItemsWeight = totalItemsWeight;
   }
 
 
-  public PackedBin usedWeightCapacity(Double usedWeightCapacity) {
+  public PackedBin usedWeightCapacity(@javax.annotation.Nullable Double usedWeightCapacity) {
     this.usedWeightCapacity = usedWeightCapacity;
     return this;
   }
@@ -188,21 +195,21 @@ public class PackedBin {
    * @return usedWeightCapacity
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USED_WEIGHT_CAPACITY)
+  @JsonProperty(value = JSON_PROPERTY_USED_WEIGHT_CAPACITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getUsedWeightCapacity() {
     return usedWeightCapacity;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_USED_WEIGHT_CAPACITY)
+  @JsonProperty(value = JSON_PROPERTY_USED_WEIGHT_CAPACITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsedWeightCapacity(Double usedWeightCapacity) {
+  public void setUsedWeightCapacity(@javax.annotation.Nullable Double usedWeightCapacity) {
     this.usedWeightCapacity = usedWeightCapacity;
   }
 
 
-  public PackedBin usedVolumeCapacity(Double usedVolumeCapacity) {
+  public PackedBin usedVolumeCapacity(@javax.annotation.Nonnull Double usedVolumeCapacity) {
     this.usedVolumeCapacity = usedVolumeCapacity;
     return this;
   }
@@ -214,21 +221,21 @@ public class PackedBin {
    * @return usedVolumeCapacity
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_USED_VOLUME_CAPACITY)
+  @JsonProperty(value = JSON_PROPERTY_USED_VOLUME_CAPACITY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Double getUsedVolumeCapacity() {
     return usedVolumeCapacity;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_USED_VOLUME_CAPACITY)
+  @JsonProperty(value = JSON_PROPERTY_USED_VOLUME_CAPACITY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUsedVolumeCapacity(Double usedVolumeCapacity) {
+  public void setUsedVolumeCapacity(@javax.annotation.Nonnull Double usedVolumeCapacity) {
     this.usedVolumeCapacity = usedVolumeCapacity;
   }
 
 
-  public PackedBin loadingMeters(Double loadingMeters) {
+  public PackedBin loadingMeters(@javax.annotation.Nonnull Double loadingMeters) {
     this.loadingMeters = loadingMeters;
     return this;
   }
@@ -239,16 +246,16 @@ public class PackedBin {
    * @return loadingMeters
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LOADING_METERS)
+  @JsonProperty(value = JSON_PROPERTY_LOADING_METERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Double getLoadingMeters() {
     return loadingMeters;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LOADING_METERS)
+  @JsonProperty(value = JSON_PROPERTY_LOADING_METERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLoadingMeters(Double loadingMeters) {
+  public void setLoadingMeters(@javax.annotation.Nonnull Double loadingMeters) {
     this.loadingMeters = loadingMeters;
   }
 
@@ -299,10 +306,7 @@ public class PackedBin {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -339,42 +343,42 @@ public class PackedBin {
 
     // add `binId` to the URL query string
     if (getBinId() != null) {
-      joiner.add(String.format("%sbinId%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getBinId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sbinId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getBinId()))));
     }
 
     // add `packedItems` to the URL query string
     if (getPackedItems() != null) {
       for (int i = 0; i < getPackedItems().size(); i++) {
         if (getPackedItems().get(i) != null) {
-          joiner.add(getPackedItems().get(i).toUrlQueryString(String.format("%spackedItems%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getPackedItems().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%spackedItems%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
 
     // add `totalItemsVolume` to the URL query string
     if (getTotalItemsVolume() != null) {
-      joiner.add(String.format("%stotalItemsVolume%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getTotalItemsVolume()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%stotalItemsVolume%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTotalItemsVolume()))));
     }
 
     // add `totalItemsWeight` to the URL query string
     if (getTotalItemsWeight() != null) {
-      joiner.add(String.format("%stotalItemsWeight%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getTotalItemsWeight()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%stotalItemsWeight%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTotalItemsWeight()))));
     }
 
     // add `usedWeightCapacity` to the URL query string
     if (getUsedWeightCapacity() != null) {
-      joiner.add(String.format("%susedWeightCapacity%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getUsedWeightCapacity()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%susedWeightCapacity%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUsedWeightCapacity()))));
     }
 
     // add `usedVolumeCapacity` to the URL query string
     if (getUsedVolumeCapacity() != null) {
-      joiner.add(String.format("%susedVolumeCapacity%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getUsedVolumeCapacity()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%susedVolumeCapacity%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUsedVolumeCapacity()))));
     }
 
     // add `loadingMeters` to the URL query string
     if (getLoadingMeters() != null) {
-      joiner.add(String.format("%sloadingMeters%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getLoadingMeters()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sloadingMeters%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLoadingMeters()))));
     }
 
     return joiner.toString();

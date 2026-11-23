@@ -15,6 +15,7 @@ package com.ptvgroup.developer.client.binpacking.api;
 import com.ptvgroup.developer.client.binpacking.ApiClient;
 import com.ptvgroup.developer.client.binpacking.ApiException;
 import com.ptvgroup.developer.client.binpacking.ApiResponse;
+import com.ptvgroup.developer.client.binpacking.Configuration;
 import com.ptvgroup.developer.client.binpacking.Pair;
 
 import com.ptvgroup.developer.client.binpacking.model.BinPackingFocus;
@@ -50,18 +51,38 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-28T13:28:30.257776203Z[Etc/UTC]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:20:38.001126947Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class BinsApi {
+  /**
+   * Utility class for extending HttpRequest.Builder functionality.
+   */
+  private static class HttpRequestBuilderExtensions {
+    /**
+     * Adds additional headers to the provided HttpRequest.Builder. Useful for adding method/endpoint specific headers.
+     *
+     * @param builder the HttpRequest.Builder to which headers will be added
+     * @param headers a map of header names and values to add; may be null
+     * @return the same HttpRequest.Builder instance with the additional headers set
+     */
+    static HttpRequest.Builder withAdditionalHeaders(HttpRequest.Builder builder, Map<String, String> headers) {
+        if (headers != null) {
+            for (Map.Entry<String, String> entry : headers.entrySet()) {
+                builder.header(entry.getKey(), entry.getValue());
+            }
+        }
+        return builder;
+    }
+  }
   private final HttpClient memberVarHttpClient;
   private final ObjectMapper memberVarObjectMapper;
   private final String memberVarBaseUri;
   private final Consumer<HttpRequest.Builder> memberVarInterceptor;
   private final Duration memberVarReadTimeout;
   private final Consumer<HttpResponse<InputStream>> memberVarResponseInterceptor;
-  private final Consumer<HttpResponse<String>> memberVarAsyncResponseInterceptor;
+  private final Consumer<HttpResponse<InputStream>> memberVarAsyncResponseInterceptor;
 
   public BinsApi() {
-    this(new ApiClient());
+    this(Configuration.getDefaultApiClient());
   }
 
   public BinsApi(ApiClient apiClient) {
@@ -74,8 +95,17 @@ public class BinsApi {
     memberVarAsyncResponseInterceptor = apiClient.getAsyncResponseInterceptor();
   }
 
+
   protected ApiException getApiException(String operationId, HttpResponse<InputStream> response) throws IOException {
-    String body = response.body() == null ? null : new String(response.body().readAllBytes());
+    InputStream responseBody = ApiClient.getResponseBody(response);
+    String body = null;
+    try {
+      body = responseBody == null ? null : new String(responseBody.readAllBytes());
+    } finally {
+      if (responseBody != null) {
+        responseBody.close();
+      }
+    }
     String message = formatExceptionMessage(operationId, response.statusCode(), body);
     return new ApiException(response.statusCode(), message, response.headers(), body);
   }
@@ -88,13 +118,75 @@ public class BinsApi {
   }
 
   /**
+   * Download file from the given response.
+   *
+   * @param response Response
+   * @return File
+   * @throws ApiException If fail to read file content from response and write to disk
+   */
+  public File downloadFileFromResponse(HttpResponse<InputStream> response, InputStream responseBody) throws ApiException {
+    if (responseBody == null) {
+      throw new ApiException(new IOException("Response body is empty"));
+    }
+    try {
+      File file = prepareDownloadFile(response);
+      java.nio.file.Files.copy(responseBody, file.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+      return file;
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+  }
+
+  /**
+   * <p>Prepare the file for download from the response.</p>
+   *
+   * @param response a {@link java.net.http.HttpResponse} object.
+   * @return a {@link java.io.File} object.
+   * @throws java.io.IOException if any.
+   */
+  private File prepareDownloadFile(HttpResponse<InputStream> response) throws IOException {
+    String filename = null;
+    java.util.Optional<String> contentDisposition = response.headers().firstValue("Content-Disposition");
+    if (contentDisposition.isPresent() && !"".equals(contentDisposition.get())) {
+      // Get filename from the Content-Disposition header.
+      java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("filename=['\"]?([^'\"\\s]+)['\"]?");
+      java.util.regex.Matcher matcher = pattern.matcher(contentDisposition.get());
+      if (matcher.find())
+        filename = matcher.group(1);
+    }
+    File file = null;
+    if (filename != null) {
+      java.nio.file.Path tempDir = java.nio.file.Files.createTempDirectory("swagger-gen-native");
+      java.nio.file.Path filePath = java.nio.file.Files.createFile(tempDir.resolve(filename));
+      file = filePath.toFile();
+      tempDir.toFile().deleteOnExit();   // best effort cleanup
+      file.deleteOnExit(); // best effort cleanup
+    } else {
+      file = java.nio.file.Files.createTempFile("download-", "").toFile();
+      file.deleteOnExit(); // best effort cleanup
+    }
+    return file;
+  }
+
+  /**
    * 
    * Cancels a bin packing operation and deletes the results specified by its ID. Results already calculated cannot be requested by its ID, anymore.
    * @param id The ID of a bin packing operation. (required)
    * @throws ApiException if fails to make API call
    */
-  public void cancelBinPacking(UUID id) throws ApiException {
-    cancelBinPackingWithHttpInfo(id);
+  public void cancelBinPacking(@javax.annotation.Nonnull UUID id) throws ApiException {
+    cancelBinPacking(id, null);
+  }
+
+  /**
+   * 
+   * Cancels a bin packing operation and deletes the results specified by its ID. Results already calculated cannot be requested by its ID, anymore.
+   * @param id The ID of a bin packing operation. (required)
+   * @param headers Optional headers to include in the request
+   * @throws ApiException if fails to make API call
+   */
+  public void cancelBinPacking(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
+    cancelBinPackingWithHttpInfo(id, headers);
   }
 
   /**
@@ -104,8 +196,20 @@ public class BinsApi {
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> cancelBinPackingWithHttpInfo(UUID id) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = cancelBinPackingRequestBuilder(id);
+  public ApiResponse<Void> cancelBinPackingWithHttpInfo(@javax.annotation.Nonnull UUID id) throws ApiException {
+    return cancelBinPackingWithHttpInfo(id, null);
+  }
+
+  /**
+   * 
+   * Cancels a bin packing operation and deletes the results specified by its ID. Results already calculated cannot be requested by its ID, anymore.
+   * @param id The ID of a bin packing operation. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> cancelBinPackingWithHttpInfo(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = cancelBinPackingRequestBuilder(id, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -113,21 +217,24 @@ public class BinsApi {
       if (memberVarResponseInterceptor != null) {
         memberVarResponseInterceptor.accept(localVarResponse);
       }
+      InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("cancelBinPacking", localVarResponse);
         }
-        return new ApiResponse<Void>(
-          localVarResponse.statusCode(),
-          localVarResponse.headers().map(),
-          null
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<>(
+            localVarResponse.statusCode(),
+            localVarResponse.headers().map(),
+            null
         );
       } finally {
-        // Drain the InputStream
-        while (localVarResponse.body().read() != -1) {
-            // Ignore
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
         }
-        localVarResponse.body().close();
       }
     } catch (IOException e) {
       throw new ApiException(e);
@@ -138,7 +245,7 @@ public class BinsApi {
     }
   }
 
-  private HttpRequest.Builder cancelBinPackingRequestBuilder(UUID id) throws ApiException {
+  private HttpRequest.Builder cancelBinPackingRequestBuilder(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling cancelBinPacking");
@@ -157,6 +264,8 @@ public class BinsApi {
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
     if (memberVarInterceptor != null) {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
@@ -170,8 +279,20 @@ public class BinsApi {
    * @return PackBinsResponse
    * @throws ApiException if fails to make API call
    */
-  public PackBinsResponse getPackedBins(UUID id) throws ApiException {
-    ApiResponse<PackBinsResponse> localVarResponse = getPackedBinsWithHttpInfo(id);
+  public PackBinsResponse getPackedBins(@javax.annotation.Nonnull UUID id) throws ApiException {
+    return getPackedBins(id, null);
+  }
+
+  /**
+   * 
+   * Gets the results of a bin packing operation specified by its ID.
+   * @param id The ID of a bin packing operation. (required)
+   * @param headers Optional headers to include in the request
+   * @return PackBinsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public PackBinsResponse getPackedBins(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
+    ApiResponse<PackBinsResponse> localVarResponse = getPackedBinsWithHttpInfo(id, headers);
     return localVarResponse.getData();
   }
 
@@ -182,8 +303,20 @@ public class BinsApi {
    * @return ApiResponse&lt;PackBinsResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PackBinsResponse> getPackedBinsWithHttpInfo(UUID id) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getPackedBinsRequestBuilder(id);
+  public ApiResponse<PackBinsResponse> getPackedBinsWithHttpInfo(@javax.annotation.Nonnull UUID id) throws ApiException {
+    return getPackedBinsWithHttpInfo(id, null);
+  }
+
+  /**
+   * 
+   * Gets the results of a bin packing operation specified by its ID.
+   * @param id The ID of a bin packing operation. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PackBinsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PackBinsResponse> getPackedBinsWithHttpInfo(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getPackedBinsRequestBuilder(id, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -191,16 +324,35 @@ public class BinsApi {
       if (memberVarResponseInterceptor != null) {
         memberVarResponseInterceptor.accept(localVarResponse);
       }
+      InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("getPackedBins", localVarResponse);
         }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PackBinsResponse>(
+              localVarResponse.statusCode(),
+              localVarResponse.headers().map(),
+              null
+          );
+        }
+
+        
+        
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PackBinsResponse responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PackBinsResponse>() {});
+        
+
         return new ApiResponse<PackBinsResponse>(
-          localVarResponse.statusCode(),
-          localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<PackBinsResponse>() {}) // closes the InputStream
+            localVarResponse.statusCode(),
+            localVarResponse.headers().map(),
+            responseValue
         );
       } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
       }
     } catch (IOException e) {
       throw new ApiException(e);
@@ -211,7 +363,7 @@ public class BinsApi {
     }
   }
 
-  private HttpRequest.Builder getPackedBinsRequestBuilder(UUID id) throws ApiException {
+  private HttpRequest.Builder getPackedBinsRequestBuilder(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling getPackedBins");
@@ -230,6 +382,8 @@ public class BinsApi {
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
     if (memberVarInterceptor != null) {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
@@ -244,8 +398,21 @@ public class BinsApi {
    * @return StatusResponse
    * @throws ApiException if fails to make API call
    */
-  public StatusResponse getStatus(UUID id, Integer maximumPollingPeriod) throws ApiException {
-    ApiResponse<StatusResponse> localVarResponse = getStatusWithHttpInfo(id, maximumPollingPeriod);
+  public StatusResponse getStatus(@javax.annotation.Nonnull UUID id, @javax.annotation.Nullable Integer maximumPollingPeriod) throws ApiException {
+    return getStatus(id, maximumPollingPeriod, null);
+  }
+
+  /**
+   * 
+   * Returns the status of a bin packing operation.
+   * @param id The ID of a bin packing operation. (required)
+   * @param maximumPollingPeriod If the calculation is still running, this operation will be blocked and will not return before this period [ms] expires. If the calculation is completed, it will return immediately.  The default of 0 ms will cause the operation to return immediately in any case. Use a value &gt; 0 to implement long polling to reduce the number of requests. See the [tutorial](https://developer.myptv.com/en/resources/tutorials/general/how-use-asynchronous-requests-ptv-developer-apis) on asynchronous requests for details.  (optional, default to 0)
+   * @param headers Optional headers to include in the request
+   * @return StatusResponse
+   * @throws ApiException if fails to make API call
+   */
+  public StatusResponse getStatus(@javax.annotation.Nonnull UUID id, @javax.annotation.Nullable Integer maximumPollingPeriod, Map<String, String> headers) throws ApiException {
+    ApiResponse<StatusResponse> localVarResponse = getStatusWithHttpInfo(id, maximumPollingPeriod, headers);
     return localVarResponse.getData();
   }
 
@@ -257,8 +424,21 @@ public class BinsApi {
    * @return ApiResponse&lt;StatusResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<StatusResponse> getStatusWithHttpInfo(UUID id, Integer maximumPollingPeriod) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getStatusRequestBuilder(id, maximumPollingPeriod);
+  public ApiResponse<StatusResponse> getStatusWithHttpInfo(@javax.annotation.Nonnull UUID id, @javax.annotation.Nullable Integer maximumPollingPeriod) throws ApiException {
+    return getStatusWithHttpInfo(id, maximumPollingPeriod, null);
+  }
+
+  /**
+   * 
+   * Returns the status of a bin packing operation.
+   * @param id The ID of a bin packing operation. (required)
+   * @param maximumPollingPeriod If the calculation is still running, this operation will be blocked and will not return before this period [ms] expires. If the calculation is completed, it will return immediately.  The default of 0 ms will cause the operation to return immediately in any case. Use a value &gt; 0 to implement long polling to reduce the number of requests. See the [tutorial](https://developer.myptv.com/en/resources/tutorials/general/how-use-asynchronous-requests-ptv-developer-apis) on asynchronous requests for details.  (optional, default to 0)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;StatusResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<StatusResponse> getStatusWithHttpInfo(@javax.annotation.Nonnull UUID id, @javax.annotation.Nullable Integer maximumPollingPeriod, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getStatusRequestBuilder(id, maximumPollingPeriod, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -266,16 +446,35 @@ public class BinsApi {
       if (memberVarResponseInterceptor != null) {
         memberVarResponseInterceptor.accept(localVarResponse);
       }
+      InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("getStatus", localVarResponse);
         }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<StatusResponse>(
+              localVarResponse.statusCode(),
+              localVarResponse.headers().map(),
+              null
+          );
+        }
+
+        
+        
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        StatusResponse responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<StatusResponse>() {});
+        
+
         return new ApiResponse<StatusResponse>(
-          localVarResponse.statusCode(),
-          localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<StatusResponse>() {}) // closes the InputStream
+            localVarResponse.statusCode(),
+            localVarResponse.headers().map(),
+            responseValue
         );
       } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
       }
     } catch (IOException e) {
       throw new ApiException(e);
@@ -286,7 +485,7 @@ public class BinsApi {
     }
   }
 
-  private HttpRequest.Builder getStatusRequestBuilder(UUID id, Integer maximumPollingPeriod) throws ApiException {
+  private HttpRequest.Builder getStatusRequestBuilder(@javax.annotation.Nonnull UUID id, @javax.annotation.Nullable Integer maximumPollingPeriod, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling getStatus");
@@ -320,6 +519,8 @@ public class BinsApi {
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
     if (memberVarInterceptor != null) {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
@@ -334,8 +535,21 @@ public class BinsApi {
    * @return PackBinsResponse
    * @throws ApiException if fails to make API call
    */
-  public PackBinsResponse packBins(PackBinsRequest packBinsRequest, BinPackingFocus focus) throws ApiException {
-    ApiResponse<PackBinsResponse> localVarResponse = packBinsWithHttpInfo(packBinsRequest, focus);
+  public PackBinsResponse packBins(@javax.annotation.Nonnull PackBinsRequest packBinsRequest, @javax.annotation.Nullable BinPackingFocus focus) throws ApiException {
+    return packBins(packBinsRequest, focus, null);
+  }
+
+  /**
+   * 
+   * Performs a bin packing operation as described by the request and directly returns the packing result in the response. Therefore the request is restricted as described at the request body to limit the calculation time to a maximum of 10 seconds. In case the operation lasts longer, it will be aborted. The state up to then will be returned. So the result may differ to the asynchronous call.
+   * @param packBinsRequest Specifies a packing problem consisting of a number of up to 100 items of various types that get packed into up to 2 bins of various types. Items as well as bins are always of cuboid shape.  (required)
+   * @param focus  (optional, default to BUILD_LAYERS)
+   * @param headers Optional headers to include in the request
+   * @return PackBinsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public PackBinsResponse packBins(@javax.annotation.Nonnull PackBinsRequest packBinsRequest, @javax.annotation.Nullable BinPackingFocus focus, Map<String, String> headers) throws ApiException {
+    ApiResponse<PackBinsResponse> localVarResponse = packBinsWithHttpInfo(packBinsRequest, focus, headers);
     return localVarResponse.getData();
   }
 
@@ -347,8 +561,21 @@ public class BinsApi {
    * @return ApiResponse&lt;PackBinsResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PackBinsResponse> packBinsWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus focus) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = packBinsRequestBuilder(packBinsRequest, focus);
+  public ApiResponse<PackBinsResponse> packBinsWithHttpInfo(@javax.annotation.Nonnull PackBinsRequest packBinsRequest, @javax.annotation.Nullable BinPackingFocus focus) throws ApiException {
+    return packBinsWithHttpInfo(packBinsRequest, focus, null);
+  }
+
+  /**
+   * 
+   * Performs a bin packing operation as described by the request and directly returns the packing result in the response. Therefore the request is restricted as described at the request body to limit the calculation time to a maximum of 10 seconds. In case the operation lasts longer, it will be aborted. The state up to then will be returned. So the result may differ to the asynchronous call.
+   * @param packBinsRequest Specifies a packing problem consisting of a number of up to 100 items of various types that get packed into up to 2 bins of various types. Items as well as bins are always of cuboid shape.  (required)
+   * @param focus  (optional, default to BUILD_LAYERS)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PackBinsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PackBinsResponse> packBinsWithHttpInfo(@javax.annotation.Nonnull PackBinsRequest packBinsRequest, @javax.annotation.Nullable BinPackingFocus focus, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = packBinsRequestBuilder(packBinsRequest, focus, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -356,16 +583,35 @@ public class BinsApi {
       if (memberVarResponseInterceptor != null) {
         memberVarResponseInterceptor.accept(localVarResponse);
       }
+      InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("packBins", localVarResponse);
         }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PackBinsResponse>(
+              localVarResponse.statusCode(),
+              localVarResponse.headers().map(),
+              null
+          );
+        }
+
+        
+        
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PackBinsResponse responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PackBinsResponse>() {});
+        
+
         return new ApiResponse<PackBinsResponse>(
-          localVarResponse.statusCode(),
-          localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<PackBinsResponse>() {}) // closes the InputStream
+            localVarResponse.statusCode(),
+            localVarResponse.headers().map(),
+            responseValue
         );
       } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
       }
     } catch (IOException e) {
       throw new ApiException(e);
@@ -376,7 +622,7 @@ public class BinsApi {
     }
   }
 
-  private HttpRequest.Builder packBinsRequestBuilder(PackBinsRequest packBinsRequest, BinPackingFocus focus) throws ApiException {
+  private HttpRequest.Builder packBinsRequestBuilder(@javax.annotation.Nonnull PackBinsRequest packBinsRequest, @javax.annotation.Nullable BinPackingFocus focus, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'packBinsRequest' is set
     if (packBinsRequest == null) {
       throw new ApiException(400, "Missing the required parameter 'packBinsRequest' when calling packBins");
@@ -415,6 +661,8 @@ public class BinsApi {
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
     if (memberVarInterceptor != null) {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
@@ -429,8 +677,21 @@ public class BinsApi {
    * @return PackedBinsIdentifier
    * @throws ApiException if fails to make API call
    */
-  public PackedBinsIdentifier startBinPacking(PackBinsRequest packBinsRequest, BinPackingFocus focus) throws ApiException {
-    ApiResponse<PackedBinsIdentifier> localVarResponse = startBinPackingWithHttpInfo(packBinsRequest, focus);
+  public PackedBinsIdentifier startBinPacking(@javax.annotation.Nonnull PackBinsRequest packBinsRequest, @javax.annotation.Nullable BinPackingFocus focus) throws ApiException {
+    return startBinPacking(packBinsRequest, focus, null);
+  }
+
+  /**
+   * 
+   * Starts a bin packing operation as described by the request. The result informs if operation is accepted and in this case returns an operation ID. Further information and result should be requested by getStatus() and getPackedBins() via ID.
+   * @param packBinsRequest Specifies a packing problem consisting of a number of items of various types that get packed into a number of bins of various types. Items as well as bins are always of cuboid shape.  (required)
+   * @param focus  (optional, default to BUILD_LAYERS)
+   * @param headers Optional headers to include in the request
+   * @return PackedBinsIdentifier
+   * @throws ApiException if fails to make API call
+   */
+  public PackedBinsIdentifier startBinPacking(@javax.annotation.Nonnull PackBinsRequest packBinsRequest, @javax.annotation.Nullable BinPackingFocus focus, Map<String, String> headers) throws ApiException {
+    ApiResponse<PackedBinsIdentifier> localVarResponse = startBinPackingWithHttpInfo(packBinsRequest, focus, headers);
     return localVarResponse.getData();
   }
 
@@ -442,8 +703,21 @@ public class BinsApi {
    * @return ApiResponse&lt;PackedBinsIdentifier&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PackedBinsIdentifier> startBinPackingWithHttpInfo(PackBinsRequest packBinsRequest, BinPackingFocus focus) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = startBinPackingRequestBuilder(packBinsRequest, focus);
+  public ApiResponse<PackedBinsIdentifier> startBinPackingWithHttpInfo(@javax.annotation.Nonnull PackBinsRequest packBinsRequest, @javax.annotation.Nullable BinPackingFocus focus) throws ApiException {
+    return startBinPackingWithHttpInfo(packBinsRequest, focus, null);
+  }
+
+  /**
+   * 
+   * Starts a bin packing operation as described by the request. The result informs if operation is accepted and in this case returns an operation ID. Further information and result should be requested by getStatus() and getPackedBins() via ID.
+   * @param packBinsRequest Specifies a packing problem consisting of a number of items of various types that get packed into a number of bins of various types. Items as well as bins are always of cuboid shape.  (required)
+   * @param focus  (optional, default to BUILD_LAYERS)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PackedBinsIdentifier&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PackedBinsIdentifier> startBinPackingWithHttpInfo(@javax.annotation.Nonnull PackBinsRequest packBinsRequest, @javax.annotation.Nullable BinPackingFocus focus, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = startBinPackingRequestBuilder(packBinsRequest, focus, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -451,16 +725,35 @@ public class BinsApi {
       if (memberVarResponseInterceptor != null) {
         memberVarResponseInterceptor.accept(localVarResponse);
       }
+      InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("startBinPacking", localVarResponse);
         }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PackedBinsIdentifier>(
+              localVarResponse.statusCode(),
+              localVarResponse.headers().map(),
+              null
+          );
+        }
+
+        
+        
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PackedBinsIdentifier responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PackedBinsIdentifier>() {});
+        
+
         return new ApiResponse<PackedBinsIdentifier>(
-          localVarResponse.statusCode(),
-          localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<PackedBinsIdentifier>() {}) // closes the InputStream
+            localVarResponse.statusCode(),
+            localVarResponse.headers().map(),
+            responseValue
         );
       } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
       }
     } catch (IOException e) {
       throw new ApiException(e);
@@ -471,7 +764,7 @@ public class BinsApi {
     }
   }
 
-  private HttpRequest.Builder startBinPackingRequestBuilder(PackBinsRequest packBinsRequest, BinPackingFocus focus) throws ApiException {
+  private HttpRequest.Builder startBinPackingRequestBuilder(@javax.annotation.Nonnull PackBinsRequest packBinsRequest, @javax.annotation.Nullable BinPackingFocus focus, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'packBinsRequest' is set
     if (packBinsRequest == null) {
       throw new ApiException(400, "Missing the required parameter 'packBinsRequest' when calling startBinPacking");
@@ -510,6 +803,8 @@ public class BinsApi {
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
     if (memberVarInterceptor != null) {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }

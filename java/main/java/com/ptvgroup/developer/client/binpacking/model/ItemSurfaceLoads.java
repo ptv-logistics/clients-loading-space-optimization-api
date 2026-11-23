@@ -37,21 +37,24 @@ import com.ptvgroup.developer.client.binpacking.ApiClient;
   ItemSurfaceLoads.JSON_PROPERTY_Y,
   ItemSurfaceLoads.JSON_PROPERTY_Z
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-28T13:28:30.257776203Z[Etc/UTC]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:20:38.001126947Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class ItemSurfaceLoads {
   public static final String JSON_PROPERTY_X = "x";
+  @javax.annotation.Nullable
   private Double x;
 
   public static final String JSON_PROPERTY_Y = "y";
+  @javax.annotation.Nullable
   private Double y;
 
   public static final String JSON_PROPERTY_Z = "z";
+  @javax.annotation.Nullable
   private Double z;
 
   public ItemSurfaceLoads() { 
   }
 
-  public ItemSurfaceLoads x(Double x) {
+  public ItemSurfaceLoads x(@javax.annotation.Nullable Double x) {
     this.x = x;
     return this;
   }
@@ -63,21 +66,21 @@ public class ItemSurfaceLoads {
    * @return x
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_X)
+  @JsonProperty(value = JSON_PROPERTY_X, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getX() {
     return x;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_X)
+  @JsonProperty(value = JSON_PROPERTY_X, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setX(Double x) {
+  public void setX(@javax.annotation.Nullable Double x) {
     this.x = x;
   }
 
 
-  public ItemSurfaceLoads y(Double y) {
+  public ItemSurfaceLoads y(@javax.annotation.Nullable Double y) {
     this.y = y;
     return this;
   }
@@ -89,21 +92,21 @@ public class ItemSurfaceLoads {
    * @return y
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_Y)
+  @JsonProperty(value = JSON_PROPERTY_Y, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getY() {
     return y;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_Y)
+  @JsonProperty(value = JSON_PROPERTY_Y, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setY(Double y) {
+  public void setY(@javax.annotation.Nullable Double y) {
     this.y = y;
   }
 
 
-  public ItemSurfaceLoads z(Double z) {
+  public ItemSurfaceLoads z(@javax.annotation.Nullable Double z) {
     this.z = z;
     return this;
   }
@@ -115,16 +118,16 @@ public class ItemSurfaceLoads {
    * @return z
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_Z)
+  @JsonProperty(value = JSON_PROPERTY_Z, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getZ() {
     return z;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_Z)
+  @JsonProperty(value = JSON_PROPERTY_Z, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setZ(Double z) {
+  public void setZ(@javax.annotation.Nullable Double z) {
     this.z = z;
   }
 
@@ -167,10 +170,7 @@ public class ItemSurfaceLoads {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -207,17 +207,17 @@ public class ItemSurfaceLoads {
 
     // add `x` to the URL query string
     if (getX() != null) {
-      joiner.add(String.format("%sx%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getX()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sx%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getX()))));
     }
 
     // add `y` to the URL query string
     if (getY() != null) {
-      joiner.add(String.format("%sy%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getY()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getY()))));
     }
 
     // add `z` to the URL query string
     if (getZ() != null) {
-      joiner.add(String.format("%sz%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getZ()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sz%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getZ()))));
     }
 
     return joiner.toString();

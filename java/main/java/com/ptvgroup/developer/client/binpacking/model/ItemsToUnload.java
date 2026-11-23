@@ -36,18 +36,20 @@ import com.ptvgroup.developer.client.binpacking.ApiClient;
   ItemsToUnload.JSON_PROPERTY_ITEM_ID,
   ItemsToUnload.JSON_PROPERTY_NUMBER_OF_INSTANCES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-28T13:28:30.257776203Z[Etc/UTC]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:20:38.001126947Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class ItemsToUnload {
   public static final String JSON_PROPERTY_ITEM_ID = "itemId";
+  @javax.annotation.Nonnull
   private String itemId;
 
   public static final String JSON_PROPERTY_NUMBER_OF_INSTANCES = "numberOfInstances";
+  @javax.annotation.Nullable
   private Integer numberOfInstances = 1;
 
   public ItemsToUnload() { 
   }
 
-  public ItemsToUnload itemId(String itemId) {
+  public ItemsToUnload itemId(@javax.annotation.Nonnull String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -57,21 +59,21 @@ public class ItemsToUnload {
    * @return itemId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ITEM_ID)
+  @JsonProperty(value = JSON_PROPERTY_ITEM_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getItemId() {
     return itemId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ITEM_ID)
+  @JsonProperty(value = JSON_PROPERTY_ITEM_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setItemId(String itemId) {
+  public void setItemId(@javax.annotation.Nonnull String itemId) {
     this.itemId = itemId;
   }
 
 
-  public ItemsToUnload numberOfInstances(Integer numberOfInstances) {
+  public ItemsToUnload numberOfInstances(@javax.annotation.Nullable Integer numberOfInstances) {
     this.numberOfInstances = numberOfInstances;
     return this;
   }
@@ -82,16 +84,16 @@ public class ItemsToUnload {
    * @return numberOfInstances
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_INSTANCES)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_INSTANCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getNumberOfInstances() {
     return numberOfInstances;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_INSTANCES)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_INSTANCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNumberOfInstances(Integer numberOfInstances) {
+  public void setNumberOfInstances(@javax.annotation.Nullable Integer numberOfInstances) {
     this.numberOfInstances = numberOfInstances;
   }
 
@@ -132,10 +134,7 @@ public class ItemsToUnload {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -172,12 +171,12 @@ public class ItemsToUnload {
 
     // add `itemId` to the URL query string
     if (getItemId() != null) {
-      joiner.add(String.format("%sitemId%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getItemId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sitemId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getItemId()))));
     }
 
     // add `numberOfInstances` to the URL query string
     if (getNumberOfInstances() != null) {
-      joiner.add(String.format("%snumberOfInstances%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getNumberOfInstances()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%snumberOfInstances%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNumberOfInstances()))));
     }
 
     return joiner.toString();

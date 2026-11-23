@@ -40,18 +40,20 @@ import com.ptvgroup.developer.client.binpacking.ApiClient;
   BinPackingOptions.JSON_PROPERTY_UNLOADING_SEQUENCE,
   BinPackingOptions.JSON_PROPERTY_STACKING_OPTIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-28T13:28:30.257776203Z[Etc/UTC]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:20:38.001126947Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class BinPackingOptions {
   public static final String JSON_PROPERTY_UNLOADING_SEQUENCE = "unloadingSequence";
-  private List<Stop> unloadingSequence = new ArrayList<>();
+  @javax.annotation.Nullable
+  private List<Stop> unloadingSequence;
 
   public static final String JSON_PROPERTY_STACKING_OPTIONS = "stackingOptions";
+  @javax.annotation.Nullable
   private StackingOptions stackingOptions;
 
   public BinPackingOptions() { 
   }
 
-  public BinPackingOptions unloadingSequence(List<Stop> unloadingSequence) {
+  public BinPackingOptions unloadingSequence(@javax.annotation.Nullable List<Stop> unloadingSequence) {
     this.unloadingSequence = unloadingSequence;
     return this;
   }
@@ -69,21 +71,21 @@ public class BinPackingOptions {
    * @return unloadingSequence
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_UNLOADING_SEQUENCE)
+  @JsonProperty(value = JSON_PROPERTY_UNLOADING_SEQUENCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<Stop> getUnloadingSequence() {
     return unloadingSequence;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_UNLOADING_SEQUENCE)
+  @JsonProperty(value = JSON_PROPERTY_UNLOADING_SEQUENCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUnloadingSequence(List<Stop> unloadingSequence) {
+  public void setUnloadingSequence(@javax.annotation.Nullable List<Stop> unloadingSequence) {
     this.unloadingSequence = unloadingSequence;
   }
 
 
-  public BinPackingOptions stackingOptions(StackingOptions stackingOptions) {
+  public BinPackingOptions stackingOptions(@javax.annotation.Nullable StackingOptions stackingOptions) {
     this.stackingOptions = stackingOptions;
     return this;
   }
@@ -93,16 +95,16 @@ public class BinPackingOptions {
    * @return stackingOptions
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STACKING_OPTIONS)
+  @JsonProperty(value = JSON_PROPERTY_STACKING_OPTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public StackingOptions getStackingOptions() {
     return stackingOptions;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STACKING_OPTIONS)
+  @JsonProperty(value = JSON_PROPERTY_STACKING_OPTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStackingOptions(StackingOptions stackingOptions) {
+  public void setStackingOptions(@javax.annotation.Nullable StackingOptions stackingOptions) {
     this.stackingOptions = stackingOptions;
   }
 
@@ -143,10 +145,7 @@ public class BinPackingOptions {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -185,8 +184,8 @@ public class BinPackingOptions {
     if (getUnloadingSequence() != null) {
       for (int i = 0; i < getUnloadingSequence().size(); i++) {
         if (getUnloadingSequence().get(i) != null) {
-          joiner.add(getUnloadingSequence().get(i).toUrlQueryString(String.format("%sunloadingSequence%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getUnloadingSequence().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sunloadingSequence%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

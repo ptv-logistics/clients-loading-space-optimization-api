@@ -45,30 +45,36 @@ import com.ptvgroup.developer.client.binpacking.ApiClient;
   Item.JSON_PROPERTY_ALLOWED_ORIENTATIONS,
   Item.JSON_PROPERTY_NUMBER_OF_INSTANCES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-28T13:28:30.257776203Z[Etc/UTC]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:20:38.001126947Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class Item {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_DIMENSIONS = "dimensions";
+  @javax.annotation.Nonnull
   private BoxDimensions dimensions;
 
   public static final String JSON_PROPERTY_WEIGHT = "weight";
+  @javax.annotation.Nonnull
   private Integer weight;
 
   public static final String JSON_PROPERTY_MAXIMUM_SURFACE_LOADS = "maximumSurfaceLoads";
+  @javax.annotation.Nullable
   private ItemSurfaceLoads maximumSurfaceLoads;
 
   public static final String JSON_PROPERTY_ALLOWED_ORIENTATIONS = "allowedOrientations";
-  private List<AllowedOrientation> allowedOrientations = new ArrayList<>();
+  @javax.annotation.Nullable
+  private List<AllowedOrientation> allowedOrientations;
 
   public static final String JSON_PROPERTY_NUMBER_OF_INSTANCES = "numberOfInstances";
+  @javax.annotation.Nullable
   private Integer numberOfInstances = 1;
 
   public Item() { 
   }
 
-  public Item id(String id) {
+  public Item id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -78,21 +84,21 @@ public class Item {
    * @return id
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getId() {
     return id;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public Item dimensions(BoxDimensions dimensions) {
+  public Item dimensions(@javax.annotation.Nonnull BoxDimensions dimensions) {
     this.dimensions = dimensions;
     return this;
   }
@@ -102,21 +108,21 @@ public class Item {
    * @return dimensions
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DIMENSIONS)
+  @JsonProperty(value = JSON_PROPERTY_DIMENSIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public BoxDimensions getDimensions() {
     return dimensions;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DIMENSIONS)
+  @JsonProperty(value = JSON_PROPERTY_DIMENSIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDimensions(BoxDimensions dimensions) {
+  public void setDimensions(@javax.annotation.Nonnull BoxDimensions dimensions) {
     this.dimensions = dimensions;
   }
 
 
-  public Item weight(Integer weight) {
+  public Item weight(@javax.annotation.Nonnull Integer weight) {
     this.weight = weight;
     return this;
   }
@@ -128,21 +134,21 @@ public class Item {
    * @return weight
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_WEIGHT)
+  @JsonProperty(value = JSON_PROPERTY_WEIGHT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getWeight() {
     return weight;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_WEIGHT)
+  @JsonProperty(value = JSON_PROPERTY_WEIGHT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setWeight(Integer weight) {
+  public void setWeight(@javax.annotation.Nonnull Integer weight) {
     this.weight = weight;
   }
 
 
-  public Item maximumSurfaceLoads(ItemSurfaceLoads maximumSurfaceLoads) {
+  public Item maximumSurfaceLoads(@javax.annotation.Nullable ItemSurfaceLoads maximumSurfaceLoads) {
     this.maximumSurfaceLoads = maximumSurfaceLoads;
     return this;
   }
@@ -152,21 +158,21 @@ public class Item {
    * @return maximumSurfaceLoads
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_SURFACE_LOADS)
+  @JsonProperty(value = JSON_PROPERTY_MAXIMUM_SURFACE_LOADS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ItemSurfaceLoads getMaximumSurfaceLoads() {
     return maximumSurfaceLoads;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_SURFACE_LOADS)
+  @JsonProperty(value = JSON_PROPERTY_MAXIMUM_SURFACE_LOADS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaximumSurfaceLoads(ItemSurfaceLoads maximumSurfaceLoads) {
+  public void setMaximumSurfaceLoads(@javax.annotation.Nullable ItemSurfaceLoads maximumSurfaceLoads) {
     this.maximumSurfaceLoads = maximumSurfaceLoads;
   }
 
 
-  public Item allowedOrientations(List<AllowedOrientation> allowedOrientations) {
+  public Item allowedOrientations(@javax.annotation.Nullable List<AllowedOrientation> allowedOrientations) {
     this.allowedOrientations = allowedOrientations;
     return this;
   }
@@ -184,21 +190,21 @@ public class Item {
    * @return allowedOrientations
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALLOWED_ORIENTATIONS)
+  @JsonProperty(value = JSON_PROPERTY_ALLOWED_ORIENTATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<AllowedOrientation> getAllowedOrientations() {
     return allowedOrientations;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ALLOWED_ORIENTATIONS)
+  @JsonProperty(value = JSON_PROPERTY_ALLOWED_ORIENTATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAllowedOrientations(List<AllowedOrientation> allowedOrientations) {
+  public void setAllowedOrientations(@javax.annotation.Nullable List<AllowedOrientation> allowedOrientations) {
     this.allowedOrientations = allowedOrientations;
   }
 
 
-  public Item numberOfInstances(Integer numberOfInstances) {
+  public Item numberOfInstances(@javax.annotation.Nullable Integer numberOfInstances) {
     this.numberOfInstances = numberOfInstances;
     return this;
   }
@@ -210,16 +216,16 @@ public class Item {
    * @return numberOfInstances
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_INSTANCES)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_INSTANCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getNumberOfInstances() {
     return numberOfInstances;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_INSTANCES)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_INSTANCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNumberOfInstances(Integer numberOfInstances) {
+  public void setNumberOfInstances(@javax.annotation.Nullable Integer numberOfInstances) {
     this.numberOfInstances = numberOfInstances;
   }
 
@@ -268,10 +274,7 @@ public class Item {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -308,7 +311,7 @@ public class Item {
 
     // add `id` to the URL query string
     if (getId() != null) {
-      joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
     }
 
     // add `dimensions` to the URL query string
@@ -318,7 +321,7 @@ public class Item {
 
     // add `weight` to the URL query string
     if (getWeight() != null) {
-      joiner.add(String.format("%sweight%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getWeight()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sweight%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getWeight()))));
     }
 
     // add `maximumSurfaceLoads` to the URL query string
@@ -330,16 +333,16 @@ public class Item {
     if (getAllowedOrientations() != null) {
       for (int i = 0; i < getAllowedOrientations().size(); i++) {
         if (getAllowedOrientations().get(i) != null) {
-          joiner.add(String.format("%sallowedOrientations%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(ApiClient.valueToString(getAllowedOrientations().get(i)), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+          joiner.add(String.format(java.util.Locale.ROOT, "%sallowedOrientations%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
+              ApiClient.urlEncode(ApiClient.valueToString(getAllowedOrientations().get(i)))));
         }
       }
     }
 
     // add `numberOfInstances` to the URL query string
     if (getNumberOfInstances() != null) {
-      joiner.add(String.format("%snumberOfInstances%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getNumberOfInstances()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%snumberOfInstances%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNumberOfInstances()))));
     }
 
     return joiner.toString();

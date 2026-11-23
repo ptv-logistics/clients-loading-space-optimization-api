@@ -40,27 +40,32 @@ import com.ptvgroup.developer.client.binpacking.ApiClient;
   Bin.JSON_PROPERTY_MAXIMUM_VOLUME_CAPACITY,
   Bin.JSON_PROPERTY_MAXIMUM_WEIGHT_CAPACITY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-28T13:28:30.257776203Z[Etc/UTC]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:20:38.001126947Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class Bin {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_NUMBER_OF_INSTANCES = "numberOfInstances";
+  @javax.annotation.Nullable
   private Integer numberOfInstances = 1;
 
   public static final String JSON_PROPERTY_DIMENSIONS = "dimensions";
+  @javax.annotation.Nonnull
   private BoxDimensions dimensions;
 
   public static final String JSON_PROPERTY_MAXIMUM_VOLUME_CAPACITY = "maximumVolumeCapacity";
+  @javax.annotation.Nullable
   private Integer maximumVolumeCapacity;
 
   public static final String JSON_PROPERTY_MAXIMUM_WEIGHT_CAPACITY = "maximumWeightCapacity";
+  @javax.annotation.Nullable
   private Integer maximumWeightCapacity;
 
   public Bin() { 
   }
 
-  public Bin id(String id) {
+  public Bin id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -70,21 +75,21 @@ public class Bin {
    * @return id
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getId() {
     return id;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public Bin numberOfInstances(Integer numberOfInstances) {
+  public Bin numberOfInstances(@javax.annotation.Nullable Integer numberOfInstances) {
     this.numberOfInstances = numberOfInstances;
     return this;
   }
@@ -96,21 +101,21 @@ public class Bin {
    * @return numberOfInstances
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_INSTANCES)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_INSTANCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getNumberOfInstances() {
     return numberOfInstances;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_INSTANCES)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_INSTANCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNumberOfInstances(Integer numberOfInstances) {
+  public void setNumberOfInstances(@javax.annotation.Nullable Integer numberOfInstances) {
     this.numberOfInstances = numberOfInstances;
   }
 
 
-  public Bin dimensions(BoxDimensions dimensions) {
+  public Bin dimensions(@javax.annotation.Nonnull BoxDimensions dimensions) {
     this.dimensions = dimensions;
     return this;
   }
@@ -120,21 +125,21 @@ public class Bin {
    * @return dimensions
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DIMENSIONS)
+  @JsonProperty(value = JSON_PROPERTY_DIMENSIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public BoxDimensions getDimensions() {
     return dimensions;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DIMENSIONS)
+  @JsonProperty(value = JSON_PROPERTY_DIMENSIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDimensions(BoxDimensions dimensions) {
+  public void setDimensions(@javax.annotation.Nonnull BoxDimensions dimensions) {
     this.dimensions = dimensions;
   }
 
 
-  public Bin maximumVolumeCapacity(Integer maximumVolumeCapacity) {
+  public Bin maximumVolumeCapacity(@javax.annotation.Nullable Integer maximumVolumeCapacity) {
     this.maximumVolumeCapacity = maximumVolumeCapacity;
     return this;
   }
@@ -145,21 +150,21 @@ public class Bin {
    * @return maximumVolumeCapacity
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_VOLUME_CAPACITY)
+  @JsonProperty(value = JSON_PROPERTY_MAXIMUM_VOLUME_CAPACITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMaximumVolumeCapacity() {
     return maximumVolumeCapacity;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_VOLUME_CAPACITY)
+  @JsonProperty(value = JSON_PROPERTY_MAXIMUM_VOLUME_CAPACITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaximumVolumeCapacity(Integer maximumVolumeCapacity) {
+  public void setMaximumVolumeCapacity(@javax.annotation.Nullable Integer maximumVolumeCapacity) {
     this.maximumVolumeCapacity = maximumVolumeCapacity;
   }
 
 
-  public Bin maximumWeightCapacity(Integer maximumWeightCapacity) {
+  public Bin maximumWeightCapacity(@javax.annotation.Nullable Integer maximumWeightCapacity) {
     this.maximumWeightCapacity = maximumWeightCapacity;
     return this;
   }
@@ -171,16 +176,16 @@ public class Bin {
    * @return maximumWeightCapacity
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_WEIGHT_CAPACITY)
+  @JsonProperty(value = JSON_PROPERTY_MAXIMUM_WEIGHT_CAPACITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMaximumWeightCapacity() {
     return maximumWeightCapacity;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_WEIGHT_CAPACITY)
+  @JsonProperty(value = JSON_PROPERTY_MAXIMUM_WEIGHT_CAPACITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaximumWeightCapacity(Integer maximumWeightCapacity) {
+  public void setMaximumWeightCapacity(@javax.annotation.Nullable Integer maximumWeightCapacity) {
     this.maximumWeightCapacity = maximumWeightCapacity;
   }
 
@@ -227,10 +232,7 @@ public class Bin {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -267,12 +269,12 @@ public class Bin {
 
     // add `id` to the URL query string
     if (getId() != null) {
-      joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
     }
 
     // add `numberOfInstances` to the URL query string
     if (getNumberOfInstances() != null) {
-      joiner.add(String.format("%snumberOfInstances%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getNumberOfInstances()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%snumberOfInstances%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNumberOfInstances()))));
     }
 
     // add `dimensions` to the URL query string
@@ -282,12 +284,12 @@ public class Bin {
 
     // add `maximumVolumeCapacity` to the URL query string
     if (getMaximumVolumeCapacity() != null) {
-      joiner.add(String.format("%smaximumVolumeCapacity%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getMaximumVolumeCapacity()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%smaximumVolumeCapacity%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaximumVolumeCapacity()))));
     }
 
     // add `maximumWeightCapacity` to the URL query string
     if (getMaximumWeightCapacity() != null) {
-      joiner.add(String.format("%smaximumWeightCapacity%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getMaximumWeightCapacity()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%smaximumWeightCapacity%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaximumWeightCapacity()))));
     }
 
     return joiner.toString();

@@ -37,21 +37,24 @@ import com.ptvgroup.developer.client.binpacking.ApiClient;
   ItemPosition.JSON_PROPERTY_Y,
   ItemPosition.JSON_PROPERTY_Z
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-28T13:28:30.257776203Z[Etc/UTC]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:20:38.001126947Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class ItemPosition {
   public static final String JSON_PROPERTY_X = "x";
+  @javax.annotation.Nonnull
   private Integer x;
 
   public static final String JSON_PROPERTY_Y = "y";
+  @javax.annotation.Nonnull
   private Integer y;
 
   public static final String JSON_PROPERTY_Z = "z";
+  @javax.annotation.Nonnull
   private Integer z;
 
   public ItemPosition() { 
   }
 
-  public ItemPosition x(Integer x) {
+  public ItemPosition x(@javax.annotation.Nonnull Integer x) {
     this.x = x;
     return this;
   }
@@ -61,21 +64,21 @@ public class ItemPosition {
    * @return x
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_X)
+  @JsonProperty(value = JSON_PROPERTY_X, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getX() {
     return x;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_X)
+  @JsonProperty(value = JSON_PROPERTY_X, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setX(Integer x) {
+  public void setX(@javax.annotation.Nonnull Integer x) {
     this.x = x;
   }
 
 
-  public ItemPosition y(Integer y) {
+  public ItemPosition y(@javax.annotation.Nonnull Integer y) {
     this.y = y;
     return this;
   }
@@ -85,21 +88,21 @@ public class ItemPosition {
    * @return y
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_Y)
+  @JsonProperty(value = JSON_PROPERTY_Y, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getY() {
     return y;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_Y)
+  @JsonProperty(value = JSON_PROPERTY_Y, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setY(Integer y) {
+  public void setY(@javax.annotation.Nonnull Integer y) {
     this.y = y;
   }
 
 
-  public ItemPosition z(Integer z) {
+  public ItemPosition z(@javax.annotation.Nonnull Integer z) {
     this.z = z;
     return this;
   }
@@ -109,16 +112,16 @@ public class ItemPosition {
    * @return z
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_Z)
+  @JsonProperty(value = JSON_PROPERTY_Z, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getZ() {
     return z;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_Z)
+  @JsonProperty(value = JSON_PROPERTY_Z, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setZ(Integer z) {
+  public void setZ(@javax.annotation.Nonnull Integer z) {
     this.z = z;
   }
 
@@ -161,10 +164,7 @@ public class ItemPosition {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -201,17 +201,17 @@ public class ItemPosition {
 
     // add `x` to the URL query string
     if (getX() != null) {
-      joiner.add(String.format("%sx%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getX()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sx%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getX()))));
     }
 
     // add `y` to the URL query string
     if (getY() != null) {
-      joiner.add(String.format("%sy%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getY()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getY()))));
     }
 
     // add `z` to the URL query string
     if (getZ() != null) {
-      joiner.add(String.format("%sz%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getZ()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sz%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getZ()))));
     }
 
     return joiner.toString();

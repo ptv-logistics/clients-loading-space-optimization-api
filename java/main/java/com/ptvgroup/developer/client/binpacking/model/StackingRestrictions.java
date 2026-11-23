@@ -40,21 +40,24 @@ import com.ptvgroup.developer.client.binpacking.ApiClient;
   StackingRestrictions.JSON_PROPERTY_RESTRICTION_TYPE,
   StackingRestrictions.JSON_PROPERTY_ITEM_IDS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-28T13:28:30.257776203Z[Etc/UTC]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:20:38.001126947Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class StackingRestrictions {
   public static final String JSON_PROPERTY_ITEM_ID = "itemId";
+  @javax.annotation.Nonnull
   private String itemId;
 
   public static final String JSON_PROPERTY_RESTRICTION_TYPE = "restrictionType";
+  @javax.annotation.Nullable
   private StackingRestrictionType restrictionType = StackingRestrictionType.ALL_ALLOWED;
 
   public static final String JSON_PROPERTY_ITEM_IDS = "itemIds";
-  private List<String> itemIds = new ArrayList<>();
+  @javax.annotation.Nullable
+  private List<String> itemIds;
 
   public StackingRestrictions() { 
   }
 
-  public StackingRestrictions itemId(String itemId) {
+  public StackingRestrictions itemId(@javax.annotation.Nonnull String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -64,21 +67,21 @@ public class StackingRestrictions {
    * @return itemId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ITEM_ID)
+  @JsonProperty(value = JSON_PROPERTY_ITEM_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getItemId() {
     return itemId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ITEM_ID)
+  @JsonProperty(value = JSON_PROPERTY_ITEM_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setItemId(String itemId) {
+  public void setItemId(@javax.annotation.Nonnull String itemId) {
     this.itemId = itemId;
   }
 
 
-  public StackingRestrictions restrictionType(StackingRestrictionType restrictionType) {
+  public StackingRestrictions restrictionType(@javax.annotation.Nullable StackingRestrictionType restrictionType) {
     this.restrictionType = restrictionType;
     return this;
   }
@@ -88,21 +91,21 @@ public class StackingRestrictions {
    * @return restrictionType
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RESTRICTION_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_RESTRICTION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public StackingRestrictionType getRestrictionType() {
     return restrictionType;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RESTRICTION_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_RESTRICTION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRestrictionType(StackingRestrictionType restrictionType) {
+  public void setRestrictionType(@javax.annotation.Nullable StackingRestrictionType restrictionType) {
     this.restrictionType = restrictionType;
   }
 
 
-  public StackingRestrictions itemIds(List<String> itemIds) {
+  public StackingRestrictions itemIds(@javax.annotation.Nullable List<String> itemIds) {
     this.itemIds = itemIds;
     return this;
   }
@@ -120,16 +123,16 @@ public class StackingRestrictions {
    * @return itemIds
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ITEM_IDS)
+  @JsonProperty(value = JSON_PROPERTY_ITEM_IDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getItemIds() {
     return itemIds;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ITEM_IDS)
+  @JsonProperty(value = JSON_PROPERTY_ITEM_IDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setItemIds(List<String> itemIds) {
+  public void setItemIds(@javax.annotation.Nullable List<String> itemIds) {
     this.itemIds = itemIds;
   }
 
@@ -172,10 +175,7 @@ public class StackingRestrictions {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -212,20 +212,20 @@ public class StackingRestrictions {
 
     // add `itemId` to the URL query string
     if (getItemId() != null) {
-      joiner.add(String.format("%sitemId%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getItemId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sitemId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getItemId()))));
     }
 
     // add `restrictionType` to the URL query string
     if (getRestrictionType() != null) {
-      joiner.add(String.format("%srestrictionType%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getRestrictionType()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%srestrictionType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getRestrictionType()))));
     }
 
     // add `itemIds` to the URL query string
     if (getItemIds() != null) {
       for (int i = 0; i < getItemIds().size(); i++) {
-        joiner.add(String.format("%sitemIds%s%s=%s", prefix, suffix,
-            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-            URLEncoder.encode(ApiClient.valueToString(getItemIds().get(i)), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sitemIds%s%s=%s", prefix, suffix,
+            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
+            ApiClient.urlEncode(ApiClient.valueToString(getItemIds().get(i)))));
       }
     }
 

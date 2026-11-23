@@ -38,15 +38,16 @@ import com.ptvgroup.developer.client.binpacking.ApiClient;
 @JsonPropertyOrder({
   Stop.JSON_PROPERTY_ITEMS_TO_UNLOAD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-28T13:28:30.257776203Z[Etc/UTC]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:20:38.001126947Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class Stop {
   public static final String JSON_PROPERTY_ITEMS_TO_UNLOAD = "itemsToUnload";
-  private List<ItemsToUnload> itemsToUnload = new ArrayList<>();
+  @javax.annotation.Nonnull
+  private List<ItemsToUnload> itemsToUnload;
 
   public Stop() { 
   }
 
-  public Stop itemsToUnload(List<ItemsToUnload> itemsToUnload) {
+  public Stop itemsToUnload(@javax.annotation.Nonnull List<ItemsToUnload> itemsToUnload) {
     this.itemsToUnload = itemsToUnload;
     return this;
   }
@@ -64,16 +65,16 @@ public class Stop {
    * @return itemsToUnload
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ITEMS_TO_UNLOAD)
+  @JsonProperty(value = JSON_PROPERTY_ITEMS_TO_UNLOAD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<ItemsToUnload> getItemsToUnload() {
     return itemsToUnload;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ITEMS_TO_UNLOAD)
+  @JsonProperty(value = JSON_PROPERTY_ITEMS_TO_UNLOAD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setItemsToUnload(List<ItemsToUnload> itemsToUnload) {
+  public void setItemsToUnload(@javax.annotation.Nonnull List<ItemsToUnload> itemsToUnload) {
     this.itemsToUnload = itemsToUnload;
   }
 
@@ -112,10 +113,7 @@ public class Stop {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -154,8 +152,8 @@ public class Stop {
     if (getItemsToUnload() != null) {
       for (int i = 0; i < getItemsToUnload().size(); i++) {
         if (getItemsToUnload().get(i) != null) {
-          joiner.add(getItemsToUnload().get(i).toUrlQueryString(String.format("%sitemsToUnload%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getItemsToUnload().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sitemsToUnload%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

@@ -40,21 +40,24 @@ import com.ptvgroup.developer.client.binpacking.ApiClient;
   StackingOptions.JSON_PROPERTY_STACK_ON_TOP_OF_NEXT_STOPS,
   StackingOptions.JSON_PROPERTY_STACK_ON_TOP_OF_MULTIPLE_STACKS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-28T13:28:30.257776203Z[Etc/UTC]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:20:38.001126947Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class StackingOptions {
   public static final String JSON_PROPERTY_STACKING_RESTRICTIONS = "stackingRestrictions";
-  private List<StackingRestrictions> stackingRestrictions = new ArrayList<>();
+  @javax.annotation.Nullable
+  private List<StackingRestrictions> stackingRestrictions;
 
   public static final String JSON_PROPERTY_STACK_ON_TOP_OF_NEXT_STOPS = "stackOnTopOfNextStops";
+  @javax.annotation.Nullable
   private Boolean stackOnTopOfNextStops = false;
 
   public static final String JSON_PROPERTY_STACK_ON_TOP_OF_MULTIPLE_STACKS = "stackOnTopOfMultipleStacks";
+  @javax.annotation.Nullable
   private Boolean stackOnTopOfMultipleStacks = false;
 
   public StackingOptions() { 
   }
 
-  public StackingOptions stackingRestrictions(List<StackingRestrictions> stackingRestrictions) {
+  public StackingOptions stackingRestrictions(@javax.annotation.Nullable List<StackingRestrictions> stackingRestrictions) {
     this.stackingRestrictions = stackingRestrictions;
     return this;
   }
@@ -72,21 +75,21 @@ public class StackingOptions {
    * @return stackingRestrictions
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STACKING_RESTRICTIONS)
+  @JsonProperty(value = JSON_PROPERTY_STACKING_RESTRICTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<StackingRestrictions> getStackingRestrictions() {
     return stackingRestrictions;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STACKING_RESTRICTIONS)
+  @JsonProperty(value = JSON_PROPERTY_STACKING_RESTRICTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStackingRestrictions(List<StackingRestrictions> stackingRestrictions) {
+  public void setStackingRestrictions(@javax.annotation.Nullable List<StackingRestrictions> stackingRestrictions) {
     this.stackingRestrictions = stackingRestrictions;
   }
 
 
-  public StackingOptions stackOnTopOfNextStops(Boolean stackOnTopOfNextStops) {
+  public StackingOptions stackOnTopOfNextStops(@javax.annotation.Nullable Boolean stackOnTopOfNextStops) {
     this.stackOnTopOfNextStops = stackOnTopOfNextStops;
     return this;
   }
@@ -96,21 +99,21 @@ public class StackingOptions {
    * @return stackOnTopOfNextStops
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STACK_ON_TOP_OF_NEXT_STOPS)
+  @JsonProperty(value = JSON_PROPERTY_STACK_ON_TOP_OF_NEXT_STOPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getStackOnTopOfNextStops() {
     return stackOnTopOfNextStops;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STACK_ON_TOP_OF_NEXT_STOPS)
+  @JsonProperty(value = JSON_PROPERTY_STACK_ON_TOP_OF_NEXT_STOPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStackOnTopOfNextStops(Boolean stackOnTopOfNextStops) {
+  public void setStackOnTopOfNextStops(@javax.annotation.Nullable Boolean stackOnTopOfNextStops) {
     this.stackOnTopOfNextStops = stackOnTopOfNextStops;
   }
 
 
-  public StackingOptions stackOnTopOfMultipleStacks(Boolean stackOnTopOfMultipleStacks) {
+  public StackingOptions stackOnTopOfMultipleStacks(@javax.annotation.Nullable Boolean stackOnTopOfMultipleStacks) {
     this.stackOnTopOfMultipleStacks = stackOnTopOfMultipleStacks;
     return this;
   }
@@ -120,16 +123,16 @@ public class StackingOptions {
    * @return stackOnTopOfMultipleStacks
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STACK_ON_TOP_OF_MULTIPLE_STACKS)
+  @JsonProperty(value = JSON_PROPERTY_STACK_ON_TOP_OF_MULTIPLE_STACKS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getStackOnTopOfMultipleStacks() {
     return stackOnTopOfMultipleStacks;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STACK_ON_TOP_OF_MULTIPLE_STACKS)
+  @JsonProperty(value = JSON_PROPERTY_STACK_ON_TOP_OF_MULTIPLE_STACKS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStackOnTopOfMultipleStacks(Boolean stackOnTopOfMultipleStacks) {
+  public void setStackOnTopOfMultipleStacks(@javax.annotation.Nullable Boolean stackOnTopOfMultipleStacks) {
     this.stackOnTopOfMultipleStacks = stackOnTopOfMultipleStacks;
   }
 
@@ -172,10 +175,7 @@ public class StackingOptions {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -214,20 +214,20 @@ public class StackingOptions {
     if (getStackingRestrictions() != null) {
       for (int i = 0; i < getStackingRestrictions().size(); i++) {
         if (getStackingRestrictions().get(i) != null) {
-          joiner.add(getStackingRestrictions().get(i).toUrlQueryString(String.format("%sstackingRestrictions%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getStackingRestrictions().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sstackingRestrictions%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
 
     // add `stackOnTopOfNextStops` to the URL query string
     if (getStackOnTopOfNextStops() != null) {
-      joiner.add(String.format("%sstackOnTopOfNextStops%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getStackOnTopOfNextStops()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sstackOnTopOfNextStops%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStackOnTopOfNextStops()))));
     }
 
     // add `stackOnTopOfMultipleStacks` to the URL query string
     if (getStackOnTopOfMultipleStacks() != null) {
-      joiner.add(String.format("%sstackOnTopOfMultipleStacks%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getStackOnTopOfMultipleStacks()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sstackOnTopOfMultipleStacks%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStackOnTopOfMultipleStacks()))));
     }
 
     return joiner.toString();

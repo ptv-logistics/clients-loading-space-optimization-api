@@ -40,18 +40,20 @@ import com.ptvgroup.developer.client.binpacking.ApiClient;
   PackBinsResponse.JSON_PROPERTY_PACKED_BINS,
   PackBinsResponse.JSON_PROPERTY_ITEMS_NOT_PACKED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-28T13:28:30.257776203Z[Etc/UTC]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:20:38.001126947Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class PackBinsResponse {
   public static final String JSON_PROPERTY_PACKED_BINS = "packedBins";
-  private List<PackedBin> packedBins = new ArrayList<>();
+  @javax.annotation.Nullable
+  private List<PackedBin> packedBins;
 
   public static final String JSON_PROPERTY_ITEMS_NOT_PACKED = "itemsNotPacked";
-  private List<ItemNotPacked> itemsNotPacked = new ArrayList<>();
+  @javax.annotation.Nullable
+  private List<ItemNotPacked> itemsNotPacked;
 
   public PackBinsResponse() { 
   }
 
-  public PackBinsResponse packedBins(List<PackedBin> packedBins) {
+  public PackBinsResponse packedBins(@javax.annotation.Nullable List<PackedBin> packedBins) {
     this.packedBins = packedBins;
     return this;
   }
@@ -69,21 +71,21 @@ public class PackBinsResponse {
    * @return packedBins
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PACKED_BINS)
+  @JsonProperty(value = JSON_PROPERTY_PACKED_BINS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<PackedBin> getPackedBins() {
     return packedBins;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PACKED_BINS)
+  @JsonProperty(value = JSON_PROPERTY_PACKED_BINS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPackedBins(List<PackedBin> packedBins) {
+  public void setPackedBins(@javax.annotation.Nullable List<PackedBin> packedBins) {
     this.packedBins = packedBins;
   }
 
 
-  public PackBinsResponse itemsNotPacked(List<ItemNotPacked> itemsNotPacked) {
+  public PackBinsResponse itemsNotPacked(@javax.annotation.Nullable List<ItemNotPacked> itemsNotPacked) {
     this.itemsNotPacked = itemsNotPacked;
     return this;
   }
@@ -101,16 +103,16 @@ public class PackBinsResponse {
    * @return itemsNotPacked
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ITEMS_NOT_PACKED)
+  @JsonProperty(value = JSON_PROPERTY_ITEMS_NOT_PACKED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<ItemNotPacked> getItemsNotPacked() {
     return itemsNotPacked;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ITEMS_NOT_PACKED)
+  @JsonProperty(value = JSON_PROPERTY_ITEMS_NOT_PACKED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setItemsNotPacked(List<ItemNotPacked> itemsNotPacked) {
+  public void setItemsNotPacked(@javax.annotation.Nullable List<ItemNotPacked> itemsNotPacked) {
     this.itemsNotPacked = itemsNotPacked;
   }
 
@@ -151,10 +153,7 @@ public class PackBinsResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -193,8 +192,8 @@ public class PackBinsResponse {
     if (getPackedBins() != null) {
       for (int i = 0; i < getPackedBins().size(); i++) {
         if (getPackedBins().get(i) != null) {
-          joiner.add(getPackedBins().get(i).toUrlQueryString(String.format("%spackedBins%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getPackedBins().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%spackedBins%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -203,8 +202,8 @@ public class PackBinsResponse {
     if (getItemsNotPacked() != null) {
       for (int i = 0; i < getItemsNotPacked().size(); i++) {
         if (getItemsNotPacked().get(i) != null) {
-          joiner.add(getItemsNotPacked().get(i).toUrlQueryString(String.format("%sitemsNotPacked%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getItemsNotPacked().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sitemsNotPacked%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

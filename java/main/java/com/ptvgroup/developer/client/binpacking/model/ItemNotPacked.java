@@ -36,18 +36,20 @@ import com.ptvgroup.developer.client.binpacking.ApiClient;
   ItemNotPacked.JSON_PROPERTY_ID,
   ItemNotPacked.JSON_PROPERTY_NUMBER_OF_INSTANCES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-28T13:28:30.257776203Z[Etc/UTC]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:20:38.001126947Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class ItemNotPacked {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_NUMBER_OF_INSTANCES = "numberOfInstances";
+  @javax.annotation.Nonnull
   private Integer numberOfInstances;
 
   public ItemNotPacked() { 
   }
 
-  public ItemNotPacked id(String id) {
+  public ItemNotPacked id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -57,21 +59,21 @@ public class ItemNotPacked {
    * @return id
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getId() {
     return id;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public ItemNotPacked numberOfInstances(Integer numberOfInstances) {
+  public ItemNotPacked numberOfInstances(@javax.annotation.Nonnull Integer numberOfInstances) {
     this.numberOfInstances = numberOfInstances;
     return this;
   }
@@ -83,16 +85,16 @@ public class ItemNotPacked {
    * @return numberOfInstances
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_INSTANCES)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_INSTANCES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getNumberOfInstances() {
     return numberOfInstances;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_INSTANCES)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_INSTANCES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNumberOfInstances(Integer numberOfInstances) {
+  public void setNumberOfInstances(@javax.annotation.Nonnull Integer numberOfInstances) {
     this.numberOfInstances = numberOfInstances;
   }
 
@@ -133,10 +135,7 @@ public class ItemNotPacked {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -173,12 +172,12 @@ public class ItemNotPacked {
 
     // add `id` to the URL query string
     if (getId() != null) {
-      joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
     }
 
     // add `numberOfInstances` to the URL query string
     if (getNumberOfInstances() != null) {
-      joiner.add(String.format("%snumberOfInstances%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getNumberOfInstances()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%snumberOfInstances%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNumberOfInstances()))));
     }
 
     return joiner.toString();

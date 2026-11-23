@@ -42,21 +42,24 @@ import com.ptvgroup.developer.client.binpacking.ApiClient;
   PackBinsRequest.JSON_PROPERTY_BINS,
   PackBinsRequest.JSON_PROPERTY_OPTIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-28T13:28:30.257776203Z[Etc/UTC]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:20:38.001126947Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class PackBinsRequest {
   public static final String JSON_PROPERTY_ITEMS = "items";
-  private List<Item> items = new ArrayList<>();
+  @javax.annotation.Nonnull
+  private List<Item> items;
 
   public static final String JSON_PROPERTY_BINS = "bins";
-  private List<Bin> bins = new ArrayList<>();
+  @javax.annotation.Nonnull
+  private List<Bin> bins;
 
   public static final String JSON_PROPERTY_OPTIONS = "options";
+  @javax.annotation.Nullable
   private BinPackingOptions options;
 
   public PackBinsRequest() { 
   }
 
-  public PackBinsRequest items(List<Item> items) {
+  public PackBinsRequest items(@javax.annotation.Nonnull List<Item> items) {
     this.items = items;
     return this;
   }
@@ -74,21 +77,21 @@ public class PackBinsRequest {
    * @return items
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ITEMS)
+  @JsonProperty(value = JSON_PROPERTY_ITEMS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<Item> getItems() {
     return items;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ITEMS)
+  @JsonProperty(value = JSON_PROPERTY_ITEMS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setItems(List<Item> items) {
+  public void setItems(@javax.annotation.Nonnull List<Item> items) {
     this.items = items;
   }
 
 
-  public PackBinsRequest bins(List<Bin> bins) {
+  public PackBinsRequest bins(@javax.annotation.Nonnull List<Bin> bins) {
     this.bins = bins;
     return this;
   }
@@ -106,21 +109,21 @@ public class PackBinsRequest {
    * @return bins
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_BINS)
+  @JsonProperty(value = JSON_PROPERTY_BINS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<Bin> getBins() {
     return bins;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_BINS)
+  @JsonProperty(value = JSON_PROPERTY_BINS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setBins(List<Bin> bins) {
+  public void setBins(@javax.annotation.Nonnull List<Bin> bins) {
     this.bins = bins;
   }
 
 
-  public PackBinsRequest options(BinPackingOptions options) {
+  public PackBinsRequest options(@javax.annotation.Nullable BinPackingOptions options) {
     this.options = options;
     return this;
   }
@@ -130,16 +133,16 @@ public class PackBinsRequest {
    * @return options
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OPTIONS)
+  @JsonProperty(value = JSON_PROPERTY_OPTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public BinPackingOptions getOptions() {
     return options;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_OPTIONS)
+  @JsonProperty(value = JSON_PROPERTY_OPTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOptions(BinPackingOptions options) {
+  public void setOptions(@javax.annotation.Nullable BinPackingOptions options) {
     this.options = options;
   }
 
@@ -182,10 +185,7 @@ public class PackBinsRequest {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -224,8 +224,8 @@ public class PackBinsRequest {
     if (getItems() != null) {
       for (int i = 0; i < getItems().size(); i++) {
         if (getItems().get(i) != null) {
-          joiner.add(getItems().get(i).toUrlQueryString(String.format("%sitems%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getItems().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sitems%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -234,8 +234,8 @@ public class PackBinsRequest {
     if (getBins() != null) {
       for (int i = 0; i < getBins().size(); i++) {
         if (getBins().get(i) != null) {
-          joiner.add(getBins().get(i).toUrlQueryString(String.format("%sbins%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getBins().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sbins%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

@@ -41,24 +41,28 @@ import com.ptvgroup.developer.client.binpacking.ApiClient;
   PackedItem.JSON_PROPERTY_DIMENSIONS,
   PackedItem.JSON_PROPERTY_ORIENTATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-28T13:28:30.257776203Z[Etc/UTC]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:20:38.001126947Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class PackedItem {
   public static final String JSON_PROPERTY_ITEM_ID = "itemId";
+  @javax.annotation.Nonnull
   private String itemId;
 
   public static final String JSON_PROPERTY_POSITION = "position";
+  @javax.annotation.Nonnull
   private ItemPosition position;
 
   public static final String JSON_PROPERTY_DIMENSIONS = "dimensions";
+  @javax.annotation.Nonnull
   private BoxDimensions dimensions;
 
   public static final String JSON_PROPERTY_ORIENTATION = "orientation";
+  @javax.annotation.Nonnull
   private ItemOrientation orientation;
 
   public PackedItem() { 
   }
 
-  public PackedItem itemId(String itemId) {
+  public PackedItem itemId(@javax.annotation.Nonnull String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -68,21 +72,21 @@ public class PackedItem {
    * @return itemId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ITEM_ID)
+  @JsonProperty(value = JSON_PROPERTY_ITEM_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getItemId() {
     return itemId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ITEM_ID)
+  @JsonProperty(value = JSON_PROPERTY_ITEM_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setItemId(String itemId) {
+  public void setItemId(@javax.annotation.Nonnull String itemId) {
     this.itemId = itemId;
   }
 
 
-  public PackedItem position(ItemPosition position) {
+  public PackedItem position(@javax.annotation.Nonnull ItemPosition position) {
     this.position = position;
     return this;
   }
@@ -92,21 +96,21 @@ public class PackedItem {
    * @return position
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_POSITION)
+  @JsonProperty(value = JSON_PROPERTY_POSITION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public ItemPosition getPosition() {
     return position;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_POSITION)
+  @JsonProperty(value = JSON_PROPERTY_POSITION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPosition(ItemPosition position) {
+  public void setPosition(@javax.annotation.Nonnull ItemPosition position) {
     this.position = position;
   }
 
 
-  public PackedItem dimensions(BoxDimensions dimensions) {
+  public PackedItem dimensions(@javax.annotation.Nonnull BoxDimensions dimensions) {
     this.dimensions = dimensions;
     return this;
   }
@@ -116,21 +120,21 @@ public class PackedItem {
    * @return dimensions
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DIMENSIONS)
+  @JsonProperty(value = JSON_PROPERTY_DIMENSIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public BoxDimensions getDimensions() {
     return dimensions;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DIMENSIONS)
+  @JsonProperty(value = JSON_PROPERTY_DIMENSIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDimensions(BoxDimensions dimensions) {
+  public void setDimensions(@javax.annotation.Nonnull BoxDimensions dimensions) {
     this.dimensions = dimensions;
   }
 
 
-  public PackedItem orientation(ItemOrientation orientation) {
+  public PackedItem orientation(@javax.annotation.Nonnull ItemOrientation orientation) {
     this.orientation = orientation;
     return this;
   }
@@ -140,16 +144,16 @@ public class PackedItem {
    * @return orientation
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ORIENTATION)
+  @JsonProperty(value = JSON_PROPERTY_ORIENTATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public ItemOrientation getOrientation() {
     return orientation;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ORIENTATION)
+  @JsonProperty(value = JSON_PROPERTY_ORIENTATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOrientation(ItemOrientation orientation) {
+  public void setOrientation(@javax.annotation.Nonnull ItemOrientation orientation) {
     this.orientation = orientation;
   }
 
@@ -194,10 +198,7 @@ public class PackedItem {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -234,7 +235,7 @@ public class PackedItem {
 
     // add `itemId` to the URL query string
     if (getItemId() != null) {
-      joiner.add(String.format("%sitemId%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getItemId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sitemId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getItemId()))));
     }
 
     // add `position` to the URL query string
@@ -249,7 +250,7 @@ public class PackedItem {
 
     // add `orientation` to the URL query string
     if (getOrientation() != null) {
-      joiner.add(String.format("%sorientation%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getOrientation()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sorientation%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOrientation()))));
     }
 
     return joiner.toString();
