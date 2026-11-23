@@ -18,6 +18,7 @@ import {
     BoxDimensionsFromJSON,
     BoxDimensionsFromJSONTyped,
     BoxDimensionsToJSON,
+    BoxDimensionsToJSONTyped,
 } from './BoxDimensions';
 
 /**
@@ -85,10 +86,15 @@ export function BinFromJSONTyped(json: any, ignoreDiscriminator: boolean): Bin {
     };
 }
 
-export function BinToJSON(value?: Bin | null): any {
+export function BinToJSON(json: any): Bin {
+    return BinToJSONTyped(json, false);
+}
+
+export function BinToJSONTyped(value?: Bin | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'id': value['id'],

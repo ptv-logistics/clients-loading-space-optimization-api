@@ -18,18 +18,21 @@ import {
     ItemFromJSON,
     ItemFromJSONTyped,
     ItemToJSON,
+    ItemToJSONTyped,
 } from './Item';
 import type { Bin } from './Bin';
 import {
     BinFromJSON,
     BinFromJSONTyped,
     BinToJSON,
+    BinToJSONTyped,
 } from './Bin';
 import type { BinPackingOptions } from './BinPackingOptions';
 import {
     BinPackingOptionsFromJSON,
     BinPackingOptionsFromJSONTyped,
     BinPackingOptionsToJSON,
+    BinPackingOptionsToJSONTyped,
 } from './BinPackingOptions';
 
 /**
@@ -89,10 +92,15 @@ export function PackBinsRequestFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-export function PackBinsRequestToJSON(value?: PackBinsRequest | null): any {
+export function PackBinsRequestToJSON(json: any): PackBinsRequest {
+    return PackBinsRequestToJSONTyped(json, false);
+}
+
+export function PackBinsRequestToJSONTyped(value?: PackBinsRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'items': ((value['items'] as Array<any>).map(ItemToJSON)),

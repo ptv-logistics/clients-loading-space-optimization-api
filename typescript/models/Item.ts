@@ -18,18 +18,21 @@ import {
     AllowedOrientationFromJSON,
     AllowedOrientationFromJSONTyped,
     AllowedOrientationToJSON,
+    AllowedOrientationToJSONTyped,
 } from './AllowedOrientation';
 import type { BoxDimensions } from './BoxDimensions';
 import {
     BoxDimensionsFromJSON,
     BoxDimensionsFromJSONTyped,
     BoxDimensionsToJSON,
+    BoxDimensionsToJSONTyped,
 } from './BoxDimensions';
 import type { ItemSurfaceLoads } from './ItemSurfaceLoads';
 import {
     ItemSurfaceLoadsFromJSON,
     ItemSurfaceLoadsFromJSONTyped,
     ItemSurfaceLoadsToJSON,
+    ItemSurfaceLoadsToJSONTyped,
 } from './ItemSurfaceLoads';
 
 /**
@@ -111,10 +114,15 @@ export function ItemFromJSONTyped(json: any, ignoreDiscriminator: boolean): Item
     };
 }
 
-export function ItemToJSON(value?: Item | null): any {
+export function ItemToJSON(json: any): Item {
+    return ItemToJSONTyped(json, false);
+}
+
+export function ItemToJSONTyped(value?: Item | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'id': value['id'],

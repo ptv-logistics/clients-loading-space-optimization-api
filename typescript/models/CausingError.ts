@@ -65,14 +65,44 @@ export interface CausingError {
      * * `GENERAL_DUPLICATE_PARAMETER` - A parameter is duplicated.
      * * `GENERAL_INVALID_LIST` - A list has an invalid format such as duplicate commas.
      *   * `value` - The invalid list.
-     * * `BINPACKING_BIN_ID_CONFLICT` - Two bins have the same id.
-     *   * `binId` - The bin id.
+     * * `BINPACKING_MAXIMUM_COUNT_EXCEEDED` - The number of items or bins exceeds the maximum allowed number.
+     *   * `value` - The total number of items or bins.
+     *   * `maximumAllowed` - The maximum allowed number of items or bins.
+     * * `BINPACKING_MAXIMUM_DIMENSION_EXCEEDED` - A dimension is bigger than the maximum allowed value.
+     *   * `id` - The ID of the item or bin.
+     *   * `value` - The dimension that is bigger than the maximum allowed value.
+     *   * `maximumAllowed` - The maximum allowed value.
+     * * `BINPACKING_MINIMUM_SUM_OF_DIMENSIONS_VIOLATED` - The sum of dimensions is smaller than the minimum allowed value.
+     *   * `id` - The ID of the item or bin.
+     *   * `value` - The value that is smaller than the minimum allowed value.
+     *   * `minimumAllowed` - The minimum allowed value.
+     * * `BINPACKING_MAXIMUM_VOLUME_EXCEEDED` - The volume is bigger than the maximum allowed value.
+     *   * `id` - The ID of the item or bin.
+     *   * `value` - The value that is bigger than the maximum allowed value.
+     *   * `maximumAllowed` - The maximum allowed value.
+     * * `BINPACKING_ID_CONFLICT` - Two items or bins have the same id.
+     *   * `id` - The ID of the item or bin.
      *   * `conflictingIndex` - The index of the conflicting bin.
-     *   * `originalIndex` - The index of the original bin.
-     * * `BINPACKING_ITEM_ID_CONFLICT` - Two items have the same id.
-     *   * `itemId` - The item id.
-     *   * `conflictingIndex` - The index of the conflicting item.
-     *   * `originalIndex` - The index of the original item.
+     * * `BINPACKING_ITEM_NOT_EXIST_SEQUENCING_CONSTRAINT` - The item doesn't exist in the unloadingSequence.
+     *   * `id` - The ID of the item or bin.
+     *   * `hint` - A hint how to solve the problem.
+     * * `BINPACKING_ALL_AMOUNT_ITEM_NOT_EXIST_SEQUENCING_CONSTRAINT` - The unloadingSequence must contain exactly all items.
+     *   * `id` - The ID of the item or bin.
+     *   * `numberOfInstancesToUnload` - The number of instances of the item in the unloading sequence. 
+     *   * `numberOfInstances` - The number of instances of the item.
+     *   * `hint` - A hint how to solve the problem.
+     * * `BINPACKING_ONLY_ONE_BIN_WITH_SEQUENCING` - Only one bin is allowed, if unloadingSequence is defined.
+     *   * `hint` - A hint how to solve the problem.
+     * * `BINPACKING_INVALID_SEQUENCE_ITEM` - Each item defined in the unloadingSequence should exist.
+     *   * `id` - The ID of the item
+     *   * `hint` - A hint how to solve the problem.
+     * * `BINPACKING_STACKING_RESTRICTION_INVALID_ITEM` - Each item defined in the stackingRestrictions should exist.
+     *   * `id` - The ID of the item
+     *   * `hint` - A hint how to solve the problem.
+     * * `BINPACKING_STACKING_RESTRICTION_ALREADY_EXISTS` - A stacking restriction already exists with another restrictionType.
+     *   * `id` - The ID of the item
+     *   * `hint` - A hint how to solve the problem.
+     * 
      * 
      * **Error codes for** `GENERAL_RESOURCE_NOT_FOUND`
      * 
@@ -122,10 +152,15 @@ export function CausingErrorFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-export function CausingErrorToJSON(value?: CausingError | null): any {
+export function CausingErrorToJSON(json: any): CausingError {
+    return CausingErrorToJSONTyped(json, false);
+}
+
+export function CausingErrorToJSONTyped(value?: CausingError | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'description': value['description'],

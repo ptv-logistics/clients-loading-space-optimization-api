@@ -18,18 +18,21 @@ import {
     BoxDimensionsFromJSON,
     BoxDimensionsFromJSONTyped,
     BoxDimensionsToJSON,
+    BoxDimensionsToJSONTyped,
 } from './BoxDimensions';
 import type { ItemOrientation } from './ItemOrientation';
 import {
     ItemOrientationFromJSON,
     ItemOrientationFromJSONTyped,
     ItemOrientationToJSON,
+    ItemOrientationToJSONTyped,
 } from './ItemOrientation';
 import type { ItemPosition } from './ItemPosition';
 import {
     ItemPositionFromJSON,
     ItemPositionFromJSONTyped,
     ItemPositionToJSON,
+    ItemPositionToJSONTyped,
 } from './ItemPosition';
 
 /**
@@ -95,10 +98,15 @@ export function PackedItemFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-export function PackedItemToJSON(value?: PackedItem | null): any {
+export function PackedItemToJSON(json: any): PackedItem {
+    return PackedItemToJSONTyped(json, false);
+}
+
+export function PackedItemToJSONTyped(value?: PackedItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'itemId': value['itemId'],

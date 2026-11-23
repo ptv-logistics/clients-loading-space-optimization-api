@@ -18,6 +18,7 @@ import {
     StackingRestrictionTypeFromJSON,
     StackingRestrictionTypeFromJSONTyped,
     StackingRestrictionTypeToJSON,
+    StackingRestrictionTypeToJSONTyped,
 } from './StackingRestrictionType';
 
 /**
@@ -73,10 +74,15 @@ export function StackingRestrictionsFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-export function StackingRestrictionsToJSON(value?: StackingRestrictions | null): any {
+export function StackingRestrictionsToJSON(json: any): StackingRestrictions {
+    return StackingRestrictionsToJSONTyped(json, false);
+}
+
+export function StackingRestrictionsToJSONTyped(value?: StackingRestrictions | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'itemId': value['itemId'],

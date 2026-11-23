@@ -12,30 +12,37 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import type {
-  BinPackingFocus,
-  ErrorResponse,
-  PackBinsRequest,
-  PackBinsResponse,
-  PackedBinsIdentifier,
-  StatusResponse,
-} from '../models/index';
 import {
+    type BinPackingFocus,
     BinPackingFocusFromJSON,
     BinPackingFocusToJSON,
+} from '../models/BinPackingFocus';
+import {
+    type ErrorResponse,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+} from '../models/ErrorResponse';
+import {
+    type PackBinsRequest,
     PackBinsRequestFromJSON,
     PackBinsRequestToJSON,
+} from '../models/PackBinsRequest';
+import {
+    type PackBinsResponse,
     PackBinsResponseFromJSON,
     PackBinsResponseToJSON,
+} from '../models/PackBinsResponse';
+import {
+    type PackedBinsIdentifier,
     PackedBinsIdentifierFromJSON,
     PackedBinsIdentifierToJSON,
+} from '../models/PackedBinsIdentifier';
+import {
+    type StatusResponse,
     StatusResponseFromJSON,
     StatusResponseToJSON,
-} from '../models/index';
+} from '../models/StatusResponse';
 
 export interface CancelBinPackingRequest {
     id: string;
@@ -66,9 +73,9 @@ export interface StartBinPackingRequest {
 export class BinsApi extends runtime.BaseAPI {
 
     /**
-     * Cancels a bin packing operation and deletes the results specified by its ID. Results already calculated cannot be requested by its ID, anymore.
+     * Creates request options for cancelBinPacking without sending the request
      */
-    async cancelBinPackingRaw(requestParameters: CancelBinPackingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async cancelBinPackingRequestOpts(requestParameters: CancelBinPackingRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -84,12 +91,24 @@ export class BinsApi extends runtime.BaseAPI {
             headerParameters["apiKey"] = await this.configuration.apiKey("apiKey"); // apiKeyAuth authentication
         }
 
-        const response = await this.request({
-            path: `/bins/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+
+        let urlPath = `/bins/{id}`;
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * Cancels a bin packing operation and deletes the results specified by its ID. Results already calculated cannot be requested by its ID, anymore.
+     */
+    async cancelBinPackingRaw(requestParameters: CancelBinPackingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.cancelBinPackingRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.VoidApiResponse(response);
     }
@@ -102,9 +121,9 @@ export class BinsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Gets the results of a bin packing operation specified by its ID.
+     * Creates request options for getPackedBins without sending the request
      */
-    async getPackedBinsRaw(requestParameters: GetPackedBinsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PackBinsResponse>> {
+    async getPackedBinsRequestOpts(requestParameters: GetPackedBinsRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -120,12 +139,24 @@ export class BinsApi extends runtime.BaseAPI {
             headerParameters["apiKey"] = await this.configuration.apiKey("apiKey"); // apiKeyAuth authentication
         }
 
-        const response = await this.request({
-            path: `/bins/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+
+        let urlPath = `/bins/{id}`;
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * Gets the results of a bin packing operation specified by its ID.
+     */
+    async getPackedBinsRaw(requestParameters: GetPackedBinsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PackBinsResponse>> {
+        const requestOptions = await this.getPackedBinsRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PackBinsResponseFromJSON(jsonValue));
     }
@@ -139,9 +170,9 @@ export class BinsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the status of a bin packing operation.
+     * Creates request options for getStatus without sending the request
      */
-    async getStatusRaw(requestParameters: GetStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StatusResponse>> {
+    async getStatusRequestOpts(requestParameters: GetStatusRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -161,12 +192,24 @@ export class BinsApi extends runtime.BaseAPI {
             headerParameters["apiKey"] = await this.configuration.apiKey("apiKey"); // apiKeyAuth authentication
         }
 
-        const response = await this.request({
-            path: `/bins/status/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+
+        let urlPath = `/bins/status/{id}`;
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * Returns the status of a bin packing operation.
+     */
+    async getStatusRaw(requestParameters: GetStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StatusResponse>> {
+        const requestOptions = await this.getStatusRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => StatusResponseFromJSON(jsonValue));
     }
@@ -180,9 +223,9 @@ export class BinsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Performs a bin packing operation as described by the request and directly returns the packing result in the response. Therefore the request is restricted as described at the request body to limit the calculation time to a maximum of 10 seconds. In case the operation lasts longer, it will be aborted. The state up to then will be returned. So the result may differ to the asynchronous call.
+     * Creates request options for packBins without sending the request
      */
-    async packBinsRaw(requestParameters: PackBinsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PackBinsResponse>> {
+    async packBinsRequestOpts(requestParameters: PackBinsOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['packBinsRequest'] == null) {
             throw new runtime.RequiredError(
                 'packBinsRequest',
@@ -204,13 +247,24 @@ export class BinsApi extends runtime.BaseAPI {
             headerParameters["apiKey"] = await this.configuration.apiKey("apiKey"); // apiKeyAuth authentication
         }
 
-        const response = await this.request({
-            path: `/bins`,
+
+        let urlPath = `/bins`;
+
+        return {
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PackBinsRequestToJSON(requestParameters['packBinsRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * Performs a bin packing operation as described by the request and directly returns the packing result in the response. Therefore the request is restricted as described at the request body to limit the calculation time to a maximum of 10 seconds. In case the operation lasts longer, it will be aborted. The state up to then will be returned. So the result may differ to the asynchronous call.
+     */
+    async packBinsRaw(requestParameters: PackBinsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PackBinsResponse>> {
+        const requestOptions = await this.packBinsRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PackBinsResponseFromJSON(jsonValue));
     }
@@ -224,9 +278,9 @@ export class BinsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Starts a bin packing operation as described by the request. The result informs if operation is accepted and in this case returns an operation ID. Further information and result should be requested by getStatus() and getPackedBins() via ID.
+     * Creates request options for startBinPacking without sending the request
      */
-    async startBinPackingRaw(requestParameters: StartBinPackingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PackedBinsIdentifier>> {
+    async startBinPackingRequestOpts(requestParameters: StartBinPackingRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['packBinsRequest'] == null) {
             throw new runtime.RequiredError(
                 'packBinsRequest',
@@ -248,13 +302,24 @@ export class BinsApi extends runtime.BaseAPI {
             headerParameters["apiKey"] = await this.configuration.apiKey("apiKey"); // apiKeyAuth authentication
         }
 
-        const response = await this.request({
-            path: `/bins/async`,
+
+        let urlPath = `/bins/async`;
+
+        return {
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PackBinsRequestToJSON(requestParameters['packBinsRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * Starts a bin packing operation as described by the request. The result informs if operation is accepted and in this case returns an operation ID. Further information and result should be requested by getStatus() and getPackedBins() via ID.
+     */
+    async startBinPackingRaw(requestParameters: StartBinPackingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PackedBinsIdentifier>> {
+        const requestOptions = await this.startBinPackingRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PackedBinsIdentifierFromJSON(jsonValue));
     }

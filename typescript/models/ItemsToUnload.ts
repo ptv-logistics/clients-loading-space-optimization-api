@@ -56,10 +56,15 @@ export function ItemsToUnloadFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function ItemsToUnloadToJSON(value?: ItemsToUnload | null): any {
+export function ItemsToUnloadToJSON(json: any): ItemsToUnload {
+    return ItemsToUnloadToJSONTyped(json, false);
+}
+
+export function ItemsToUnloadToJSONTyped(value?: ItemsToUnload | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'itemId': value['itemId'],

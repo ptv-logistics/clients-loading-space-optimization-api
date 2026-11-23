@@ -68,10 +68,15 @@ export function ItemPositionFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-export function ItemPositionToJSON(value?: ItemPosition | null): any {
+export function ItemPositionToJSON(json: any): ItemPosition {
+    return ItemPositionToJSONTyped(json, false);
+}
+
+export function ItemPositionToJSONTyped(value?: ItemPosition | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'x': value['x'],

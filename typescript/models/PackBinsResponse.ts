@@ -18,12 +18,14 @@ import {
     ItemNotPackedFromJSON,
     ItemNotPackedFromJSONTyped,
     ItemNotPackedToJSON,
+    ItemNotPackedToJSONTyped,
 } from './ItemNotPacked';
 import type { PackedBin } from './PackedBin';
 import {
     PackedBinFromJSON,
     PackedBinFromJSONTyped,
     PackedBinToJSON,
+    PackedBinToJSONTyped,
 } from './PackedBin';
 
 /**
@@ -69,10 +71,15 @@ export function PackBinsResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-export function PackBinsResponseToJSON(value?: PackBinsResponse | null): any {
+export function PackBinsResponseToJSON(json: any): PackBinsResponse {
+    return PackBinsResponseToJSONTyped(json, false);
+}
+
+export function PackBinsResponseToJSONTyped(value?: PackBinsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'packedBins': value['packedBins'] == null ? undefined : ((value['packedBins'] as Array<any>).map(PackedBinToJSON)),

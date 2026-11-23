@@ -18,12 +18,14 @@ import {
     StackingOptionsFromJSON,
     StackingOptionsFromJSONTyped,
     StackingOptionsToJSON,
+    StackingOptionsToJSONTyped,
 } from './StackingOptions';
 import type { Stop } from './Stop';
 import {
     StopFromJSON,
     StopFromJSONTyped,
     StopToJSON,
+    StopToJSONTyped,
 } from './Stop';
 
 /**
@@ -68,10 +70,15 @@ export function BinPackingOptionsFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function BinPackingOptionsToJSON(value?: BinPackingOptions | null): any {
+export function BinPackingOptionsToJSON(json: any): BinPackingOptions {
+    return BinPackingOptionsToJSONTyped(json, false);
+}
+
+export function BinPackingOptionsToJSONTyped(value?: BinPackingOptions | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'unloadingSequence': value['unloadingSequence'] == null ? undefined : ((value['unloadingSequence'] as Array<any>).map(StopToJSON)),

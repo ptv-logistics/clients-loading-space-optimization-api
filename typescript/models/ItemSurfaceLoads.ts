@@ -64,10 +64,15 @@ export function ItemSurfaceLoadsFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-export function ItemSurfaceLoadsToJSON(value?: ItemSurfaceLoads | null): any {
+export function ItemSurfaceLoadsToJSON(json: any): ItemSurfaceLoads {
+    return ItemSurfaceLoadsToJSONTyped(json, false);
+}
+
+export function ItemSurfaceLoadsToJSONTyped(value?: ItemSurfaceLoads | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'x': value['x'],

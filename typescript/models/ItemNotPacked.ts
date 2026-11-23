@@ -58,10 +58,15 @@ export function ItemNotPackedFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function ItemNotPackedToJSON(value?: ItemNotPacked | null): any {
+export function ItemNotPackedToJSON(json: any): ItemNotPacked {
+    return ItemNotPackedToJSONTyped(json, false);
+}
+
+export function ItemNotPackedToJSONTyped(value?: ItemNotPacked | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'id': value['id'],

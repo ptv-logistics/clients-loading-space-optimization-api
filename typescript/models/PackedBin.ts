@@ -18,6 +18,7 @@ import {
     PackedItemFromJSON,
     PackedItemFromJSONTyped,
     PackedItemToJSON,
+    PackedItemToJSONTyped,
 } from './PackedItem';
 
 /**
@@ -107,10 +108,15 @@ export function PackedBinFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-export function PackedBinToJSON(value?: PackedBin | null): any {
+export function PackedBinToJSON(json: any): PackedBin {
+    return PackedBinToJSONTyped(json, false);
+}
+
+export function PackedBinToJSONTyped(value?: PackedBin | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'binId': value['binId'],

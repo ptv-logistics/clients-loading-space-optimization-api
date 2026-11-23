@@ -57,3 +57,7 @@ export function ItemOrientationToJSON(value?: ItemOrientation | null): any {
     return value as any;
 }
 
+export function ItemOrientationToJSONTyped(value: any, ignoreDiscriminator: boolean): ItemOrientation {
+    return value as ItemOrientation;
+}
+

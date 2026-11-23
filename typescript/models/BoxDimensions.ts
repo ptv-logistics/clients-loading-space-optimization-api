@@ -65,10 +65,15 @@ export function BoxDimensionsFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function BoxDimensionsToJSON(value?: BoxDimensions | null): any {
+export function BoxDimensionsToJSON(json: any): BoxDimensions {
+    return BoxDimensionsToJSONTyped(json, false);
+}
+
+export function BoxDimensionsToJSONTyped(value?: BoxDimensions | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'x': value['x'],

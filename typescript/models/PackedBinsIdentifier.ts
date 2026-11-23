@@ -49,10 +49,15 @@ export function PackedBinsIdentifierFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-export function PackedBinsIdentifierToJSON(value?: PackedBinsIdentifier | null): any {
+export function PackedBinsIdentifierToJSON(json: any): PackedBinsIdentifier {
+    return PackedBinsIdentifierToJSONTyped(json, false);
+}
+
+export function PackedBinsIdentifierToJSONTyped(value?: PackedBinsIdentifier | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'id': value['id'],

@@ -53,3 +53,7 @@ export function StackingRestrictionTypeToJSON(value?: StackingRestrictionType | 
     return value as any;
 }
 
+export function StackingRestrictionTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): StackingRestrictionType {
+    return value as StackingRestrictionType;
+}
+

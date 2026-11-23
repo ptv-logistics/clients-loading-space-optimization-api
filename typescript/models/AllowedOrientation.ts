@@ -51,3 +51,7 @@ export function AllowedOrientationToJSON(value?: AllowedOrientation | null): any
     return value as any;
 }
 
+export function AllowedOrientationToJSONTyped(value: any, ignoreDiscriminator: boolean): AllowedOrientation {
+    return value as AllowedOrientation;
+}
+

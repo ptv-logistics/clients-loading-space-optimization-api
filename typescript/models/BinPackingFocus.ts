@@ -49,3 +49,7 @@ export function BinPackingFocusToJSON(value?: BinPackingFocus | null): any {
     return value as any;
 }
 
+export function BinPackingFocusToJSONTyped(value: any, ignoreDiscriminator: boolean): BinPackingFocus {
+    return value as BinPackingFocus;
+}
+

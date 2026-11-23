@@ -18,6 +18,7 @@ import {
     ItemsToUnloadFromJSON,
     ItemsToUnloadFromJSONTyped,
     ItemsToUnloadToJSON,
+    ItemsToUnloadToJSONTyped,
 } from './ItemsToUnload';
 
 /**
@@ -56,10 +57,15 @@ export function StopFromJSONTyped(json: any, ignoreDiscriminator: boolean): Stop
     };
 }
 
-export function StopToJSON(value?: Stop | null): any {
+export function StopToJSON(json: any): Stop {
+    return StopToJSONTyped(json, false);
+}
+
+export function StopToJSONTyped(value?: Stop | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'itemsToUnload': ((value['itemsToUnload'] as Array<any>).map(ItemsToUnloadToJSON)),
